@@ -14,6 +14,6 @@ For practical information about using, modifying and redistributing this font se
 
 For more details about this project, including changelog and acknowledgements see [FONTLOG.txt](FONTLOG.txt).
 
-For more information about supported Unicode ranges and languages, smart font features and how to use them, please see the documentation in [documentation/](documentation/) or on [http://scripts.sil.org/TaiHeritage]((scripts.sil.org/TaiHeritage).
+For more information about supported Unicode ranges and languages, smart font features and how to use them, please see the documentation in [documentation/](documentation/) or on [http://scripts.sil.org/TaiHeritage](scripts.sil.org/TaiHeritage).
 
 Enjoy!

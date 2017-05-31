@@ -1,0 +1,104 @@
+/*
+	This file is part of Tai Heritage Pro font family 
+	(http://scripts.sil.org/TaiHeritage) and is 
+	Copyright (c) 1995-2017 SIL International (http://www.sil.org/),
+	with Reserved Font Name "Heritage".
+
+	This Font Software is licensed under the SIL Open Font License,
+	Version 1.1.
+
+	You should have received a copy of the license along with this Font Software.
+	If this is not the case, go to (http://scripts.sil.org/OFL) for all the
+	details including an FAQ.
+*/
+
+//
+//	Map from the new make_gdl syntax to the old one.
+//
+
+table(glyph)
+
+g_AAA0 = gaaa0;
+g_AAA1 = gaaa1;
+g_AAA2 = gaaa2;
+g_AAA3 = gaaa3;
+g_AAA4 = gaaa4;
+g_AAA5 = gaaa5;
+g_AAAB = gaaab;
+g_AAAE = gaaae;
+g_AAAF = gaaaf;
+g_AA80 = gaa80;
+g_AA81 = gaa81;
+g_AA82 = gaa82;
+g_AA83 = gaa83;
+g_AA84 = gaa84;
+g_AA85 = gaa85;
+g_AA86 = gaa86;
+g_AA87 = gaa87;
+g_AA88 = gaa88;
+g_AA89 = gaa89;
+g_AA89_dwarf = gaa89_dwarf;
+g_AA8A = gaa8a;
+g_AA8A_Rotated = gaa8a_rotated;
+g_AA8A_Rdwarf = gaa8a_dwarf;
+g_AA8B = gaa8b;
+g_AA8C = gaa8c;
+g_AA8D = gaa8d;
+g_AA8E = gaa8e;
+g_AA8F = gaa8f;
+g_AA90 = gaa90;
+g_AA91 = gaa91;
+g_AA92 = gaa92;
+g_AA93 = gaa93;
+g_AA94 = gaa94;
+g_AA95 = gaa95;
+g_AA95_Tail = gaa95_tail;
+g_AA96 = gaa96;
+g_AA97 = gaa97;
+g_AA98 = gaa98;
+g_AA99 = gaa99;
+g_AA9A = gaa9a;
+g_AA9B = gaa9b;
+g_AA9C = gaa9c;
+g_AA9D = gaa9d;
+g_AA9E = gaa9e;
+g_AA9F = gaa9f;
+g_AA9F_clsTail = gaa9f_clsTail;
+g_AAA6 = gaaa6;
+g_AAA7 = gaaa7;
+g_AAA8 = gaaa8;
+g_AAA9 = gaaa9;
+g_AAAA = gaaaa;
+g_AAAC = gaaac;
+g_AAAD = gaaad;
+g_AAB0 = gaab0;
+g_AAB1 = gaab1;
+g_AAB2 = gaab2;
+g_AAB3 = gaab3;
+g_AAB4 = gaab4;
+g_AAB5 = gaab5;
+g_AAB6 = gaab6;
+g_AAB6_dwarf = gaab6_dwarf;
+g_AAB7 = gaab7;
+g_AAB8 = gaab8;
+g_AAB9 = gaab9;
+g_AABA = gaaba;
+g_AABB = gaabb;
+g_AABB_Fancy = gaabb_fancy;
+g_AABC = gaabc;
+g_AABD = gaabd;
+g_AABE = gaabe;
+g_AABF = gaabf;
+g_AABF_dwarf = gaabf_dwarf;
+g_AAC0 = gaac0;
+g_AAC1 = gaac1;
+g_AAC2 = gaac2;
+g_AADB = gaadb;
+g_AADC = gaadc;
+g_AADD = gaadd;
+g_AADE = gaade;
+g_AADE_Abbrev = gaade_abbrev;
+g_AADF = gaadf;
+
+endtable;
+

@@ -1,0 +1,2302 @@
+#**********************************
+#	This file is part of Tai Heritage Pro font family 
+#	(http://scripts.sil.org/TaiHeritage) and is 
+#	Copyright (c) 1995-2017 SIL International (http://www.sil.org/),
+#	with Reserved Font Name "Heritage".
+#
+#	This Font Software is licensed under the SIL Open Font License,
+#	Version 1.1.
+#
+#	You should have received a copy of the license along with this Font Software.
+#	If this is not the case, go to (http://scripts.sil.org/OFL) for all the
+#	details including an FAQ.
+#**********************************
+
+#**********************************
+#  Glyphs
+#**********************************
+
+@GDEF_bases = [ A Abreve Acircumflex C E Ecircumflex I N O Ocircumflex Ohorn S U Uhorn Y Z a abreve acircumflex c dotlessi e		
+    ecircumflex i n o ocircumflex ohorn s u uhorn uniAA80 uniAA81 uniAA82 uniAA83 uniAA84 uniAA85 uniAA86 uniAA87 uniAA88 uniAA89		
+    uniAA89.dwarf uniAA8A uniAA8A.Rotated uniAA8A.dwarf uniAA8B uniAA8C uniAA8D uniAA8E uniAA8F uniAA90 uniAA91 uniAA92 uniAA93		
+    uniAA94 uniAA95 uniAA95.Tail uniAA96 uniAA97 uniAA98 uniAA99 uniAA9A uniAA9B uniAA9C uniAA9D uniAA9E uniAA9F uniAA9F.ClsTail		
+    uniAAA0 uniAAA1 uniAAA2 uniAAA3 uniAAA4 uniAAA5 uniAAA6 uniAAA7 uniAAA8 uniAAA9 uniAAAA uniAAAB uniAAAC uniAAAD uniAAAE uniAAAF		
+    uniAAB1 uniAABA uniAABD y z ] ;	
+
+@GDEF_marks = [ acutecomb dotbelowcomb gravecomb hookabovecomb tildecomb uni0302 uni0304 uni0306 uni0308 uni030A uni030C uni031B		
+    uni0327 uniAAB0 uniAAB2 uniAAB3 uniAAB4 uniAAB7 uniAAB8 uniAABE uniAABF uniAABF.dwarf uniAAC1 ] ;	
+
+table GDEF {
+GlyphClassDef
+    @GDEF_bases, # base glyphs
+    ,     # no ligature glyphs
+    @GDEF_marks, # mark glyphs
+    ;     # no component glyphs
+ } GDEF;
+
+
+#**********************************
+#  Mark Classes
+#**********************************
+    markClass acutecomb <anchor -532 1050> @MARK_U ;
+    markClass dotbelowcomb <anchor -532 -100> @MARK_L ;
+    markClass gravecomb <anchor -532 1050> @MARK_U ;
+    markClass hookabovecomb <anchor -532 1051> @MARK_U ;
+    markClass tildecomb <anchor -532 1050> @MARK_U ;
+    markClass uni0302 <anchor -532 1050> @MARK_U ;
+    markClass uni0304 <anchor -532 1050> @MARK_U ;
+    markClass uni0306 <anchor -532 1050> @MARK_U ;
+    markClass uni0308 <anchor -532 1050> @MARK_U ;
+    markClass uni030A <anchor -532 1050> @MARK_U ;
+    markClass uni030C <anchor -532 1050> @MARK_U ;
+    markClass uni031B <anchor 60 900> @MARK_R ;
+    markClass uni0327 <anchor -465 0> @MARK_H ;
+    markClass uniAAB0 <anchor -1440 1250> @MARK_UL ;
+    markClass uniAAB2 <anchor -886 1250> @MARK_i ;
+    markClass uniAAB3 <anchor -1300 1250> @MARK_UL ;
+    markClass uniAAB4 <anchor -250 -125> @MARK_L ;
+    markClass uniAAB7 <anchor -1330 1250> @MARK_UL ;
+    markClass uniAAB8 <anchor -1400 1250> @MARK_UL ;
+    markClass uniAABE <anchor -1330 1250> @MARK_UL ;
+    markClass uniAABF <anchor -470 1750> @MARK_tme ;
+    markClass uniAABF.dwarf <anchor -470 1750> @MARK_tme ;
+    markClass uniAAC1 <anchor -1030 1750> @MARK_tmt ;
+
+
+#**********************************
+#  Glyph classes
+#**********************************
+
+@cAbbrev = [ uniAADE.Abbrev  ] ;	
+
+@cCho = [ uniAA8C uniAA8D  ] ;	
+
+@cChoPho = [ @cCho uniAA9E  ] ;	
+
+@cClsTail = [ uniAA9F.ClsTail  ] ;	
+
+@cFancy = [ uniAABB.Fancy  ] ;	
+
+@cHDia = [ uni0327  ] ;	
+
+@cHighNgo = [ uniAA89 uniAA89.dwarf  ] ;	
+
+@cHorned = [ Ohorn Uhorn ohorn uhorn  ] ;	
+
+@cKernAUEfollowing = [ uniAA80 uniAA81 uniAA83 uniAA85 uniAA8B uniAA90 uniAA91 uniAA92 uniAA93 uniAA94 uniAA95 uniAA96 uniAA97		
+    uniAAA6 uniAAA7 uniAAA8 uniAAA9 uniAAAA uniAAAB uniAAAC uniAAAD uniAAAE uniAAAF uniAAB1  ] ;	
+
+@cKernAfterO = [ uniAA8A uniAA9A uniAAA4 uniAAA5  ] ;	
+
+@cKernUA = [ uniAA9A uniAA9B uniAA9C uniAA9D uniAA9F uniAA9F.ClsTail uniAAA2 uniAAA3 uniAAA4 uniAAA5  ] ;	
+
+@cLDia = [ uniAAB4 dotbelowcomb  ] ;	
+
+@cLongRtTail1 = [ uniAA8A.Rotated uniAA8C uniAA8D uniAA9E  ] ;	
+
+@cLongRtTail2 = [ uniAA8A uniAA8F uniAA9C uniAAA1 uniAAA4  ] ;	
+
+@cLongRtTail2a = [ uniAA9C uniAAA4  ] ;	
+
+@cLongRtTail2b = [ uniAA8A uniAA8F uniAAA1  ] ;	
+
+@cLongRtTailULconflict = [ uniAA8A uniAA9C uniAAA4  ] ;	
+
+@cMaiKang = [ uniAAB0  ] ;	
+
+@cNarrowCons_1 = [ uniAA80 uniAA85 uniAA86 uniAA87 uniAA89 uniAA89.dwarf uniAA8A uniAA97 uniAA9A uniAA9C uniAAA4 uniAAA5 uniAAA6		
+    uniAAA7 uniAAA9 uniAAAB uniAAAE uniAAAF  ] ;	
+
+@cNarrowCons_2 = [ uniAA81 uniAA8B uniAA8E uniAA91 uniAA92 uniAA94 uniAA95 uniAA95.Tail uniAA96 uniAA99 uniAA9D uniAA9F		
+    uniAA9F.ClsTail uniAAA0 uniAAA1 uniAAA3 uniAAAC uniAAAD  ] ;	
+
+@cNarrowCons_2a = [ uniAA81 uniAA8E uniAA92  ] ;	
+
+@cNarrowCons_3 = [ uniAA82 uniAA84 uniAA8F uniAAA8  ] ;	
+
+@cNarrowCons_3a = [ uniAA8F  ] ;	
+
+@cNarrowCons_FollowsO_Bold = [ uniAA80 uniAA81 uniAA8A uniAA8B uniAA8E uniAA92 uniAA94 uniAA95 uniAA95.Tail uniAA96 uniAA97 uniAA99		
+    uniAA9D uniAA9F uniAA9F.ClsTail uniAAA0 uniAAA3 uniAAAC uniAAAD uniAAAE uniAAAF uniAAA9  ] ;	
+
+@cNarrowCons_FollowsO = [ uniAA85 uniAA86 uniAA87 uniAA9A uniAA9C uniAAA4 uniAAA5 uniAAAB uniAAAE uniAAAF		
+    @cNarrowCons_FollowsO_Bold  ] ;	
+
+@cNarrowCons_Tall = [ uniAA8A.Rotated uniAA8A.dwarf uniAA8C uniAA8D uniAA9E  ] ;	
+
+@cNarrowCons_i_base = [ uniAA89 uniAAA5 uniAA9C uniAA9A uniAA8A uniAAA4  ] ;	
+
+@cRDia = [ uni031B  ] ;	
+
+@cRotated = [ uniAA8A.Rotated  ] ;	
+
+@cShortRtTail = [ uniAA82 uniAA84 uniAA98 uniAA99 uniAA9A uniAA9B uniAA9D uniAA9F uniAA9F.ClsTail uniAAA0 uniAAA2 uniAAA3 uniAAA5		
+    uniAABD  ] ;	
+
+@cShowInv = [ uni00A0.ShowInv uni200B.ShowInv afii61664.ShowInv afii301.ShowInv afii299.ShowInv afii300.ShowInv uni202A.ShowInv		
+    uni202B.ShowInv afii61573.ShowInv afii61574.ShowInv afii61575.ShowInv uni2060.ShowInv uniFE00.ShowInv uniFE01.ShowInv		
+    uniFE02.ShowInv uniFE03.ShowInv uniFE04.ShowInv uniFE05.ShowInv uniFE06.ShowInv uniFE07.ShowInv uniFE08.ShowInv uniFE09.ShowInv		
+    uniFE0A.ShowInv uniFE0B.ShowInv uniFE0C.ShowInv uniFE0D.ShowInv uniFE0E.ShowInv uniFE0F.ShowInv uniFEFF.ShowInv  ] ;	
+
+@cSlantedCons = [ uniAA81 uniAA82 uniAA84 uniAA8B uniAA8F uniAA91 uniAA92 uniAA94 uniAA96  ] ;	
+
+@cSlantedLeftSideVowel = [ uniAAB5 uniAAB9  ] ;	
+
+@cTail = [ uniAA95.Tail  ] ;	
+
+@cTakesHDia_base = [ C c  ] ;	
+
+@cTakesLDia_base = [ A E I O U a e i o u uniAA80 uniAA81 uniAA82 uniAA83 uniAA84 uniAA85 uniAA86 uniAA87 uniAA88 uniAA89		
+    uniAA89.dwarf uniAA8A uniAA8A.Rotated uniAA8A.dwarf uniAA8B uniAA8C uniAA8D uniAA8E uniAA8F uniAA90 uniAA91 uniAA92 uniAA93		
+    uniAA94 uniAA95 uniAA95.Tail uniAA96 uniAA97 uniAA98 uniAA99 uniAA9A uniAA9B uniAA9C uniAA9D uniAA9E uniAA9F uniAA9F.ClsTail		
+    uniAAA0 uniAAA1 uniAAA2 uniAAA3 uniAAA4 uniAAA5 uniAAA6 uniAAA7 uniAAA8 uniAAA9 uniAAAA uniAAAB uniAAAC uniAAAD uniAAAE uniAAAF		
+    dotlessi  ] ;	
+
+@cTakesRDia_base = [ O U o u  ] ;	
+
+@cTakesUDia_base = [ A E I N O S U Y Z a e i n o s u y z Acircumflex Abreve Ecircumflex Ocircumflex Ohorn Uhorn acircumflex abreve		
+    ecircumflex dotlessi ocircumflex ohorn uhorn  ] ;	
+
+@cTakesUDia_mark = [ uni0302 uni0306  ] ;	
+
+@cTakesULDia_base = [ uniAA80 uniAA81 uniAA82 uniAA83 uniAA84 uniAA85 uniAA86 uniAA87 uniAA88 uniAA89 uniAA89.dwarf uniAA8A		
+    uniAA8A.Rotated uniAA8A.dwarf uniAA8B uniAA8C uniAA8D uniAA8E uniAA8F uniAA90 uniAA91 uniAA92 uniAA93 uniAA94 uniAA95		
+    uniAA95.Tail uniAA96 uniAA97 uniAA98 uniAA99 uniAA9A uniAA9B uniAA9C uniAA9D uniAA9E uniAA9F uniAA9F.ClsTail uniAAA0 uniAAA1		
+    uniAAA2 uniAAA3 uniAAA4 uniAAA5 uniAAA6 uniAAA7 uniAAA8 uniAAA9 uniAAAA uniAAAB uniAAAC uniAAAD uniAAAE uniAAAF  ] ;	
+
+@cTakesiDia_base = [ uniAA80 uniAA81 uniAA82 uniAA83 uniAA84 uniAA85 uniAA86 uniAA87 uniAA88 uniAA89 uniAA89.dwarf uniAA8A		
+    uniAA8A.Rotated uniAA8A.dwarf uniAA8B uniAA8C uniAA8D uniAA8E uniAA8F uniAA90 uniAA91 uniAA92 uniAA93 uniAA94 uniAA95		
+    uniAA95.Tail uniAA96 uniAA97 uniAA98 uniAA99 uniAA9A uniAA9B uniAA9C uniAA9D uniAA9E uniAA9F uniAA9F.ClsTail uniAAA0 uniAAA1		
+    uniAAA2 uniAAA3 uniAAA4 uniAAA5 uniAAA6 uniAAA7 uniAAA8 uniAAA9 uniAAAA uniAAAB uniAAAC uniAAAD uniAAAE uniAAAF  ] ;	
+
+@cTakestmeDia_base = [ uniAA80 uniAA81 uniAA82 uniAA83 uniAA84 uniAA85 uniAA86 uniAA87 uniAA88 uniAA89 uniAA89.dwarf uniAA8A		
+    uniAA8A.Rotated uniAA8A.dwarf uniAA8B uniAA8C uniAA8D uniAA8E uniAA8F uniAA90 uniAA91 uniAA92 uniAA93 uniAA94 uniAA95		
+    uniAA95.Tail uniAA96 uniAA97 uniAA98 uniAA99 uniAA9A uniAA9B uniAA9C uniAA9D uniAA9E uniAA9F uniAA9F.ClsTail uniAAA0 uniAAA1		
+    uniAAA2 uniAAA3 uniAAA4 uniAAA5 uniAAA6 uniAAA7 uniAAA8 uniAAA9 uniAAAA uniAAAB uniAAAC uniAAAD uniAAAE uniAAAF uniAAB1 uniAABA		
+    uniAABD  ] ;	
+
+@cTakestmeDia_mark = [ uniAAB0 uniAAB2 uniAAB3 uniAAB7 uniAAB8 uniAABE  ] ;	
+
+@cTakestmtDia_base = [ uniAA80 uniAA81 uniAA82 uniAA83 uniAA84 uniAA85 uniAA86 uniAA87 uniAA88 uniAA89 uniAA89.dwarf uniAA8A		
+    uniAA8A.Rotated uniAA8A.dwarf uniAA8B uniAA8C uniAA8D uniAA8E uniAA8F uniAA90 uniAA91 uniAA92 uniAA93 uniAA94 uniAA95		
+    uniAA95.Tail uniAA96 uniAA97 uniAA98 uniAA99 uniAA9A uniAA9B uniAA9C uniAA9D uniAA9E uniAA9F uniAA9F.ClsTail uniAAA0 uniAAA1		
+    uniAAA2 uniAAA3 uniAAA4 uniAAA5 uniAAA6 uniAAA7 uniAAA8 uniAAA9 uniAAAA uniAAAB uniAAAC uniAAAD uniAAAE uniAAAF uniAAB1 uniAABA		
+    uniAABD  ] ;	
+
+@cTakestmtDia_mark = [ uniAAB0 uniAAB2 uniAAB3 uniAAB7 uniAAB8 uniAABE  ] ;	
+
+@cUDia = [ gravecomb acutecomb tildecomb uni0302 uni0306 hookabovecomb uni0308 uni030C uni030A uni0304  ] ;	
+
+@cUEblendCons = [ uniAA88 uniAAA0 uniAAA5  ] ;	
+
+@cULDia = [ uniAAB0 uniAAB3 uniAAB7 uniAAB8 uniAABE  ] ;	
+
+@cUpCombVowel = [ uniAAB0 uniAAB2 uniAAB3 uniAAB7 uniAAB8 uniAABE  ] ;	
+
+@cCombVowel = [ @cUpCombVowel uniAAB4  ] ;	
+
+@cUpCombVowelCurved = [ uniAAB0 uniAAB3  ] ;	
+
+@cUpCombVowelLab1 = [ uniAAB0 uniAAB3 uniAAB7 uniAAB8  ] ;	
+
+@cUpCombVowelLab2 = [ uniAAB2 uniAABE  ] ;	
+
+@cUpCombVowelStraight = [ uniAAB7 uniAAB8 uniAABE  ] ;	
+
+@cULminusKang = [ uniAAB3 @cUpCombVowelStraight  ] ;	
+
+@cVelarConsShrtTail = [ uniAA82 uniAA84  ] ;	
+
+@cVowelAy = [ uniAABC  ] ;	
+
+@cVowelO = [ uniAAB6 uniAAB6.dwarf  ] ;	
+
+@cVowelUE = [ uniAAB3  ] ;	
+
+@cdwarf = [ uniAA89.dwarf uniAA8A.dwarf uniAAB6.dwarf uniAABF.dwarf  ] ;	
+
+@ciDia = [ uniAAB2  ] ;	
+
+@cno_Abbrev = [ uniAADE  ] ;	
+
+@cno_ClsTail = [ uniAA9F  ] ;	
+
+@cno_Fancy = [ uniAABB  ] ;	
+
+@cno_Rotated = [ uniAA8A  ] ;	
+
+@cno_ShowInv = [ uni00A0 uni200B afii61664 afii301 afii299 afii300 uni202A uni202B afii61573 afii61574 afii61575 uni2060 uniFE00		
+    uniFE01 uniFE02 uniFE03 uniFE04 uniFE05 uniFE06 uniFE07 uniFE08 uniFE09 uniFE0A uniFE0B uniFE0C uniFE0D uniFE0E uniFE0F uniFEFF		
+     ] ;	
+
+@cno_Tail = [ uniAA95  ] ;	
+
+@cno_dwarf = [ uniAA89 uniAA8A uniAAB6 uniAABF  ] ;	
+
+@ctmeDia = [ uniAABF uniAABF.dwarf  ] ;	
+
+@ctmtDia = [ uniAAC1  ] ;	
+
+@cCombTone = [ @ctmeDia @ctmtDia  ] ;	
+
+
+#**********************************
+#  Language Systems
+#**********************************
+
+languagesystem DFLT dflt ;
+languagesystem latn dflt ;
+languagesystem tavt dflt ;
+
+
+#**********************************
+#  Lookups
+#**********************************
+
+lookup dwarf {
+  lookupflag 0 ;
+    sub @cno_dwarf by @cdwarf ;
+} dwarf;
+
+lookup Tail {
+  lookupflag 0 ;
+    sub @cno_Tail by @cTail ;
+} Tail;
+
+lookup ShowInv {
+  lookupflag 0 ;
+    sub @cno_ShowInv by @cShowInv ;
+} ShowInv;
+
+lookup Rotated {
+  lookupflag 0 ;
+    sub @cno_Rotated by @cRotated ;
+} Rotated;
+
+lookup Fancy {
+  lookupflag 0 ;
+    sub @cno_Fancy by @cFancy ;
+} Fancy;
+
+lookup ClsTail {
+  lookupflag 0 ;
+    sub @cno_ClsTail by @cClsTail ;
+} ClsTail;
+
+lookup Abbrev {
+  lookupflag 0 ;
+    sub @cno_Abbrev by @cAbbrev ;
+} Abbrev;
+
+lookup horned {
+  lookupflag MarkAttachmentType @cRDia ;
+    # sub @cTakesRDia_base @cRDia by @cHorned ;
+        sub @cTakesRDia_base uni031B by Ohorn ;
+} horned;
+
+lookup normal_rules {
+  lookupflag 0 ;
+    sub A uni0302 gravecomb by uni1EA6 ;
+    sub A uni0302 acutecomb by uni1EA4 ;
+    sub A uni0302 tildecomb by uni1EAA ;
+    sub A uni0302 hookabovecomb by uni1EA8 ;
+    sub A uni0306 gravecomb by uni1EB0 ;
+    sub A uni0306 acutecomb by uni1EAE ;
+    sub A uni0306 tildecomb by uni1EB4 ;
+    sub A uni0306 hookabovecomb by uni1EB2 ;
+    sub A uni0302 dotbelowcomb by uni1EAC ;
+    sub A dotbelowcomb uni0302 by uni1EAC ;
+    sub A uni0306 dotbelowcomb by uni1EB6 ;
+    sub A dotbelowcomb uni0306 by uni1EB6 ;
+    sub E uni0302 gravecomb by uni1EC0 ;
+    sub E uni0302 acutecomb by uni1EBE ;
+    sub E uni0302 tildecomb by uni1EC4 ;
+    sub E uni0302 hookabovecomb by uni1EC2 ;
+    sub E dotbelowcomb uni0302 by uni1EC6 ;
+    sub E uni0302 dotbelowcomb by uni1EC6 ;
+    sub O gravecomb uni031B by uni1EDC ;
+    sub O uni031B gravecomb by uni1EDC ;
+    sub O acutecomb uni031B by uni1EDA ;
+    sub O uni031B acutecomb by uni1EDA ;
+    sub O tildecomb uni031B by uni1EE0 ;
+    sub O uni031B tildecomb by uni1EE0 ;
+    sub O uni031B hookabovecomb by uni1EDE ;
+    sub O hookabovecomb uni031B by uni1EDE ;
+    sub O dotbelowcomb uni031B by uni1EE2 ;
+    sub O uni031B dotbelowcomb by uni1EE2 ;
+    sub O dotbelowcomb uni0302 by uni1ED8 ;
+    sub O uni0302 dotbelowcomb by uni1ED8 ;
+    sub O uni0302 acutecomb by uni1ED0 ;
+    sub O uni0302 gravecomb by uni1ED2 ;
+    sub O uni0302 tildecomb by uni1ED6 ;
+    sub O uni0302 hookabovecomb by uni1ED4 ;
+    sub U uni031B gravecomb by uni1EEA ;
+    sub U gravecomb uni031B by uni1EEA ;
+    sub U acutecomb uni031B by uni1EE8 ;
+    sub U uni031B acutecomb by uni1EE8 ;
+    sub U uni031B tildecomb by uni1EEE ;
+    sub U tildecomb uni031B by uni1EEE ;
+    sub U uni031B hookabovecomb by uni1EEC ;
+    sub U hookabovecomb uni031B by uni1EEC ;
+    sub U uni031B dotbelowcomb by uni1EF0 ;
+    sub U dotbelowcomb uni031B by uni1EF0 ;
+    sub a uni0302 gravecomb by uni1EA7 ;
+    sub a uni0302 acutecomb by uni1EA5 ;
+    sub a uni0302 tildecomb by uni1EAB ;
+    sub a uni0302 hookabovecomb by uni1EA9 ;
+    sub a uni0306 gravecomb by uni1EB1 ;
+    sub a uni0306 acutecomb by uni1EAF ;
+    sub a uni0306 tildecomb by uni1EB5 ;
+    sub a uni0306 hookabovecomb by uni1EB3 ;
+    sub a dotbelowcomb uni0302 by uni1EAD ;
+    sub a uni0302 dotbelowcomb by uni1EAD ;
+    sub a dotbelowcomb uni0306 by uni1EB7 ;
+    sub a uni0306 dotbelowcomb by uni1EB7 ;
+    sub e uni0302 gravecomb by uni1EC1 ;
+    sub e uni0302 acutecomb by uni1EBF ;
+    sub e uni0302 tildecomb by uni1EC5 ;
+    sub e uni0302 hookabovecomb by uni1EC3 ;
+    sub e uni0302 dotbelowcomb by uni1EC7 ;
+    sub e dotbelowcomb uni0302 by uni1EC7 ;
+    sub o gravecomb uni031B by uni1EDD ;
+    sub o uni031B gravecomb by uni1EDD ;
+    sub o acutecomb uni031B by uni1EDB ;
+    sub o uni031B acutecomb by uni1EDB ;
+    sub o uni031B tildecomb by uni1EE1 ;
+    sub o tildecomb uni031B by uni1EE1 ;
+    sub o hookabovecomb uni031B by uni1EDF ;
+    sub o uni031B hookabovecomb by uni1EDF ;
+    sub o dotbelowcomb uni031B by uni1EE3 ;
+    sub o uni031B dotbelowcomb by uni1EE3 ;
+    sub o dotbelowcomb uni0302 by uni1ED9 ;
+    sub o uni0302 dotbelowcomb by uni1ED9 ;
+    sub o uni0302 gravecomb by uni1ED3 ;
+    sub o uni0302 acutecomb by uni1ED1 ;
+    sub o uni0302 tildecomb by uni1ED7 ;
+    sub o uni0302 hookabovecomb by uni1ED5 ;
+    sub u uni031B gravecomb by uni1EEB ;
+    sub u gravecomb uni031B by uni1EEB ;
+    sub u acutecomb uni031B by uni1EE9 ;
+    sub u uni031B acutecomb by uni1EE9 ;
+    sub u tildecomb uni031B by uni1EEF ;
+    sub u uni031B tildecomb by uni1EEF ;
+    sub u hookabovecomb uni031B by uni1EED ;
+    sub u uni031B hookabovecomb by uni1EED ;
+    sub u uni031B dotbelowcomb by uni1EF1 ;
+    sub u dotbelowcomb uni031B by uni1EF1 ;
+    sub A gravecomb by Agrave ;
+    sub A acutecomb by Aacute ;
+    sub A tildecomb by Atilde ;
+    sub A uni0302 by Acircumflex ;
+    sub A uni0306 by Abreve ;
+    sub A hookabovecomb by uni1EA2 ;
+    sub A dotbelowcomb by uni1EA0 ;
+    sub A uni0308 by Adieresis ;
+    sub A uni030A by Aring ;
+    sub A uni0304 by Amacron ;
+    sub C uni0327 by Ccedilla ;
+    sub E gravecomb by Egrave ;
+    sub E acutecomb by Eacute ;
+    sub E tildecomb by uni1EBC ;
+    sub E uni0302 by Ecircumflex ;
+    sub E uni0306 by Ebreve ;
+    sub E hookabovecomb by uni1EBA ;
+    sub E dotbelowcomb by uni1EB8 ;
+    sub E uni0308 by Edieresis ;
+    sub E uni0304 by Emacron ;
+    sub I gravecomb by Igrave ;
+    sub I acutecomb by Iacute ;
+    sub I tildecomb by Itilde ;
+    sub I uni0302 by Icircumflex ;
+    sub I uni0306 by Ibreve ;
+    sub I hookabovecomb by uni1EC8 ;
+    sub I dotbelowcomb by uni1ECA ;
+    sub I uni0308 by Idieresis ;
+    sub I uni0304 by Imacron ;
+    sub N tildecomb by Ntilde ;
+    sub O gravecomb by Ograve ;
+    sub O acutecomb by Oacute ;
+    sub O tildecomb by Otilde ;
+    sub O uni0302 by Ocircumflex ;
+    sub O uni0306 by Obreve ;
+    sub O hookabovecomb by uni1ECE ;
+    sub O dotbelowcomb by uni1ECC ;
+    sub O uni0308 by Odieresis ;
+    sub O uni0304 by Omacron ;
+    sub O uni031B by Ohorn ;
+    sub S uni030C by Scaron ;
+    sub U gravecomb by Ugrave ;
+    sub U acutecomb by Uacute ;
+    sub U tildecomb by Utilde ;
+    sub U uni0302 by Ucircumflex ;
+    sub U uni0306 by Ubreve ;
+    sub U hookabovecomb by uni1EE6 ;
+    sub U dotbelowcomb by uni1EE4 ;
+    sub U uni0308 by Udieresis ;
+    sub U uni0304 by Umacron ;
+    sub U uni031B by Uhorn ;
+    sub Y acutecomb by Yacute ;
+    sub Y uni0308 by Ydieresis ;
+    sub Z uni030C by Zcaron ;
+    sub a gravecomb by agrave ;
+    sub a acutecomb by aacute ;
+    sub a tildecomb by atilde ;
+    sub a uni0302 by acircumflex ;
+    sub a uni0306 by abreve ;
+    sub a hookabovecomb by uni1EA3 ;
+    sub a dotbelowcomb by uni1EA1 ;
+    sub a uni0308 by adieresis ;
+    sub a uni030A by aring ;
+    sub a uni0304 by amacron ;
+    sub c uni0327 by ccedilla ;
+    sub e gravecomb by egrave ;
+    sub e acutecomb by eacute ;
+    sub e tildecomb by uni1EBD ;
+    sub e uni0302 by ecircumflex ;
+    sub e uni0306 by ebreve ;
+    sub e hookabovecomb by uni1EBB ;
+    sub e dotbelowcomb by uni1EB9 ;
+    sub e uni0308 by edieresis ;
+    sub e uni0304 by emacron ;
+    sub i gravecomb by igrave ;
+    sub i acutecomb by iacute ;
+    sub i tildecomb by itilde ;
+    sub i uni0302 by icircumflex ;
+    sub i uni0306 by ibreve ;
+    sub i hookabovecomb by uni1EC9 ;
+    sub i dotbelowcomb by uni1ECB ;
+    sub i uni0308 by idieresis ;
+    sub i uni0304 by imacron ;
+    sub n tildecomb by ntilde ;
+    sub o gravecomb by ograve ;
+    sub o acutecomb by oacute ;
+    sub o tildecomb by otilde ;
+    sub o uni0302 by ocircumflex ;
+    sub o uni0306 by obreve ;
+    sub o hookabovecomb by uni1ECF ;
+    sub o dotbelowcomb by uni1ECD ;
+    sub o uni0308 by odieresis ;
+    sub o uni0304 by omacron ;
+    sub o uni031B by ohorn ;
+    sub s uni030C by scaron ;
+    sub u gravecomb by ugrave ;
+    sub u acutecomb by uacute ;
+    sub u tildecomb by utilde ;
+    sub u uni0302 by ucircumflex ;
+    sub u uni0306 by ubreve ;
+    sub u hookabovecomb by uni1EE7 ;
+    sub u dotbelowcomb by uni1EE5 ;
+    sub u uni0308 by udieresis ;
+    sub u uni0304 by umacron ;
+    sub u uni031B by uhorn ;
+    sub y acutecomb by yacute ;
+    sub y uni0308 by ydieresis ;
+    sub z uni030C by zcaron ;
+    sub Acircumflex gravecomb by uni1EA6 ;
+    sub Acircumflex acutecomb by uni1EA4 ;
+    sub Acircumflex tildecomb by uni1EAA ;
+    sub Acircumflex hookabovecomb by uni1EA8 ;
+    sub Acircumflex dotbelowcomb by uni1EAC ;
+    sub Abreve gravecomb by uni1EB0 ;
+    sub Abreve acutecomb by uni1EAE ;
+    sub Abreve tildecomb by uni1EB4 ;
+    sub Abreve hookabovecomb by uni1EB2 ;
+    sub Abreve dotbelowcomb by uni1EB6 ;
+    sub uni1EA0 uni0302 by uni1EAC ;
+    sub uni1EA0 uni0306 by uni1EB6 ;
+    sub Ecircumflex gravecomb by uni1EC0 ;
+    sub Ecircumflex acutecomb by uni1EBE ;
+    sub Ecircumflex tildecomb by uni1EC4 ;
+    sub Ecircumflex hookabovecomb by uni1EC2 ;
+    sub Ecircumflex dotbelowcomb by uni1EC6 ;
+    sub uni1EB8 uni0302 by uni1EC6 ;
+    sub Ograve uni031B by uni1EDC ;
+    sub Oacute uni031B by uni1EDA ;
+    sub Otilde uni031B by uni1EE0 ;
+    sub Ocircumflex dotbelowcomb by uni1ED8 ;
+    sub Ocircumflex acutecomb by uni1ED0 ;
+    sub Ocircumflex gravecomb by uni1ED2 ;
+    sub Ocircumflex tildecomb by uni1ED6 ;
+    sub Ocircumflex hookabovecomb by uni1ED4 ;
+    sub uni1ECE uni031B by uni1EDE ;
+    sub uni1ECC uni031B by uni1EE2 ;
+    sub uni1ECC uni0302 by uni1ED8 ;
+    sub Ohorn gravecomb by uni1EDC ;
+    sub Ohorn acutecomb by uni1EDA ;
+    sub Ohorn tildecomb by uni1EE0 ;
+    sub Ohorn hookabovecomb by uni1EDE ;
+    sub Ohorn dotbelowcomb by uni1EE2 ;
+    sub Ugrave uni031B by uni1EEA ;
+    sub Uacute uni031B by uni1EE8 ;
+    sub Utilde uni031B by uni1EEE ;
+    sub uni1EE6 uni031B by uni1EEC ;
+    sub uni1EE4 uni031B by uni1EF0 ;
+    sub Uhorn gravecomb by uni1EEA ;
+    sub Uhorn acutecomb by uni1EE8 ;
+    sub Uhorn tildecomb by uni1EEE ;
+    sub Uhorn hookabovecomb by uni1EEC ;
+    sub Uhorn dotbelowcomb by uni1EF0 ;
+    sub acircumflex gravecomb by uni1EA7 ;
+    sub acircumflex acutecomb by uni1EA5 ;
+    sub acircumflex tildecomb by uni1EAB ;
+    sub acircumflex hookabovecomb by uni1EA9 ;
+    sub acircumflex dotbelowcomb by uni1EAD ;
+    sub abreve gravecomb by uni1EB1 ;
+    sub abreve acutecomb by uni1EAF ;
+    sub abreve tildecomb by uni1EB5 ;
+    sub abreve hookabovecomb by uni1EB3 ;
+    sub abreve dotbelowcomb by uni1EB7 ;
+    sub uni1EA1 uni0302 by uni1EAD ;
+    sub uni1EA1 uni0306 by uni1EB7 ;
+    sub ecircumflex gravecomb by uni1EC1 ;
+    sub ecircumflex acutecomb by uni1EBF ;
+    sub ecircumflex tildecomb by uni1EC5 ;
+    sub ecircumflex hookabovecomb by uni1EC3 ;
+    sub ecircumflex dotbelowcomb by uni1EC7 ;
+    sub uni1EB9 uni0302 by uni1EC7 ;
+    sub ograve uni031B by uni1EDD ;
+    sub oacute uni031B by uni1EDB ;
+    sub otilde uni031B by uni1EE1 ;
+    sub ocircumflex dotbelowcomb by uni1ED9 ;
+    sub ocircumflex gravecomb by uni1ED3 ;
+    sub ocircumflex acutecomb by uni1ED1 ;
+    sub ocircumflex tildecomb by uni1ED7 ;
+    sub ocircumflex hookabovecomb by uni1ED5 ;
+    sub uni1ECF uni031B by uni1EDF ;
+    sub uni1ECD uni031B by uni1EE3 ;
+    sub uni1ECD uni0302 by uni1ED9 ;
+    sub ohorn gravecomb by uni1EDD ;
+    sub ohorn acutecomb by uni1EDB ;
+    sub ohorn tildecomb by uni1EE1 ;
+    sub ohorn hookabovecomb by uni1EDF ;
+    sub ohorn dotbelowcomb by uni1EE3 ;
+    sub ugrave uni031B by uni1EEB ;
+    sub uacute uni031B by uni1EE9 ;
+    sub utilde uni031B by uni1EEF ;
+    sub uni1EE7 uni031B by uni1EED ;
+    sub uni1EE5 uni031B by uni1EF1 ;
+    sub uhorn gravecomb by uni1EEB ;
+    sub uhorn acutecomb by uni1EE9 ;
+    sub uhorn tildecomb by uni1EEF ;
+    sub uhorn hookabovecomb by uni1EED ;
+    sub uhorn dotbelowcomb by uni1EF1 ;
+} normal_rules;
+
+lookup dotless_target {
+  lookupflag 0 ;
+    sub i by dotlessi ;
+} dotless_target ;
+
+lookup dotless {
+  lookupflag 0 ;
+    sub i' lookup dotless_target @cUDia ;
+} dotless;
+
+lookup dwarfHighNgo_target {
+  lookupflag 0 ;
+    sub uniAA89 by uniAA89.dwarf ;
+} dwarfHighNgo_target ;
+
+lookup dwarfHighNgo {
+  lookupflag 0 ;
+    sub uniAABC uniAA89' lookup dwarfHighNgo_target uniAAC1 ;
+} dwarfHighNgo;
+
+lookup dwarfCo_target {
+  lookupflag 0 ;
+    sub uniAA8A.Rotated by uniAA8A.dwarf ;
+} dwarfCo_target ;
+
+lookup dwarfCo {
+  lookupflag 0 ;
+    sub uniAA8A.Rotated' lookup dwarfCo_target @cULDia @ctmeDia ;
+    sub uniAA8A.Rotated' lookup dwarfCo_target @cULDia @ctmtDia ;
+    sub uniAA8A.Rotated' lookup dwarfCo_target @ciDia @ctmeDia ;
+    sub uniAA8A.Rotated' lookup dwarfCo_target @ciDia @ctmtDia ;
+} dwarfCo;
+
+lookup dwarfO_target {
+  lookupflag 0 ;
+    sub uniAAB6 by uniAAB6.dwarf ;
+} dwarfO_target ;
+
+lookup dwarfO {
+  lookupflag 0 ;
+    sub uniAAB6' lookup dwarfO_target uniAA89 @ctmeDia ;
+    sub uniAAB6' lookup dwarfO_target uniAA89 @ctmtDia ;
+} dwarfO;
+
+lookup dwarfMaiEk_target {
+  lookupflag 0 ;
+    sub uniAABF by uniAABF.dwarf ;
+} dwarfMaiEk_target ;
+
+lookup dwarfMaiEk {
+  lookupflag 0 ;
+    sub @cULDia uniAABF' lookup dwarfMaiEk_target ;
+    sub @ciDia uniAABF' lookup dwarfMaiEk_target ;
+} dwarfMaiEk;
+
+lookup CollisionCrWd_LRT1_I_NCtall_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos space  < 0 0 480 0>;
+} CollisionCrWd_LRT1_I_NCtall_target ;
+
+lookup CollisionCrWd_LRT1_I_Tmt_NC1_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos space  < 0 0 310 0>;
+} CollisionCrWd_LRT1_I_Tmt_NC1_target ;
+
+lookup CollisionCrWd_LRT1_I_Tmt_NC2_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos space  < 0 0 150 0>;
+} CollisionCrWd_LRT1_I_Tmt_NC2_target ;
+
+lookup CollisionCrWd_LRT1_Vcurved_NCtall_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos space  < 0 0 310 0>;
+} CollisionCrWd_LRT1_Vcurved_NCtall_target ;
+
+lookup CollisionCrWd_LRT1_Vcurved_HiNgo_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos space  < 0 0 385 0>;
+} CollisionCrWd_LRT1_Vcurved_HiNgo_target ;
+
+lookup CollisionCrWd_LRT1_Vstr_NCtall_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos space  < 0 0 175 0>;
+} CollisionCrWd_LRT1_Vstr_NCtall_target ;
+
+lookup CollisionCrWd_LRT1_Vstr_Tmt_NC1_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos space  < 0 0 250 0>;
+} CollisionCrWd_LRT1_Vstr_Tmt_NC1_target ;
+
+lookup CollisionCrWd_LRT1_Tmt_NCtall_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos space  < 0 0 20 0>;
+} CollisionCrWd_LRT1_Tmt_NCtall_target ;
+
+lookup CollisionCrWd_LRT1_Vstr_Tmt_NC2a_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos space  < 0 0 100 0>;
+} CollisionCrWd_LRT1_Vstr_Tmt_NC2a_target ;
+
+lookup CollisionCrWd_LRT1_Tmt_HiNgo_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos space  < 0 0 200 0>;
+} CollisionCrWd_LRT1_Tmt_HiNgo_target ;
+
+lookup CollisionCrWd_LRT2_I_NCtall_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos space  < 0 0 780 0>;
+} CollisionCrWd_LRT2_I_NCtall_target ;
+
+lookup CollisionCrWd_LRT2_I_Tmt_NC1_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos space  < 0 0 610 0>;
+} CollisionCrWd_LRT2_I_Tmt_NC1_target ;
+
+lookup CollisionCrWd_LRT2_I_Tmt_NC2_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos space  < 0 0 450 0>;
+} CollisionCrWd_LRT2_I_Tmt_NC2_target ;
+
+lookup CollisionCrWd_LRT2_I_Tmt_NC3_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos space  < 0 0 280 0>;
+} CollisionCrWd_LRT2_I_Tmt_NC3_target ;
+
+lookup CollisionCrWd_LRT2_Vcurved_NCtall_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos space  < 0 0 650 0>;
+} CollisionCrWd_LRT2_Vcurved_NCtall_target ;
+
+lookup CollisionCrWd_LRT2_Vcurved_HiNgo_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos space  < 0 0 475 0>;
+} CollisionCrWd_LRT2_Vcurved_HiNgo_target ;
+
+lookup CollisionCrWd_LRT2_Vcurved_Tmt_NC1_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos space  < 0 0 450 0>;
+} CollisionCrWd_LRT2_Vcurved_Tmt_NC1_target ;
+
+lookup CollisionCrWd_LRT2_Vcurved_Tmt_NC2_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos space  <15 0 250 0>;
+} CollisionCrWd_LRT2_Vcurved_Tmt_NC2_target ;
+
+lookup CollisionCrWd_LRT2_Vstr_NCtall_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos space  < 0 0 550 0>;
+} CollisionCrWd_LRT2_Vstr_NCtall_target ;
+
+lookup CollisionCrWd_LRT2_Vstr_Tmt_NC1_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos space  < 0 0 600 0>;
+} CollisionCrWd_LRT2_Vstr_Tmt_NC1_target ;
+
+lookup CollisionCrWd_LRT2_Vstr_Tmt_NC2_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos space  < 0 0 370 0>;
+} CollisionCrWd_LRT2_Vstr_Tmt_NC2_target ;
+
+lookup CollisionCrWd_LRT2_Vstr_Tmt_NC3a_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos space  < 0 0 175 0>;
+} CollisionCrWd_LRT2_Vstr_Tmt_NC3a_target ;
+
+lookup CollisionCrWd_LRT2_Tmt_NCtall_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos space  < 0 0 525 0>;
+} CollisionCrWd_LRT2_Tmt_NCtall_target ;
+
+lookup CollisionCrWd_LRT2_Tmt_HiNgo_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos space  < 0 0 575 0>;
+} CollisionCrWd_LRT2_Tmt_HiNgo_target ;
+
+lookup CollisionCrWd_LRT2a_i_NCibase_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos space  < 0 0 250 0>;
+} CollisionCrWd_LRT2a_i_NCibase_target ;
+
+lookup CollisionCrWd {
+  lookupflag 0 ;
+  # Subtable: CollisionCrWd\LRT1_I_NCtall
+    pos @cLongRtTail1 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT1_I_NCtall_target @cNarrowCons_Tall @ciDia ;
+    pos @cLongRtTail1 @cCombVowel space' lookup CollisionCrWd_LRT1_I_NCtall_target @cNarrowCons_Tall @ciDia ;
+    pos @cLongRtTail1 @cCombTone space' lookup CollisionCrWd_LRT1_I_NCtall_target @cNarrowCons_Tall @ciDia ;
+    pos @cLongRtTail1 space' lookup CollisionCrWd_LRT1_I_NCtall_target @cNarrowCons_Tall @ciDia ;
+  # Subtable: CollisionCrWd\LRT1_I_Tmt_NC1
+    pos @cLongRtTail1 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT1_I_Tmt_NC1_target @cNarrowCons_1 @ciDia @ctmtDia ;
+    pos @cLongRtTail1 @cCombVowel space' lookup CollisionCrWd_LRT1_I_Tmt_NC1_target @cNarrowCons_1 @ciDia @ctmtDia ;
+    pos @cLongRtTail1 @cCombTone space' lookup CollisionCrWd_LRT1_I_Tmt_NC1_target @cNarrowCons_1 @ciDia @ctmtDia ;
+    pos @cLongRtTail1 space' lookup CollisionCrWd_LRT1_I_Tmt_NC1_target @cNarrowCons_1 @ciDia @ctmtDia ;
+  # Subtable: CollisionCrWd\LRT1_I_Tmt_NC2
+    pos @cLongRtTail1 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT1_I_Tmt_NC2_target @cNarrowCons_2 @ciDia @ctmtDia ;
+    pos @cLongRtTail1 @cCombVowel space' lookup CollisionCrWd_LRT1_I_Tmt_NC2_target @cNarrowCons_2 @ciDia @ctmtDia ;
+    pos @cLongRtTail1 @cCombTone space' lookup CollisionCrWd_LRT1_I_Tmt_NC2_target @cNarrowCons_2 @ciDia @ctmtDia ;
+    pos @cLongRtTail1 space' lookup CollisionCrWd_LRT1_I_Tmt_NC2_target @cNarrowCons_2 @ciDia @ctmtDia ;
+  # Subtable: CollisionCrWd\LRT1_Vcurved_NCtall
+    pos @cLongRtTail1 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT1_Vcurved_NCtall_target @cNarrowCons_Tall @cUpCombVowelCurved ;
+    pos @cLongRtTail1 @cCombVowel space' lookup CollisionCrWd_LRT1_Vcurved_NCtall_target @cNarrowCons_Tall @cUpCombVowelCurved ;
+    pos @cLongRtTail1 @cCombTone space' lookup CollisionCrWd_LRT1_Vcurved_NCtall_target @cNarrowCons_Tall @cUpCombVowelCurved ;
+    pos @cLongRtTail1 space' lookup CollisionCrWd_LRT1_Vcurved_NCtall_target @cNarrowCons_Tall @cUpCombVowelCurved ;
+  # Subtable: CollisionCrWd\LRT1_Vcurved_HiNgo
+    pos @cLongRtTail1 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT1_Vcurved_HiNgo_target @cHighNgo @cUpCombVowelCurved ;
+    pos @cLongRtTail1 @cCombVowel space' lookup CollisionCrWd_LRT1_Vcurved_HiNgo_target @cHighNgo @cUpCombVowelCurved ;
+    pos @cLongRtTail1 @cCombTone space' lookup CollisionCrWd_LRT1_Vcurved_HiNgo_target @cHighNgo @cUpCombVowelCurved ;
+    pos @cLongRtTail1 space' lookup CollisionCrWd_LRT1_Vcurved_HiNgo_target @cHighNgo @cUpCombVowelCurved ;
+  # Subtable: CollisionCrWd\LRT1_Vstr_NCtall
+    pos @cLongRtTail1 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT1_Vstr_NCtall_target @cNarrowCons_Tall @cUpCombVowelStraight ;
+    pos @cLongRtTail1 @cCombVowel space' lookup CollisionCrWd_LRT1_Vstr_NCtall_target @cNarrowCons_Tall @cUpCombVowelStraight ;
+    pos @cLongRtTail1 @cCombTone space' lookup CollisionCrWd_LRT1_Vstr_NCtall_target @cNarrowCons_Tall @cUpCombVowelStraight ;
+    pos @cLongRtTail1 space' lookup CollisionCrWd_LRT1_Vstr_NCtall_target @cNarrowCons_Tall @cUpCombVowelStraight ;
+  # Subtable: CollisionCrWd\LRT1_Vstr_Tmt_NC1
+    pos @cLongRtTail1 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT1_Vstr_Tmt_NC1_target @cNarrowCons_1 @cUpCombVowelStraight @ctmtDia ;
+    pos @cLongRtTail1 @cCombVowel space' lookup CollisionCrWd_LRT1_Vstr_Tmt_NC1_target @cNarrowCons_1 @cUpCombVowelStraight @ctmtDia ;
+    pos @cLongRtTail1 @cCombTone space' lookup CollisionCrWd_LRT1_Vstr_Tmt_NC1_target @cNarrowCons_1 @cUpCombVowelStraight @ctmtDia ;
+    pos @cLongRtTail1 space' lookup CollisionCrWd_LRT1_Vstr_Tmt_NC1_target @cNarrowCons_1 @cUpCombVowelStraight @ctmtDia ;
+  # Subtable: CollisionCrWd\LRT1_Tmt_NCtall
+    pos @cLongRtTail1 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT1_Tmt_NCtall_target @cNarrowCons_Tall uniAAB4 @ctmtDia ;
+    pos @cLongRtTail1 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT1_Tmt_NCtall_target @cNarrowCons_Tall @ctmtDia ;
+    pos @cLongRtTail1 @cCombVowel space' lookup CollisionCrWd_LRT1_Tmt_NCtall_target @cNarrowCons_Tall uniAAB4 @ctmtDia ;
+    pos @cLongRtTail1 @cCombVowel space' lookup CollisionCrWd_LRT1_Tmt_NCtall_target @cNarrowCons_Tall @ctmtDia ;
+    pos @cLongRtTail1 @cCombTone space' lookup CollisionCrWd_LRT1_Tmt_NCtall_target @cNarrowCons_Tall uniAAB4 @ctmtDia ;
+    pos @cLongRtTail1 @cCombTone space' lookup CollisionCrWd_LRT1_Tmt_NCtall_target @cNarrowCons_Tall @ctmtDia ;
+    pos @cLongRtTail1 space' lookup CollisionCrWd_LRT1_Tmt_NCtall_target @cNarrowCons_Tall uniAAB4 @ctmtDia ;
+    pos @cLongRtTail1 space' lookup CollisionCrWd_LRT1_Tmt_NCtall_target @cNarrowCons_Tall @ctmtDia ;
+  # Subtable: CollisionCrWd\LRT1_Vstr_Tmt_NC2a
+    pos @cLongRtTail1 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT1_Vstr_Tmt_NC2a_target @cNarrowCons_2a @cUpCombVowelStraight @ctmtDia ;
+    pos @cLongRtTail1 @cCombVowel space' lookup CollisionCrWd_LRT1_Vstr_Tmt_NC2a_target @cNarrowCons_2a @cUpCombVowelStraight @ctmtDia ;
+    pos @cLongRtTail1 @cCombTone space' lookup CollisionCrWd_LRT1_Vstr_Tmt_NC2a_target @cNarrowCons_2a @cUpCombVowelStraight @ctmtDia ;
+    pos @cLongRtTail1 space' lookup CollisionCrWd_LRT1_Vstr_Tmt_NC2a_target @cNarrowCons_2a @cUpCombVowelStraight @ctmtDia ;
+  # Subtable: CollisionCrWd\LRT1_Tmt_HiNgo
+    pos @cLongRtTail1 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT1_Tmt_HiNgo_target @cHighNgo uniAAB4 @ctmtDia ;
+    pos @cLongRtTail1 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT1_Tmt_HiNgo_target @cHighNgo @ctmtDia ;
+    pos @cLongRtTail1 @cCombVowel space' lookup CollisionCrWd_LRT1_Tmt_HiNgo_target @cHighNgo uniAAB4 @ctmtDia ;
+    pos @cLongRtTail1 @cCombVowel space' lookup CollisionCrWd_LRT1_Tmt_HiNgo_target @cHighNgo @ctmtDia ;
+    pos @cLongRtTail1 @cCombTone space' lookup CollisionCrWd_LRT1_Tmt_HiNgo_target @cHighNgo uniAAB4 @ctmtDia ;
+    pos @cLongRtTail1 @cCombTone space' lookup CollisionCrWd_LRT1_Tmt_HiNgo_target @cHighNgo @ctmtDia ;
+    pos @cLongRtTail1 space' lookup CollisionCrWd_LRT1_Tmt_HiNgo_target @cHighNgo uniAAB4 @ctmtDia ;
+    pos @cLongRtTail1 space' lookup CollisionCrWd_LRT1_Tmt_HiNgo_target @cHighNgo @ctmtDia ;
+  # Subtable: CollisionCrWd\LRT2_I_NCtall
+    pos @cLongRtTail2 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT2_I_NCtall_target @cNarrowCons_Tall @ciDia ;
+    pos @cLongRtTail2 @cCombVowel space' lookup CollisionCrWd_LRT2_I_NCtall_target @cNarrowCons_Tall @ciDia ;
+    pos @cLongRtTail2 @cCombTone space' lookup CollisionCrWd_LRT2_I_NCtall_target @cNarrowCons_Tall @ciDia ;
+    pos @cLongRtTail2 space' lookup CollisionCrWd_LRT2_I_NCtall_target @cNarrowCons_Tall @ciDia ;
+  # Subtable: CollisionCrWd\LRT2_I_Tmt_NC1
+    pos @cLongRtTail2 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT2_I_Tmt_NC1_target @cNarrowCons_1 @ciDia @ctmtDia ;
+    pos @cLongRtTail2 @cCombVowel space' lookup CollisionCrWd_LRT2_I_Tmt_NC1_target @cNarrowCons_1 @ciDia @ctmtDia ;
+    pos @cLongRtTail2 @cCombTone space' lookup CollisionCrWd_LRT2_I_Tmt_NC1_target @cNarrowCons_1 @ciDia @ctmtDia ;
+    pos @cLongRtTail2 space' lookup CollisionCrWd_LRT2_I_Tmt_NC1_target @cNarrowCons_1 @ciDia @ctmtDia ;
+  # Subtable: CollisionCrWd\LRT2_I_Tmt_NC2
+    pos @cLongRtTail2 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT2_I_Tmt_NC2_target @cNarrowCons_2 @ciDia @ctmtDia ;
+    pos @cLongRtTail2 @cCombVowel space' lookup CollisionCrWd_LRT2_I_Tmt_NC2_target @cNarrowCons_2 @ciDia @ctmtDia ;
+    pos @cLongRtTail2 @cCombTone space' lookup CollisionCrWd_LRT2_I_Tmt_NC2_target @cNarrowCons_2 @ciDia @ctmtDia ;
+    pos @cLongRtTail2 space' lookup CollisionCrWd_LRT2_I_Tmt_NC2_target @cNarrowCons_2 @ciDia @ctmtDia ;
+  # Subtable: CollisionCrWd\LRT2_I_Tmt_NC3
+    pos @cLongRtTail2 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT2_I_Tmt_NC3_target @cNarrowCons_3 @ciDia @ctmtDia ;
+    pos @cLongRtTail2 @cCombVowel space' lookup CollisionCrWd_LRT2_I_Tmt_NC3_target @cNarrowCons_3 @ciDia @ctmtDia ;
+    pos @cLongRtTail2 @cCombTone space' lookup CollisionCrWd_LRT2_I_Tmt_NC3_target @cNarrowCons_3 @ciDia @ctmtDia ;
+    pos @cLongRtTail2 space' lookup CollisionCrWd_LRT2_I_Tmt_NC3_target @cNarrowCons_3 @ciDia @ctmtDia ;
+  # Subtable: CollisionCrWd\LRT2_Vcurved_NCtall
+    pos @cLongRtTail2 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT2_Vcurved_NCtall_target @cNarrowCons_Tall @cUpCombVowelCurved ;
+    pos @cLongRtTail2 @cCombVowel space' lookup CollisionCrWd_LRT2_Vcurved_NCtall_target @cNarrowCons_Tall @cUpCombVowelCurved ;
+    pos @cLongRtTail2 @cCombTone space' lookup CollisionCrWd_LRT2_Vcurved_NCtall_target @cNarrowCons_Tall @cUpCombVowelCurved ;
+    pos @cLongRtTail2 space' lookup CollisionCrWd_LRT2_Vcurved_NCtall_target @cNarrowCons_Tall @cUpCombVowelCurved ;
+  # Subtable: CollisionCrWd\LRT2_Vcurved_HiNgo
+    pos @cLongRtTail2 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT2_Vcurved_HiNgo_target @cHighNgo @cUpCombVowelCurved ;
+    pos @cLongRtTail2 @cCombVowel space' lookup CollisionCrWd_LRT2_Vcurved_HiNgo_target @cHighNgo @cUpCombVowelCurved ;
+    pos @cLongRtTail2 @cCombTone space' lookup CollisionCrWd_LRT2_Vcurved_HiNgo_target @cHighNgo @cUpCombVowelCurved ;
+    pos @cLongRtTail2 space' lookup CollisionCrWd_LRT2_Vcurved_HiNgo_target @cHighNgo @cUpCombVowelCurved ;
+  # Subtable: CollisionCrWd\LRT2_Vcurved_Tmt_NC1
+    pos @cLongRtTail2 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT2_Vcurved_Tmt_NC1_target @cNarrowCons_1 @cUpCombVowelCurved @ctmtDia ;
+    pos @cLongRtTail2 @cCombVowel space' lookup CollisionCrWd_LRT2_Vcurved_Tmt_NC1_target @cNarrowCons_1 @cUpCombVowelCurved @ctmtDia ;
+    pos @cLongRtTail2 @cCombTone space' lookup CollisionCrWd_LRT2_Vcurved_Tmt_NC1_target @cNarrowCons_1 @cUpCombVowelCurved @ctmtDia ;
+    pos @cLongRtTail2 space' lookup CollisionCrWd_LRT2_Vcurved_Tmt_NC1_target @cNarrowCons_1 @cUpCombVowelCurved @ctmtDia ;
+  # Subtable: CollisionCrWd\LRT2_Vcurved_Tmt_NC2
+    pos @cLongRtTail2 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT2_Vcurved_Tmt_NC2_target @cNarrowCons_2 @cUpCombVowelCurved @ctmtDia ;
+    pos @cLongRtTail2 @cCombVowel space' lookup CollisionCrWd_LRT2_Vcurved_Tmt_NC2_target @cNarrowCons_2 @cUpCombVowelCurved @ctmtDia ;
+    pos @cLongRtTail2 @cCombTone space' lookup CollisionCrWd_LRT2_Vcurved_Tmt_NC2_target @cNarrowCons_2 @cUpCombVowelCurved @ctmtDia ;
+    pos @cLongRtTail2 space' lookup CollisionCrWd_LRT2_Vcurved_Tmt_NC2_target @cNarrowCons_2 @cUpCombVowelCurved @ctmtDia ;
+  # Subtable: CollisionCrWd\LRT2_Vstr_NCtall
+    pos @cLongRtTail2 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT2_Vstr_NCtall_target @cNarrowCons_Tall @cUpCombVowelStraight ;
+    pos @cLongRtTail2 @cCombVowel space' lookup CollisionCrWd_LRT2_Vstr_NCtall_target @cNarrowCons_Tall @cUpCombVowelStraight ;
+    pos @cLongRtTail2 @cCombTone space' lookup CollisionCrWd_LRT2_Vstr_NCtall_target @cNarrowCons_Tall @cUpCombVowelStraight ;
+    pos @cLongRtTail2 space' lookup CollisionCrWd_LRT2_Vstr_NCtall_target @cNarrowCons_Tall @cUpCombVowelStraight ;
+  # Subtable: CollisionCrWd\LRT2_Vstr_Tmt_NC1
+    pos @cLongRtTail2 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT2_Vstr_Tmt_NC1_target @cNarrowCons_1 @cUpCombVowelStraight @ctmtDia ;
+    pos @cLongRtTail2 @cCombVowel space' lookup CollisionCrWd_LRT2_Vstr_Tmt_NC1_target @cNarrowCons_1 @cUpCombVowelStraight @ctmtDia ;
+    pos @cLongRtTail2 @cCombTone space' lookup CollisionCrWd_LRT2_Vstr_Tmt_NC1_target @cNarrowCons_1 @cUpCombVowelStraight @ctmtDia ;
+    pos @cLongRtTail2 space' lookup CollisionCrWd_LRT2_Vstr_Tmt_NC1_target @cNarrowCons_1 @cUpCombVowelStraight @ctmtDia ;
+  # Subtable: CollisionCrWd\LRT2_Vstr_Tmt_NC2
+    pos @cLongRtTail2 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT2_Vstr_Tmt_NC2_target @cNarrowCons_2 @cUpCombVowelStraight @ctmtDia ;
+    pos @cLongRtTail2 @cCombVowel space' lookup CollisionCrWd_LRT2_Vstr_Tmt_NC2_target @cNarrowCons_2 @cUpCombVowelStraight @ctmtDia ;
+    pos @cLongRtTail2 @cCombTone space' lookup CollisionCrWd_LRT2_Vstr_Tmt_NC2_target @cNarrowCons_2 @cUpCombVowelStraight @ctmtDia ;
+    pos @cLongRtTail2 space' lookup CollisionCrWd_LRT2_Vstr_Tmt_NC2_target @cNarrowCons_2 @cUpCombVowelStraight @ctmtDia ;
+  # Subtable: CollisionCrWd\LRT2_Vstr_Tmt_NC3a
+    pos @cLongRtTail2 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT2_Vstr_Tmt_NC3a_target @cNarrowCons_3a @cUpCombVowelStraight @ctmtDia ;
+    pos @cLongRtTail2 @cCombVowel space' lookup CollisionCrWd_LRT2_Vstr_Tmt_NC3a_target @cNarrowCons_3a @cUpCombVowelStraight @ctmtDia ;
+    pos @cLongRtTail2 @cCombTone space' lookup CollisionCrWd_LRT2_Vstr_Tmt_NC3a_target @cNarrowCons_3a @cUpCombVowelStraight @ctmtDia ;
+    pos @cLongRtTail2 space' lookup CollisionCrWd_LRT2_Vstr_Tmt_NC3a_target @cNarrowCons_3a @cUpCombVowelStraight @ctmtDia ;
+  # Subtable: CollisionCrWd\LRT2_Tmt_NCtall
+    pos @cLongRtTail2 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT2_Tmt_NCtall_target @cNarrowCons_Tall uniAAB4 @ctmtDia ;
+    pos @cLongRtTail2 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT2_Tmt_NCtall_target @cNarrowCons_Tall @ctmtDia ;
+    pos @cLongRtTail2 @cCombVowel space' lookup CollisionCrWd_LRT2_Tmt_NCtall_target @cNarrowCons_Tall uniAAB4 @ctmtDia ;
+    pos @cLongRtTail2 @cCombVowel space' lookup CollisionCrWd_LRT2_Tmt_NCtall_target @cNarrowCons_Tall @ctmtDia ;
+    pos @cLongRtTail2 @cCombTone space' lookup CollisionCrWd_LRT2_Tmt_NCtall_target @cNarrowCons_Tall uniAAB4 @ctmtDia ;
+    pos @cLongRtTail2 @cCombTone space' lookup CollisionCrWd_LRT2_Tmt_NCtall_target @cNarrowCons_Tall @ctmtDia ;
+    pos @cLongRtTail2 space' lookup CollisionCrWd_LRT2_Tmt_NCtall_target @cNarrowCons_Tall uniAAB4 @ctmtDia ;
+    pos @cLongRtTail2 space' lookup CollisionCrWd_LRT2_Tmt_NCtall_target @cNarrowCons_Tall @ctmtDia ;
+  # Subtable: CollisionCrWd\LRT2_Tmt_HiNgo
+    pos @cLongRtTail2 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT2_Tmt_HiNgo_target @cHighNgo uniAAB4 @ctmtDia ;
+    pos @cLongRtTail2 @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT2_Tmt_HiNgo_target @cHighNgo @ctmtDia ;
+    pos @cLongRtTail2 @cCombVowel space' lookup CollisionCrWd_LRT2_Tmt_HiNgo_target @cHighNgo uniAAB4 @ctmtDia ;
+    pos @cLongRtTail2 @cCombVowel space' lookup CollisionCrWd_LRT2_Tmt_HiNgo_target @cHighNgo @ctmtDia ;
+    pos @cLongRtTail2 @cCombTone space' lookup CollisionCrWd_LRT2_Tmt_HiNgo_target @cHighNgo uniAAB4 @ctmtDia ;
+    pos @cLongRtTail2 @cCombTone space' lookup CollisionCrWd_LRT2_Tmt_HiNgo_target @cHighNgo @ctmtDia ;
+    pos @cLongRtTail2 space' lookup CollisionCrWd_LRT2_Tmt_HiNgo_target @cHighNgo uniAAB4 @ctmtDia ;
+    pos @cLongRtTail2 space' lookup CollisionCrWd_LRT2_Tmt_HiNgo_target @cHighNgo @ctmtDia ;
+  # Subtable: CollisionCrWd\LRT2a_i_NCibase
+    pos @cLongRtTail2a @cCombVowel @cCombTone space' lookup CollisionCrWd_LRT2a_i_NCibase_target @cNarrowCons_i_base @ciDia ;
+    pos @cLongRtTail2a @cCombVowel space' lookup CollisionCrWd_LRT2a_i_NCibase_target @cNarrowCons_i_base @ciDia ;
+    pos @cLongRtTail2a @cCombTone space' lookup CollisionCrWd_LRT2a_i_NCibase_target @cNarrowCons_i_base @ciDia ;
+    pos @cLongRtTail2a space' lookup CollisionCrWd_LRT2a_i_NCibase_target @cNarrowCons_i_base @ciDia ;
+} CollisionCrWd;
+
+lookup KernLeftSideVowel_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @cSlantedLeftSideVowel  < 0 0 -200 0>;
+} KernLeftSideVowel_target ;
+
+lookup KernLeftSideVowel {
+  lookupflag 0 ;
+    pos @cSlantedLeftSideVowel' lookup KernLeftSideVowel_target @cSlantedCons ;
+} KernLeftSideVowel;
+
+lookup KernAfterO_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos uniAAB6  < 0 0 150 0>;
+} KernAfterO_target ;
+
+lookup KernAfterO {
+  lookupflag 0 ;
+    pos uniAAB6' lookup KernAfterO_target @cKernAfterO uniAAC1 ;
+} KernAfterO;
+
+lookup KernVowelUA {
+  lookupflag IgnoreMarks ;
+    #  subrule of type ADJUST_PAIR 
+    #  JB, 10 Feb 2017: not generated by volt2fea; is this right?
+    pos @cKernUA uniAABA < 0 0 120 0 >;
+} KernVowelUA;
+
+lookup KernAUE_LRT_large_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos uniAABB  <500 -100 500 0>;
+} KernAUE_LRT_large_target ;
+
+lookup KernAUE_LRT_small_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos uniAABB  <300 -50 300 0>;
+} KernAUE_LRT_small_target ;
+
+lookup KernAUE_ShRT_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos uniAABB  <350 0 350 0>;
+} KernAUE_ShRT_target ;
+
+lookup KernAUE_NoTail_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos uniAABB  <-250 0 -250 0>;
+} KernAUE_NoTail_target ;
+
+lookup KernAUE {
+  lookupflag 0 ;
+  # Subtable: KernAUE\LRT_large
+    pos @cLongRtTail2a @cCombVowel @cCombTone uniAABB' lookup KernAUE_LRT_large_target ;
+    pos @cLongRtTail2a @cCombVowel uniAABB' lookup KernAUE_LRT_large_target ;
+    pos @cLongRtTail2a @cCombTone uniAABB' lookup KernAUE_LRT_large_target ;
+    pos @cLongRtTail2a uniAABB' lookup KernAUE_LRT_large_target ;
+  # Subtable: KernAUE\LRT_small
+    pos @cLongRtTail2b @cCombVowel @cCombTone uniAABB' lookup KernAUE_LRT_small_target ;
+    pos @cLongRtTail2b @cCombVowel uniAABB' lookup KernAUE_LRT_small_target ;
+    pos @cLongRtTail2b @cCombTone uniAABB' lookup KernAUE_LRT_small_target ;
+    pos @cLongRtTail2b uniAABB' lookup KernAUE_LRT_small_target ;
+  # Subtable: KernAUE\ShRT
+    pos @cShortRtTail @cCombVowel @cCombTone uniAABB' lookup KernAUE_ShRT_target ;
+    pos @cShortRtTail @cCombVowel uniAABB' lookup KernAUE_ShRT_target ;
+    pos @cShortRtTail @cCombTone uniAABB' lookup KernAUE_ShRT_target ;
+    pos @cShortRtTail uniAABB' lookup KernAUE_ShRT_target ;
+  # Subtable: KernAUE\NoTail
+    pos @cKernAUEfollowing uniAAB4 uniAABB' lookup KernAUE_NoTail_target ;
+    pos @cKernAUEfollowing uniAABB' lookup KernAUE_NoTail_target ;
+} KernAUE;
+
+lookup KernAY_LRT_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos uniAABC  <300 0 300 0>;
+} KernAY_LRT_target ;
+
+lookup KernAY_ShRT_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos uniAABC  <250 0 250 0>;
+} KernAY_ShRT_target ;
+
+lookup KernAY {
+  lookupflag 0 ;
+  # Subtable: KernAY\LRT
+    pos @cLongRtTail2 @cCombVowel @cCombTone uniAABC' lookup KernAY_LRT_target ;
+    pos @cLongRtTail2 @cCombVowel uniAABC' lookup KernAY_LRT_target ;
+    pos @cLongRtTail2 @cCombTone uniAABC' lookup KernAY_LRT_target ;
+    pos @cLongRtTail2 uniAABC' lookup KernAY_LRT_target ;
+  # Subtable: KernAY\ShRT
+    pos @cShortRtTail @cCombVowel @cCombTone uniAABC' lookup KernAY_ShRT_target ;
+    pos @cShortRtTail @cCombVowel uniAABC' lookup KernAY_ShRT_target ;
+    pos @cShortRtTail @cCombTone uniAABC' lookup KernAY_ShRT_target ;
+    pos @cShortRtTail uniAABC' lookup KernAY_ShRT_target ;
+} KernAY;
+
+lookup KernO_LRT_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos uniAAB6  <200 0 200 0>;
+} KernO_LRT_target ;
+
+lookup KernO_LRT {
+  lookupflag 0 ;
+    pos @cLongRtTail2a @cCombVowel @cCombTone uniAAB6' lookup KernO_LRT_target ;
+    pos @cLongRtTail2a @cCombVowel uniAAB6' lookup KernO_LRT_target ;
+    pos @cLongRtTail2a @cCombTone uniAAB6' lookup KernO_LRT_target ;
+    pos @cLongRtTail2a uniAAB6' lookup KernO_LRT_target ;
+} KernO_LRT;
+
+lookup KernShRTlowCo_MaiKang_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos uniAA8A  <250 0 250 0>;
+} KernShRTlowCo_MaiKang_target ;
+
+lookup KernShRTlowCo_I_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos uniAA8A  <250 0 250 0>;
+} KernShRTlowCo_I_target ;
+
+lookup KernShRTlowCo_Vstr_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos uniAA8A  <400 0 400 0>;
+} KernShRTlowCo_Vstr_target ;
+
+lookup KernShRTlowCo_UE_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos uniAA8A  <250 0 250 0>;
+} KernShRTlowCo_UE_target ;
+
+lookup KernShRTlowCo_MaiTho_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos uniAA8A  <200 0 200 0>;
+} KernShRTlowCo_MaiTho_target ;
+
+lookup KernShRTlowCo {
+  lookupflag 0 ;
+  # Subtable: KernShRTlowCo\MaiKang
+    pos @cShortRtTail @cCombVowel @cCombTone uniAA8A' lookup KernShRTlowCo_MaiKang_target @cMaiKang ;
+    pos @cShortRtTail @cCombVowel uniAA8A' lookup KernShRTlowCo_MaiKang_target @cMaiKang ;
+    pos @cShortRtTail @cCombTone uniAA8A' lookup KernShRTlowCo_MaiKang_target @cMaiKang ;
+    pos @cShortRtTail uniAA8A' lookup KernShRTlowCo_MaiKang_target @cMaiKang ;
+  # Subtable: KernShRTlowCo\I
+    pos @cShortRtTail @cCombVowel @cCombTone uniAA8A' lookup KernShRTlowCo_I_target uniAAB2 ;
+    pos @cShortRtTail @cCombVowel uniAA8A' lookup KernShRTlowCo_I_target uniAAB2 ;
+    pos @cShortRtTail @cCombTone uniAA8A' lookup KernShRTlowCo_I_target uniAAB2 ;
+    pos @cShortRtTail uniAA8A' lookup KernShRTlowCo_I_target uniAAB2 ;
+  # Subtable: KernShRTlowCo\Vstr
+    pos @cShortRtTail @cCombVowel @cCombTone uniAA8A' lookup KernShRTlowCo_Vstr_target @cUpCombVowelStraight ;
+    pos @cShortRtTail @cCombVowel uniAA8A' lookup KernShRTlowCo_Vstr_target @cUpCombVowelStraight ;
+    pos @cShortRtTail @cCombTone uniAA8A' lookup KernShRTlowCo_Vstr_target @cUpCombVowelStraight ;
+    pos @cShortRtTail uniAA8A' lookup KernShRTlowCo_Vstr_target @cUpCombVowelStraight ;
+  # Subtable: KernShRTlowCo\UE
+    pos @cShortRtTail @cCombVowel @cCombTone uniAA8A' lookup KernShRTlowCo_UE_target @cVowelUE ;
+    pos @cShortRtTail @cCombVowel uniAA8A' lookup KernShRTlowCo_UE_target @cVowelUE ;
+    pos @cShortRtTail @cCombTone uniAA8A' lookup KernShRTlowCo_UE_target @cVowelUE ;
+    pos @cShortRtTail uniAA8A' lookup KernShRTlowCo_UE_target @cVowelUE ;
+  # Subtable: KernShRTlowCo\MaiTho
+    pos @cShortRtTail @cCombVowel @cCombTone uniAA8A' lookup KernShRTlowCo_MaiTho_target @ctmtDia ;
+    pos @cShortRtTail @cCombVowel uniAA8A' lookup KernShRTlowCo_MaiTho_target @ctmtDia ;
+    pos @cShortRtTail @cCombTone uniAA8A' lookup KernShRTlowCo_MaiTho_target @ctmtDia ;
+    pos @cShortRtTail uniAA8A' lookup KernShRTlowCo_MaiTho_target @ctmtDia ;
+    pos @cShortRtTail @cCombVowel @cCombTone uniAA8A' lookup KernShRTlowCo_MaiTho_target uniAAB4 @ctmtDia ;
+    pos @cShortRtTail @cCombVowel uniAA8A' lookup KernShRTlowCo_MaiTho_target uniAAB4 @ctmtDia ;
+    pos @cShortRtTail @cCombTone uniAA8A' lookup KernShRTlowCo_MaiTho_target uniAAB4 @ctmtDia ;
+    pos @cShortRtTail uniAA8A' lookup KernShRTlowCo_MaiTho_target uniAAB4 @ctmtDia ;
+} KernShRTlowCo;
+
+lookup Kern_LRT_lowCo_CombMark_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos uniAA8A  <300 0 300 0>;
+} Kern_LRT_lowCo_CombMark_target ;
+
+lookup Kern_LRT_lowCo_CombMark {
+  lookupflag 0 ;
+    pos @cLongRtTail2 @cCombVowel @cCombTone uniAA8A' lookup Kern_LRT_lowCo_CombMark_target @cCombVowel ;
+    pos @cLongRtTail2 @cCombVowel uniAA8A' lookup Kern_LRT_lowCo_CombMark_target @cCombVowel ;
+    pos @cLongRtTail2 @cCombTone uniAA8A' lookup Kern_LRT_lowCo_CombMark_target @cCombVowel ;
+    pos @cLongRtTail2 uniAA8A' lookup Kern_LRT_lowCo_CombMark_target @cCombVowel ;
+    pos @cLongRtTail2 @cCombVowel @cCombTone uniAA8A' lookup Kern_LRT_lowCo_CombMark_target @ctmtDia ;
+    pos @cLongRtTail2 @cCombVowel uniAA8A' lookup Kern_LRT_lowCo_CombMark_target @ctmtDia ;
+    pos @cLongRtTail2 @cCombTone uniAA8A' lookup Kern_LRT_lowCo_CombMark_target @ctmtDia ;
+    pos @cLongRtTail2 uniAA8A' lookup Kern_LRT_lowCo_CombMark_target @ctmtDia ;
+} Kern_LRT_lowCo_CombMark;
+
+lookup base_H_base {
+  lookupflag 0 ;
+    #  subrule of type ATTACH
+    pos base C
+         <anchor 790 0> mark @MARK_H ;
+    pos base c
+         <anchor 502 0> mark @MARK_H ;
+} base_H_base;
+
+lookup base_L_base {
+  lookupflag 0 ;
+    #  subrule of type ATTACH
+    pos base A
+         <anchor 776 -100> mark @MARK_L ;
+    pos base E
+         <anchor 720 -100> mark @MARK_L ;
+    pos base I
+         <anchor 405 -100> mark @MARK_L ;
+    pos base O
+         <anchor 823 -100> mark @MARK_L ;
+    pos base U
+         <anchor 770 -100> mark @MARK_L ;
+    pos base a
+         <anchor 532 -100> mark @MARK_L ;
+    pos base e
+         <anchor 500 -100> mark @MARK_L ;
+    pos base i
+         <anchor 300 -100> mark @MARK_L ;
+    pos base o
+         <anchor 532 -100> mark @MARK_L ;
+    pos base u
+         <anchor 600 -100> mark @MARK_L ;
+    pos base uniAA80
+         <anchor 1140 -125> mark @MARK_L ;
+    pos base uniAA81
+         <anchor 1150 -125> mark @MARK_L ;
+    pos base uniAA82
+         <anchor 2150 -125> mark @MARK_L ;
+    pos base uniAA83
+         <anchor 2400 -125> mark @MARK_L ;
+    pos base uniAA84
+         <anchor 1750 -125> mark @MARK_L ;
+    pos base uniAA85
+         <anchor 1335 -125> mark @MARK_L ;
+    pos base uniAA86
+         <anchor 1605 -125> mark @MARK_L ;
+    pos base uniAA87
+         <anchor 1605 -125> mark @MARK_L ;
+    pos base uniAA88
+         <anchor 2025 -125> mark @MARK_L ;
+    pos base uniAA89
+         <anchor 861 -125> mark @MARK_L ;
+    pos base uniAA89.dwarf
+         <anchor 861 -125> mark @MARK_L ;
+    pos base uniAA8A
+         <anchor 1225 -125> mark @MARK_L ;
+    pos base uniAA8A.Rotated
+         <anchor 1000 -125> mark @MARK_L ;
+    pos base uniAA8A.dwarf
+         <anchor 1000 -125> mark @MARK_L ;
+    pos base uniAA8B
+         <anchor 310 -175> mark @MARK_L ;
+    pos base uniAA8C
+         <anchor 1300 -125> mark @MARK_L ;
+    pos base uniAA8D
+         <anchor 1650 -125> mark @MARK_L ;
+    pos base uniAA8E
+         <anchor 1185 -125> mark @MARK_L ;
+    pos base uniAA8F
+         <anchor 1750 -125> mark @MARK_L ;
+    pos base uniAA90
+         <anchor 2140 -125> mark @MARK_L ;
+    pos base uniAA91
+         <anchor 1600 -127> mark @MARK_L ;
+    pos base uniAA92
+         <anchor 1125 -125> mark @MARK_L ;
+    pos base uniAA93
+         <anchor 845 -125> mark @MARK_L ;
+    pos base uniAA94
+         <anchor 1500 -115> mark @MARK_L ;
+    pos base uniAA95
+         <anchor 1500 -115> mark @MARK_L ;
+    pos base uniAA95.Tail
+         <anchor 1600 -115> mark @MARK_L ;
+    pos base uniAA96
+         <anchor 425 -244> mark @MARK_L ;
+    pos base uniAA97
+         <anchor 1460 -125> mark @MARK_L ;
+    pos base uniAA98
+         <anchor 2025 -125> mark @MARK_L ;
+    pos base uniAA99
+         <anchor 1225 -125> mark @MARK_L ;
+    pos base uniAA9A
+         <anchor 1040 -125> mark @MARK_L ;
+    pos base uniAA9B
+         <anchor 1965 -125> mark @MARK_L ;
+    pos base uniAA9C
+         <anchor 1040 -125> mark @MARK_L ;
+    pos base uniAA9D
+         <anchor 1448 -125> mark @MARK_L ;
+    pos base uniAA9E
+         <anchor 1375 -125> mark @MARK_L ;
+    pos base uniAA9F
+         <anchor 1860 -125> mark @MARK_L ;
+    pos base uniAA9F.ClsTail
+         <anchor 1706 -125> mark @MARK_L ;
+    pos base uniAAA0
+         <anchor 1375 -125> mark @MARK_L ;
+    pos base uniAAA1
+         <anchor 1600 -125> mark @MARK_L ;
+    pos base uniAAA2
+         <anchor 1785 -125> mark @MARK_L ;
+    pos base uniAAA3
+         <anchor 1200 -125> mark @MARK_L ;
+    pos base uniAAA4
+         <anchor 1075 -125> mark @MARK_L ;
+    pos base uniAAA5
+         <anchor 1075 -125> mark @MARK_L ;
+    pos base uniAAA6
+         <anchor 1375 -145> mark @MARK_L ;
+    pos base uniAAA7
+         <anchor 1375 -160> mark @MARK_L ;
+    pos base uniAAA8
+         <anchor 780 -125> mark @MARK_L ;
+    pos base uniAAA9
+         <anchor 1061 -125> mark @MARK_L ;
+    pos base uniAAAA
+         <anchor 2065 -125> mark @MARK_L ;
+    pos base uniAAAB
+         <anchor 839 -125> mark @MARK_L ;
+    pos base uniAAAC
+         <anchor 1650 -100> mark @MARK_L ;
+    pos base uniAAAD
+         <anchor 1200 -125> mark @MARK_L ;
+    pos base uniAAAE
+         <anchor 930 -125> mark @MARK_L ;
+    pos base uniAAAF
+         <anchor 1727 -125> mark @MARK_L ;
+    pos base dotlessi
+         <anchor 300 -100> mark @MARK_L ;
+} base_L_base;
+
+lookup base_R_base {
+  lookupflag 0 ;
+    #  subrule of type ATTACH
+    pos base O
+         <anchor 1649 900> mark @MARK_R ;
+    pos base U
+         <anchor 1538 900> mark @MARK_R ;
+    pos base o
+         <anchor 1065 900> mark @MARK_R ;
+    pos base u
+         <anchor 1184 900> mark @MARK_R ;
+} base_R_base;
+
+lookup base_U_base {
+  lookupflag 0 ;
+    #  subrule of type ATTACH
+    pos base A
+         <anchor 776 1475> mark @MARK_U ;
+    pos base E
+         <anchor 720 1475> mark @MARK_U ;
+    pos base I
+         <anchor 405 1475> mark @MARK_U ;
+    pos base N
+         <anchor 759 1475> mark @MARK_U ;
+    pos base O
+         <anchor 823 1475> mark @MARK_U ;
+    pos base S
+         <anchor 553 1475> mark @MARK_U ;
+    pos base U
+         <anchor 770 1475> mark @MARK_U ;
+    pos base Y
+         <anchor 770 1475> mark @MARK_U ;
+    pos base Z
+         <anchor 735 1475> mark @MARK_U ;
+    pos base a
+         <anchor 532 1050> mark @MARK_U ;
+    pos base e
+         <anchor 532 1050> mark @MARK_U ;
+    pos base i
+         <anchor 268 1050> mark @MARK_U ;
+    pos base n
+         <anchor 625 1050> mark @MARK_U ;
+    pos base o
+         <anchor 532 1050> mark @MARK_U ;
+    pos base s
+         <anchor 410 1050> mark @MARK_U ;
+    pos base u
+         <anchor 600 1050> mark @MARK_U ;
+    pos base y
+         <anchor 550 1050> mark @MARK_U ;
+    pos base z
+         <anchor 500 1050> mark @MARK_U ;
+    pos base Acircumflex
+         <anchor 775 1975> mark @MARK_U ;
+    pos base Abreve
+         <anchor 775 1975> mark @MARK_U ;
+    pos base Ecircumflex
+         <anchor 725 1975> mark @MARK_U ;
+    pos base Ocircumflex
+         <anchor 801 1975> mark @MARK_U ;
+    pos base Ohorn
+         <anchor 823 1490> mark @MARK_U ;
+    pos base Uhorn
+         <anchor 800 1499> mark @MARK_U ;
+    pos base acircumflex
+         <anchor 545 1545> mark @MARK_U ;
+    pos base abreve
+         <anchor 535 1545> mark @MARK_U ;
+    pos base ecircumflex
+         <anchor 505 1545> mark @MARK_U ;
+    pos base dotlessi
+         <anchor 300 1050> mark @MARK_U ;
+    pos base ocircumflex
+         <anchor 540 1545> mark @MARK_U ;
+    pos base ohorn
+         <anchor 465 1048> mark @MARK_U ;
+    pos base uhorn
+         <anchor 530 1048> mark @MARK_U ;
+} base_U_base;
+
+lookup base_UL_base {
+  lookupflag 0 ;
+    #  subrule of type ATTACH
+    pos base uniAA80
+         <anchor 190 1250> mark @MARK_UL ;
+    pos base uniAA81
+         <anchor 210 1250> mark @MARK_UL ;
+    pos base uniAA82
+         <anchor 685 1250> mark @MARK_UL ;
+    pos base uniAA83
+         <anchor 850 1250> mark @MARK_UL ;
+    pos base uniAA84
+         <anchor 685 1250> mark @MARK_UL ;
+    pos base uniAA85
+         <anchor 320 1250> mark @MARK_UL ;
+    pos base uniAA86
+         <anchor 250 1250> mark @MARK_UL ;
+    pos base uniAA87
+         <anchor 245 1246> mark @MARK_UL ;
+    pos base uniAA88
+         <anchor 920 1250> mark @MARK_UL ;
+    pos base uniAA89
+         <anchor 160 1600> mark @MARK_UL ;
+    pos base uniAA89.dwarf
+         <anchor 160 1500> mark @MARK_UL ;
+    pos base uniAA8A
+         <anchor 35 1275> mark @MARK_UL ;
+    pos base uniAA8A.Rotated
+         <anchor 50 1825> mark @MARK_UL ;
+    pos base uniAA8A.dwarf
+         <anchor 50 1625> mark @MARK_UL ;
+    pos base uniAA8B
+         <anchor 320 1250> mark @MARK_UL ;
+    pos base uniAA8C
+         <anchor 75 1875> mark @MARK_UL ;
+    pos base uniAA8D
+         <anchor 75 1875> mark @MARK_UL ;
+    pos base uniAA8E
+         <anchor 205 1250> mark @MARK_UL ;
+    pos base uniAA8F
+         <anchor 450 1275> mark @MARK_UL ;
+    pos base uniAA90
+         <anchor 750 1252> mark @MARK_UL ;
+    pos base uniAA91
+         <anchor 475 1250> mark @MARK_UL ;
+    pos base uniAA92
+         <anchor 160 1250> mark @MARK_UL ;
+    pos base uniAA93
+         <anchor 620 1250> mark @MARK_UL ;
+    pos base uniAA94
+         <anchor 360 1250> mark @MARK_UL ;
+    pos base uniAA95
+         <anchor 320 1250> mark @MARK_UL ;
+    pos base uniAA95.Tail
+         <anchor 320 1250> mark @MARK_UL ;
+    pos base uniAA96
+         <anchor 340 1252> mark @MARK_UL ;
+    pos base uniAA97
+         <anchor 195 1251> mark @MARK_UL ;
+    pos base uniAA98
+         <anchor 920 1250> mark @MARK_UL ;
+    pos base uniAA99
+         <anchor 215 1250> mark @MARK_UL ;
+    pos base uniAA9A
+         <anchor 90 1250> mark @MARK_UL ;
+    pos base uniAA9B
+         <anchor 970 1250> mark @MARK_UL ;
+    pos base uniAA9C
+         <anchor 85 1275> mark @MARK_UL ;
+    pos base uniAA9D
+         <anchor 350 1250> mark @MARK_UL ;
+    pos base uniAA9E
+         <anchor 185 1875> mark @MARK_UL ;
+    pos base uniAA9F
+         <anchor 350 1250> mark @MARK_UL ;
+    pos base uniAA9F.ClsTail
+         <anchor 350 1250> mark @MARK_UL ;
+    pos base uniAAA0
+         <anchor 310 1300> mark @MARK_UL ;
+    pos base uniAAA1
+         <anchor 325 1275> mark @MARK_UL ;
+    pos base uniAAA2
+         <anchor 900 1250> mark @MARK_UL ;
+    pos base uniAAA3
+         <anchor 425 1250> mark @MARK_UL ;
+    pos base uniAAA4
+         <anchor 85 1275> mark @MARK_UL ;
+    pos base uniAAA5
+         <anchor 145 1250> mark @MARK_UL ;
+    pos base uniAAA6
+         <anchor 250 1260> mark @MARK_UL ;
+    pos base uniAAA7
+         <anchor 250 1260> mark @MARK_UL ;
+    pos base uniAAA8
+         <anchor 610 1250> mark @MARK_UL ;
+    pos base uniAAA9
+         <anchor 276 1250> mark @MARK_UL ;
+    pos base uniAAAA
+         <anchor 1135 1250> mark @MARK_UL ;
+    pos base uniAAAB
+         <anchor 289 1250> mark @MARK_UL ;
+    pos base uniAAAC
+         <anchor 480 1250> mark @MARK_UL ;
+    pos base uniAAAD
+         <anchor 320 1250> mark @MARK_UL ;
+    pos base uniAAAE
+         <anchor 405 1250> mark @MARK_UL ;
+    pos base uniAAAF
+         <anchor 427 1250> mark @MARK_UL ;
+} base_UL_base;
+
+lookup base_i_base {
+  lookupflag 0 ;
+    #  subrule of type ATTACH
+    pos base uniAA80
+         <anchor 690 1250> mark @MARK_i ;
+    pos base uniAA81
+         <anchor 765 1250> mark @MARK_i ;
+    pos base uniAA82
+         <anchor 960 1250> mark @MARK_i ;
+    pos base uniAA83
+         <anchor 1500 1250> mark @MARK_i ;
+    pos base uniAA84
+         <anchor 1050 1250> mark @MARK_i ;
+    pos base uniAA85
+         <anchor 695 1250> mark @MARK_i ;
+    pos base uniAA86
+         <anchor 700 1250> mark @MARK_i ;
+    pos base uniAA87
+         <anchor 750 1250> mark @MARK_i ;
+    pos base uniAA88
+         <anchor 1770 1475> mark @MARK_i ;
+    pos base uniAA89
+         <anchor 801 1575> mark @MARK_i ;
+    pos base uniAA89.dwarf
+         <anchor 776 1475> mark @MARK_i ;
+    pos base uniAA8A
+         <anchor 620 1575> mark @MARK_i ;
+    pos base uniAA8A.Rotated
+         <anchor 550 1975> mark @MARK_i ;
+    pos base uniAA8A.dwarf
+         <anchor 550 1775> mark @MARK_i ;
+    pos base uniAA8B
+         <anchor 820 1252> mark @MARK_i ;
+    pos base uniAA8C
+         <anchor 500 2025> mark @MARK_i ;
+    pos base uniAA8D
+         <anchor 500 2025> mark @MARK_i ;
+    pos base uniAA8E
+         <anchor 805 1250> mark @MARK_i ;
+    pos base uniAA8F
+         <anchor 920 1250> mark @MARK_i ;
+    pos base uniAA90
+         <anchor 1350 1252> mark @MARK_i ;
+    pos base uniAA91
+         <anchor 925 1250> mark @MARK_i ;
+    pos base uniAA92
+         <anchor 760 1250> mark @MARK_i ;
+    pos base uniAA93
+         <anchor 1320 1250> mark @MARK_i ;
+    pos base uniAA94
+         <anchor 980 1250> mark @MARK_i ;
+    pos base uniAA95
+         <anchor 870 1250> mark @MARK_i ;
+    pos base uniAA95.Tail
+         <anchor 870 1250> mark @MARK_i ;
+    pos base uniAA96
+         <anchor 740 1252> mark @MARK_i ;
+    pos base uniAA97
+         <anchor 630 1250> mark @MARK_i ;
+    pos base uniAA98
+         <anchor 1195 1250> mark @MARK_i ;
+    pos base uniAA99
+         <anchor 690 1475> mark @MARK_i ;
+    pos base uniAA9A
+         <anchor 540 1475> mark @MARK_i ;
+    pos base uniAA9B
+         <anchor 1245 1250> mark @MARK_i ;
+    pos base uniAA9C
+         <anchor 660 1464> mark @MARK_i ;
+    pos base uniAA9D
+         <anchor 770 1251> mark @MARK_i ;
+    pos base uniAA9E
+         <anchor 625 2025> mark @MARK_i ;
+    pos base uniAA9F
+         <anchor 780 1250> mark @MARK_i ;
+    pos base uniAA9F.ClsTail
+         <anchor 770 1250> mark @MARK_i ;
+    pos base uniAAA0
+         <anchor 785 1525> mark @MARK_i ;
+    pos base uniAAA1
+         <anchor 760 1250> mark @MARK_i ;
+    pos base uniAAA2
+         <anchor 1200 1250> mark @MARK_i ;
+    pos base uniAAA3
+         <anchor 890 1475> mark @MARK_i ;
+    pos base uniAAA4
+         <anchor 595 1475> mark @MARK_i ;
+    pos base uniAAA5
+         <anchor 695 1475> mark @MARK_i ;
+    pos base uniAAA6
+         <anchor 800 1260> mark @MARK_i ;
+    pos base uniAAA7
+         <anchor 800 1260> mark @MARK_i ;
+    pos base uniAAA8
+         <anchor 1110 1250> mark @MARK_i ;
+    pos base uniAAA9
+         <anchor 801 1250> mark @MARK_i ;
+    pos base uniAAAA
+         <anchor 1610 1250> mark @MARK_i ;
+    pos base uniAAAB
+         <anchor 739 1250> mark @MARK_i ;
+    pos base uniAAAC
+         <anchor 955 1250> mark @MARK_i ;
+    pos base uniAAAD
+         <anchor 820 1250> mark @MARK_i ;
+    pos base uniAAAE
+         <anchor 805 1250> mark @MARK_i ;
+    pos base uniAAAF
+         <anchor 827 1250> mark @MARK_i ;
+} base_i_base;
+
+lookup CollisionVowel_LabializedCons1_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @cUpCombVowelLab1  <130 0 0 0>;
+} CollisionVowel_LabializedCons1_target ;
+
+lookup CollisionVowel_LabializedCons2_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @cUpCombVowelLab2  <130 -50 0 0>;
+} CollisionVowel_LabializedCons2_target ;
+
+lookup CollisionVowel_lowNgo_highVo_I_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ciDia  <65 0 0 0>;
+} CollisionVowel_lowNgo_highVo_I_target ;
+
+lookup CollisionVowel_lowCo_ciDia_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ciDia  <-75 0 0 0>;
+} CollisionVowel_lowCo_ciDia_target ;
+
+lookup CollisionVowel_lowCo_cULminusKang_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @cULminusKang  <-100 0 0 0>;
+} CollisionVowel_lowCo_cULminusKang_target ;
+
+lookup CollisionVowel_lowCo_MaiKang_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @cMaiKang  <-100 50 0 0>;
+} CollisionVowel_lowCo_MaiKang_target ;
+
+lookup CollisionVowel_lowCoR_lowCoR_cULDia_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @cULDia  <580 320 0 0>;
+} CollisionVowel_lowCoR_lowCoR_cULDia_target ;
+
+lookup CollisionVowel_lowCoR_lowCoR_I_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ciDia  <250 200 0 0>;
+} CollisionVowel_lowCoR_lowCoR_I_target ;
+
+lookup CollisionVowel_lowCoR_lowCoDw_I_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ciDia  <600 60 0 0>;
+} CollisionVowel_lowCoR_lowCoDw_I_target ;
+
+lookup CollisionVowel_lowCoR_lowCoDw_UE_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @cVowelUE  <-70 -100 0 0>;
+} CollisionVowel_lowCoR_lowCoDw_UE_target ;
+
+lookup CollisionVowel_lowCoR_lowCoDw_Kang_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @cMaiKang  < 0 -70 0 0>;
+} CollisionVowel_lowCoR_lowCoDw_Kang_target ;
+
+lookup CollisionVowel_lowCo_lowCo_I_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ciDia  <-150 -300 0 0>;
+} CollisionVowel_lowCo_lowCo_I_target ;
+
+lookup CollisionVowel_UEblending_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @cVowelUE  <-50 0 0 0>;
+} CollisionVowel_UEblending_target ;
+
+lookup CollisionVowel {
+  lookupflag 0 ;
+  # Subtable: CollisionVowel\LabializedCons1
+    pos @cVelarConsShrtTail uniAAAB @cUpCombVowelLab1' lookup CollisionVowel_LabializedCons1_target ;
+  # Subtable: CollisionVowel\LabializedCons2
+    pos @cVelarConsShrtTail uniAAAB @cUpCombVowelLab2' lookup CollisionVowel_LabializedCons2_target ;
+  # Subtable: CollisionVowel\lowNgo_highVo_I
+    pos [ uniAA88 ]uniAAAB @ciDia' lookup CollisionVowel_lowNgo_highVo_I_target ;
+  # Subtable: CollisionVowel\lowCo_ciDia
+    pos uniAA8A @ciDia' lookup CollisionVowel_lowCo_ciDia_target ;
+  # Subtable: CollisionVowel\lowCo_cULminusKang
+    pos @cLongRtTailULconflict @cULminusKang' lookup CollisionVowel_lowCo_cULminusKang_target ;
+  # Subtable: CollisionVowel\lowCo_MaiKang
+    pos @cLongRtTailULconflict @cMaiKang' lookup CollisionVowel_lowCo_MaiKang_target ;
+  # Subtable: CollisionVowel\lowCoR_lowCoR_cULDia
+    pos [ uniAA8A.Rotated ]uniAA8A.Rotated @cULDia' lookup CollisionVowel_lowCoR_lowCoR_cULDia_target ;
+  # Subtable: CollisionVowel\lowCoR_lowCoR_I
+    pos [ uniAA8A.Rotated ]uniAA8A.Rotated @ciDia' lookup CollisionVowel_lowCoR_lowCoR_I_target ;
+  # Subtable: CollisionVowel\lowCoR_lowCoDw_I
+    pos [ uniAA8A.Rotated ]uniAA8A.dwarf @ciDia' lookup CollisionVowel_lowCoR_lowCoDw_I_target ;
+  # Subtable: CollisionVowel\lowCoR_lowCoDw_UE
+    pos [ uniAA8A.Rotated ]uniAA8A.dwarf @cVowelUE' lookup CollisionVowel_lowCoR_lowCoDw_UE_target ;
+  # Subtable: CollisionVowel\lowCoR_lowCoDw_Kang
+    pos [ uniAA8A.Rotated ]uniAA8A.dwarf @cMaiKang' lookup CollisionVowel_lowCoR_lowCoDw_Kang_target ;
+  # Subtable: CollisionVowel\lowCo_lowCo_I
+    pos [ uniAA8A ]uniAA8A @ciDia' lookup CollisionVowel_lowCo_lowCo_I_target ;
+  # Subtable: CollisionVowel\UEblending
+    pos @cUEblendCons @cVowelUE' lookup CollisionVowel_UEblending_target ;
+} CollisionVowel;
+
+lookup base_tme_base {
+  lookupflag 0 ;
+    #  subrule of type ATTACH
+    pos base uniAA80
+         <anchor 990 1250> mark @MARK_tme ;
+    pos base uniAA81
+         <anchor 1135 1250> mark @MARK_tme ;
+    pos base uniAA82
+         <anchor 1310 1250> mark @MARK_tme ;
+    pos base uniAA83
+         <anchor 1900 1250> mark @MARK_tme ;
+    pos base uniAA84
+         <anchor 1300 1250> mark @MARK_tme ;
+    pos base uniAA85
+         <anchor 970 1250> mark @MARK_tme ;
+    pos base uniAA86
+         <anchor 1125 1250> mark @MARK_tme ;
+    pos base uniAA87
+         <anchor 1125 1250> mark @MARK_tme ;
+    pos base uniAA88
+         <anchor 1605 1250> mark @MARK_tme ;
+    pos base uniAA89
+         <anchor 801 1675> mark @MARK_tme ;
+    pos base uniAA89.dwarf
+         <anchor 776 1575> mark @MARK_tme ;
+    pos base uniAA8A
+         <anchor 775 1250> mark @MARK_tme ;
+    pos base uniAA8A.Rotated
+         <anchor 700 1875> mark @MARK_tme ;
+    pos base uniAA8A.dwarf
+         <anchor 650 1575> mark @MARK_tme ;
+    pos base uniAA8B
+         <anchor 1220 1250> mark @MARK_tme ;
+    pos base uniAA8C
+         <anchor 775 2000> mark @MARK_tme ;
+    pos base uniAA8D
+         <anchor 775 2000> mark @MARK_tme ;
+    pos base uniAA8E
+         <anchor 1005 1250> mark @MARK_tme ;
+    pos base uniAA8F
+         <anchor 1260 1250> mark @MARK_tme ;
+    pos base uniAA90
+         <anchor 1725 1250> mark @MARK_tme ;
+    pos base uniAA91
+         <anchor 1325 1255> mark @MARK_tme ;
+    pos base uniAA92
+         <anchor 960 1250> mark @MARK_tme ;
+    pos base uniAA93
+         <anchor 1420 1250> mark @MARK_tme ;
+    pos base uniAA94
+         <anchor 1170 1250> mark @MARK_tme ;
+    pos base uniAA95
+         <anchor 1195 1250> mark @MARK_tme ;
+    pos base uniAA95.Tail
+         <anchor 1195 1250> mark @MARK_tme ;
+    pos base uniAA96
+         <anchor 1065 1250> mark @MARK_tme ;
+    pos base uniAA97
+         <anchor 1070 1250> mark @MARK_tme ;
+    pos base uniAA98
+         <anchor 1595 1250> mark @MARK_tme ;
+    pos base uniAA99
+         <anchor 840 1250> mark @MARK_tme ;
+    pos base uniAA9A
+         <anchor 815 1250> mark @MARK_tme ;
+    pos base uniAA9B
+         <anchor 1670 1250> mark @MARK_tme ;
+    pos base uniAA9C
+         <anchor 870 1250> mark @MARK_tme ;
+    pos base uniAA9D
+         <anchor 1110 1251> mark @MARK_tme ;
+    pos base uniAA9E
+         <anchor 775 1925> mark @MARK_tme ;
+    pos base uniAA9F
+         <anchor 1110 1250> mark @MARK_tme ;
+    pos base uniAA9F.ClsTail
+         <anchor 1110 1250> mark @MARK_tme ;
+    pos base uniAAA0
+         <anchor 1110 1300> mark @MARK_tme ;
+    pos base uniAAA1
+         <anchor 1135 1250> mark @MARK_tme ;
+    pos base uniAAA2
+         <anchor 1575 1250> mark @MARK_tme ;
+    pos base uniAAA3
+         <anchor 1100 1250> mark @MARK_tme ;
+    pos base uniAAA4
+         <anchor 890 1250> mark @MARK_tme ;
+    pos base uniAAA5
+         <anchor 860 1250> mark @MARK_tme ;
+    pos base uniAAA6
+         <anchor 1150 1260> mark @MARK_tme ;
+    pos base uniAAA7
+         <anchor 1200 1260> mark @MARK_tme ;
+    pos base uniAAA8
+         <anchor 1360 1250> mark @MARK_tme ;
+    pos base uniAAA9
+         <anchor 1101 1250> mark @MARK_tme ;
+    pos base uniAAAA
+         <anchor 1960 1250> mark @MARK_tme ;
+    pos base uniAAAB
+         <anchor 889 1250> mark @MARK_tme ;
+    pos base uniAAAC
+         <anchor 1430 1250> mark @MARK_tme ;
+    pos base uniAAAD
+         <anchor 1220 1250> mark @MARK_tme ;
+    pos base uniAAAE
+         <anchor 1080 1250> mark @MARK_tme ;
+    pos base uniAAAF
+         <anchor 1252 1250> mark @MARK_tme ;
+    pos base uniAAB1
+         <anchor 460 1250> mark @MARK_tme ;
+    pos base uniAABA
+         <anchor 380 1615> mark @MARK_tme ;
+    pos base uniAABD
+         <anchor 840 1250> mark @MARK_tme ;
+} base_tme_base;
+
+lookup base_tmt_base {
+  lookupflag 0 ;
+    #  subrule of type ATTACH
+    pos base uniAA80
+         <anchor 615 1250> mark @MARK_tmt ;
+    pos base uniAA81
+         <anchor 535 1250> mark @MARK_tmt ;
+    pos base uniAA82
+         <anchor 910 1250> mark @MARK_tmt ;
+    pos base uniAA83
+         <anchor 1550 1250> mark @MARK_tmt ;
+    pos base uniAA84
+         <anchor 1000 1250> mark @MARK_tmt ;
+    pos base uniAA85
+         <anchor 470 1250> mark @MARK_tmt ;
+    pos base uniAA86
+         <anchor 450 1250> mark @MARK_tmt ;
+    pos base uniAA87
+         <anchor 450 1250> mark @MARK_tmt ;
+    pos base uniAA88
+         <anchor 1215 1248> mark @MARK_tmt ;
+    pos base uniAA89
+         <anchor 371 1581> mark @MARK_tmt ;
+    pos base uniAA89.dwarf
+         <anchor 286 1475> mark @MARK_tmt ;
+    pos base uniAA8A
+         <anchor 270 1250> mark @MARK_tmt ;
+    pos base uniAA8A.Rotated
+         <anchor 450 1775> mark @MARK_tmt ;
+    pos base uniAA8A.dwarf
+         <anchor 450 1575> mark @MARK_tmt ;
+    pos base uniAA8B
+         <anchor 595 1252> mark @MARK_tmt ;
+    pos base uniAA8C
+         <anchor 475 1800> mark @MARK_tmt ;
+    pos base uniAA8D
+         <anchor 475 1800> mark @MARK_tmt ;
+    pos base uniAA8E
+         <anchor 455 1250> mark @MARK_tmt ;
+    pos base uniAA8F
+         <anchor 760 1250> mark @MARK_tmt ;
+    pos base uniAA90
+         <anchor 900 1250> mark @MARK_tmt ;
+    pos base uniAA91
+         <anchor 675 1250> mark @MARK_tmt ;
+    pos base uniAA92
+         <anchor 585 1250> mark @MARK_tmt ;
+    pos base uniAA93
+         <anchor 920 1250> mark @MARK_tmt ;
+    pos base uniAA94
+         <anchor 510 1250> mark @MARK_tmt ;
+    pos base uniAA95
+         <anchor 595 1250> mark @MARK_tmt ;
+    pos base uniAA95.Tail
+         <anchor 595 1250> mark @MARK_tmt ;
+    pos base uniAA96
+         <anchor 515 1252> mark @MARK_tmt ;
+    pos base uniAA97
+         <anchor 420 1250> mark @MARK_tmt ;
+    pos base uniAA98
+         <anchor 1295 1250> mark @MARK_tmt ;
+    pos base uniAA99
+         <anchor 365 1250> mark @MARK_tmt ;
+    pos base uniAA9A
+         <anchor 190 1250> mark @MARK_tmt ;
+    pos base uniAA9B
+         <anchor 1320 1250> mark @MARK_tmt ;
+    pos base uniAA9C
+         <anchor 345 1250> mark @MARK_tmt ;
+    pos base uniAA9D
+         <anchor 615 1251> mark @MARK_tmt ;
+    pos base uniAA9E
+         <anchor 475 1725> mark @MARK_tmt ;
+    pos base uniAA9F
+         <anchor 615 1251> mark @MARK_tmt ;
+    pos base uniAA9F.ClsTail
+         <anchor 615 1250> mark @MARK_tmt ;
+    pos base uniAAA0
+         <anchor 560 1300> mark @MARK_tmt ;
+    pos base uniAAA1
+         <anchor 635 1250> mark @MARK_tmt ;
+    pos base uniAAA2
+         <anchor 1250 1250> mark @MARK_tmt ;
+    pos base uniAAA3
+         <anchor 550 1250> mark @MARK_tmt ;
+    pos base uniAAA4
+         <anchor 295 1250> mark @MARK_tmt ;
+    pos base uniAAA5
+         <anchor 295 1250> mark @MARK_tmt ;
+    pos base uniAAA6
+         <anchor 750 1260> mark @MARK_tmt ;
+    pos base uniAAA7
+         <anchor 750 1260> mark @MARK_tmt ;
+    pos base uniAAA8
+         <anchor 810 1250> mark @MARK_tmt ;
+    pos base uniAAA9
+         <anchor 601 1250> mark @MARK_tmt ;
+    pos base uniAAAA
+         <anchor 1410 1250> mark @MARK_tmt ;
+    pos base uniAAAB
+         <anchor 489 1250> mark @MARK_tmt ;
+    pos base uniAAAC
+         <anchor 730 1253> mark @MARK_tmt ;
+    pos base uniAAAD
+         <anchor 542 1250> mark @MARK_tmt ;
+    pos base uniAAAE
+         <anchor 555 1250> mark @MARK_tmt ;
+    pos base uniAAAF
+         <anchor 577 1250> mark @MARK_tmt ;
+    pos base uniAAB1
+         <anchor 30 1250> mark @MARK_tmt ;
+    pos base uniAABA
+         <anchor 85 1490> mark @MARK_tmt ;
+    pos base uniAABD
+         <anchor 515 1250> mark @MARK_tmt ;
+} base_tmt_base;
+
+lookup CollisionTone_lowKhho_highVo_Tho_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmtDia  <65 0 0 0>;
+} CollisionTone_lowKhho_highVo_Tho_target ;
+
+lookup CollisionTone_O_Cho_Ek_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmeDia  <450 150 0 0>;
+} CollisionTone_O_Cho_Ek_target ;
+
+lookup CollisionTone_O_Cho_Tho_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmtDia  <800 400 0 0>;
+} CollisionTone_O_Cho_Tho_target ;
+
+lookup CollisionTone_Ay_ChoPho_Ek_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmeDia  <100 0 0 0>;
+} CollisionTone_Ay_ChoPho_Ek_target ;
+
+lookup CollisionTone_Ay_ChoPho_Tho_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmtDia  <550 250 0 0>;
+} CollisionTone_Ay_ChoPho_Tho_target ;
+
+lookup CollisionTone_O_lowCo_Tho_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmtDia  <-80 -130 0 0>;
+} CollisionTone_O_lowCo_Tho_target ;
+
+lookup CollisionTone_O_lowCoR_Ek_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmeDia  <450 270 0 0>;
+} CollisionTone_O_lowCoR_Ek_target ;
+
+lookup CollisionTone_O_lowCoR_Tho_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmtDia  <730 300 0 0>;
+} CollisionTone_O_lowCoR_Tho_target ;
+
+lookup CollisionTone_Ay_lowCoR_Ek_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmeDia  <100 35 0 0>;
+} CollisionTone_Ay_lowCoR_Ek_target ;
+
+lookup CollisionTone_Ay_lowCoR_Tho_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmtDia  <575 225 0 0>;
+} CollisionTone_Ay_lowCoR_Tho_target ;
+
+lookup CollisionTone_O_lowCoDw_Ek_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmeDia  <300 230 0 0>;
+} CollisionTone_O_lowCoDw_Ek_target ;
+
+lookup CollisionTone_O_lowCoDw_Tho_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmtDia  <700 300 0 0>;
+} CollisionTone_O_lowCoDw_Tho_target ;
+
+lookup CollisionTone_Ay_lowCoDw_Tho_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmtDia  <50 -80 0 0>;
+} CollisionTone_Ay_lowCoDw_Tho_target ;
+
+lookup CollisionTone_Ay_lowBo_Tho_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmtDia  <200 0 0 0>;
+} CollisionTone_Ay_lowBo_Tho_target ;
+
+lookup CollisionTone_O_lowPho_Ek_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmeDia  <300 150 0 0>;
+} CollisionTone_O_lowPho_Ek_target ;
+
+lookup CollisionTone_O_lowPho_Tho_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmtDia  <750 375 0 0>;
+} CollisionTone_O_lowPho_Tho_target ;
+
+lookup CollisionTone_O_highNgo_Ek_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmeDia  < 0 800 0 0>;
+} CollisionTone_O_highNgo_Ek_target ;
+
+lookup CollisionTone_O_highNgo_Tho_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmtDia  <900 400 0 0>;
+} CollisionTone_O_highNgo_Tho_target ;
+
+lookup CollisionTone_Odw_highNgo_Ek_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmeDia  < 0 450 0 0>;
+} CollisionTone_Odw_highNgo_Ek_target ;
+
+lookup CollisionTone_Odw_highNgo_Tho_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmtDia  < 0 500 0 0>;
+} CollisionTone_Odw_highNgo_Tho_target ;
+
+lookup CollisionTone_Ay_highNgo_Ek_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmeDia  <100 0 0 0>;
+} CollisionTone_Ay_highNgo_Ek_target ;
+
+lookup CollisionTone_Ay_highNgo_Tho_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmtDia  < 0 -200 0 0>;
+} CollisionTone_Ay_highNgo_Tho_target ;
+
+lookup CollisionTone_O_cNarrowCons_Tho_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmtDia  < 0 -120 0 0>;
+} CollisionTone_O_cNarrowCons_Tho_target ;
+
+lookup CollisionTone_lowCoR_lowCoR_Ek_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmeDia  <200 50 0 0>;
+} CollisionTone_lowCoR_lowCoR_Ek_target ;
+
+lookup CollisionTone_lowCoR_lowCoR_Tho_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmtDia  <480 200 0 0>;
+} CollisionTone_lowCoR_lowCoR_Tho_target ;
+
+lookup CollisionTone_lowCo_lowCo_Tho_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmtDia  < 0 -150 0 0>;
+} CollisionTone_lowCo_lowCo_Tho_target ;
+
+lookup CollisionTone {
+  lookupflag 0 ;
+  # Subtable: CollisionTone\lowKhho_highVo_Tho
+    pos [ uniAA84 ]uniAAAB @ctmtDia' lookup CollisionTone_lowKhho_highVo_Tho_target ;
+  # Subtable: CollisionTone\O_Cho_Ek
+    pos @cVowelO @cCho @ctmeDia' lookup CollisionTone_O_Cho_Ek_target ;
+  # Subtable: CollisionTone\O_Cho_Tho
+    pos @cVowelO @cCho @ctmtDia' lookup CollisionTone_O_Cho_Tho_target ;
+  # Subtable: CollisionTone\Ay_ChoPho_Ek
+    pos @cVowelAy @cChoPho @ctmeDia' lookup CollisionTone_Ay_ChoPho_Ek_target ;
+  # Subtable: CollisionTone\Ay_ChoPho_Tho
+    pos @cVowelAy @cChoPho @ctmtDia' lookup CollisionTone_Ay_ChoPho_Tho_target ;
+  # Subtable: CollisionTone\O_lowCo_Tho
+    pos @cVowelO uniAA8A @ctmtDia' lookup CollisionTone_O_lowCo_Tho_target ;
+  # Subtable: CollisionTone\O_lowCoR_Ek
+    pos @cVowelO uniAA8A.Rotated @ctmeDia' lookup CollisionTone_O_lowCoR_Ek_target ;
+  # Subtable: CollisionTone\O_lowCoR_Tho
+    pos @cVowelO uniAA8A.Rotated @ctmtDia' lookup CollisionTone_O_lowCoR_Tho_target ;
+  # Subtable: CollisionTone\Ay_lowCoR_Ek
+    pos @cVowelAy uniAA8A.Rotated @ctmeDia' lookup CollisionTone_Ay_lowCoR_Ek_target ;
+  # Subtable: CollisionTone\Ay_lowCoR_Tho
+    pos @cVowelAy uniAA8A.Rotated @ctmtDia' lookup CollisionTone_Ay_lowCoR_Tho_target ;
+  # Subtable: CollisionTone\O_lowCoDw_Ek
+    pos @cVowelO uniAA8A.dwarf @ctmeDia' lookup CollisionTone_O_lowCoDw_Ek_target ;
+  # Subtable: CollisionTone\O_lowCoDw_Tho
+    pos @cVowelO uniAA8A.dwarf @ctmtDia' lookup CollisionTone_O_lowCoDw_Tho_target ;
+  # Subtable: CollisionTone\Ay_lowCoDw_Tho
+    pos @cVowelAy uniAA8A.dwarf @ctmtDia' lookup CollisionTone_Ay_lowCoDw_Tho_target ;
+  # Subtable: CollisionTone\Ay_lowBo_Tho
+    pos @cVowelAy uniAA9A @ctmtDia' lookup CollisionTone_Ay_lowBo_Tho_target ;
+  # Subtable: CollisionTone\O_lowPho_Ek
+    pos @cVowelO uniAA9E @ctmeDia' lookup CollisionTone_O_lowPho_Ek_target ;
+  # Subtable: CollisionTone\O_lowPho_Tho
+    pos @cVowelO uniAA9E @ctmtDia' lookup CollisionTone_O_lowPho_Tho_target ;
+  # Subtable: CollisionTone\O_highNgo_Ek
+    pos uniAAB6 @cHighNgo @ctmeDia' lookup CollisionTone_O_highNgo_Ek_target ;
+  # Subtable: CollisionTone\O_highNgo_Tho
+    pos uniAAB6 @cHighNgo @ctmtDia' lookup CollisionTone_O_highNgo_Tho_target ;
+  # Subtable: CollisionTone\Odw_highNgo_Ek
+    pos uniAAB6.dwarf @cHighNgo @ctmeDia' lookup CollisionTone_Odw_highNgo_Ek_target ;
+  # Subtable: CollisionTone\Odw_highNgo_Tho
+    pos uniAAB6.dwarf @cHighNgo @ctmtDia' lookup CollisionTone_Odw_highNgo_Tho_target ;
+  # Subtable: CollisionTone\Ay_highNgo_Ek
+    pos @cVowelAy @cHighNgo @ctmeDia' lookup CollisionTone_Ay_highNgo_Ek_target ;
+  # Subtable: CollisionTone\Ay_highNgo_Tho
+    pos @cVowelAy @cHighNgo @ctmtDia' lookup CollisionTone_Ay_highNgo_Tho_target ;
+  # Subtable: CollisionTone\O_cNarrowCons_Tho
+    pos @cVowelO @cNarrowCons_FollowsO @ctmtDia' lookup CollisionTone_O_cNarrowCons_Tho_target ;
+  # Subtable: CollisionTone\lowCoR_lowCoR_Ek
+    pos [ uniAA8A.Rotated ]uniAA8A.Rotated @ctmeDia' lookup CollisionTone_lowCoR_lowCoR_Ek_target ;
+  # Subtable: CollisionTone\lowCoR_lowCoR_Tho
+    pos [ uniAA8A.Rotated ]uniAA8A.Rotated @ctmtDia' lookup CollisionTone_lowCoR_lowCoR_Tho_target ;
+  # Subtable: CollisionTone\lowCo_lowCo_Tho
+    pos [ uniAA8A ]uniAA8A @ctmtDia' lookup CollisionTone_lowCo_lowCo_Tho_target ;
+} CollisionTone;
+
+lookup base_U_mark {
+  lookupflag 0 ;
+    #  subrule of type ATTACH
+    pos mark uni0302
+         <anchor -532 1545> mark @MARK_U ;
+    pos mark uni0306
+         <anchor -532 1545> mark @MARK_U ;
+} base_U_mark;
+
+lookup base_tmt_mark {
+  lookupflag 0 ;
+    #  subrule of type ATTACH
+    pos mark uniAAB0
+         <anchor -925 1850> mark @MARK_tmt ;
+    pos mark uniAAB2
+         <anchor -1220 1925> mark @MARK_tmt ;
+    pos mark uniAAB3
+         <anchor -825 1960> mark @MARK_tmt ;
+    pos mark uniAAB7
+         <anchor -1070 1920> mark @MARK_tmt ;
+    pos mark uniAAB8
+         <anchor -1125 1920> mark @MARK_tmt ;
+    pos mark uniAABE
+         <anchor -1070 1910> mark @MARK_tmt ;
+} base_tmt_mark;
+
+lookup base_tme_mark {
+  lookupflag 0 ;
+    #  subrule of type ATTACH
+    pos mark uniAAB0
+         <anchor -375 2000> mark @MARK_tme ;
+    pos mark uniAAB2
+         <anchor -455 1620> mark @MARK_tme ;
+    pos mark uniAAB3
+         <anchor -380 2000> mark @MARK_tme ;
+    pos mark uniAAB7
+         <anchor -420 2010> mark @MARK_tme ;
+    pos mark uniAAB8
+         <anchor -488 2010> mark @MARK_tme ;
+    pos mark uniAABE
+         <anchor -455 2010> mark @MARK_tme ;
+} base_tme_mark;
+
+lookup CollisionVT_lowCo_lowCo_cUL_Ek_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmeDia  <150 0 0 0>;
+} CollisionVT_lowCo_lowCo_cUL_Ek_target ;
+
+lookup CollisionVT_lowCo_lowCo_cUL_Tho_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmtDia  <800 100 0 0>;
+} CollisionVT_lowCo_lowCo_cUL_Tho_target ;
+
+lookup CollisionVT_lowCo_lowCo_I_Ek_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmeDia  <100 0 0 0>;
+} CollisionVT_lowCo_lowCo_I_Ek_target ;
+
+lookup CollisionVT_lowCo_lowCo_I_Tho_target {
+  lookupflag 0 ;
+    #  subrule of type ADJUST_SINGLE
+    pos @ctmtDia  <950 0 0 0>;
+} CollisionVT_lowCo_lowCo_I_Tho_target ;
+
+lookup CollisionVT {
+  lookupflag 0 ;
+  # Subtable: CollisionVT\lowCo_lowCo_cUL_Ek
+    pos uniAA8A uniAA8A @cULDia @ctmeDia' lookup CollisionVT_lowCo_lowCo_cUL_Ek_target ;
+  # Subtable: CollisionVT\lowCo_lowCo_cUL_Tho
+    pos uniAA8A uniAA8A @cULDia @ctmtDia' lookup CollisionVT_lowCo_lowCo_cUL_Tho_target ;
+  # Subtable: CollisionVT\lowCo_lowCo_I_Ek
+    pos [ uniAA8A ]uniAA8A uniAAB2 @ctmeDia' lookup CollisionVT_lowCo_lowCo_I_Ek_target ;
+  # Subtable: CollisionVT\lowCo_lowCo_I_Tho
+    pos [ uniAA8A ]uniAA8A uniAAB2 @ctmtDia' lookup CollisionVT_lowCo_lowCo_I_Tho_target ;
+} CollisionVT;
+
+
+#**********************************
+#  Features
+#**********************************
+
+feature ccmp {  # Glyph Composition/Decomposition
+    script latn;  # Latin
+        language dflt;  # Default
+            lookup horned;
+            lookup normal_rules;
+            lookup dotless;
+} ccmp ;
+
+feature kern {  # Kerning
+    script DFLT;  # Default
+        language dflt;  # Default
+            lookup CollisionCrWd;
+            lookup KernLeftSideVowel;
+            lookup KernAfterO;
+            lookup KernVowelUA;
+            lookup KernAUE;
+            lookup KernAY;
+            lookup KernO_LRT;
+            lookup KernShRTlowCo;
+            lookup Kern_LRT_lowCo_CombMark;
+    script tavt;  # Tai Viet
+        language dflt;  # Default
+            lookup CollisionCrWd;
+            lookup KernLeftSideVowel;
+            lookup KernAfterO;
+            lookup KernVowelUA;
+            lookup KernAUE;
+            lookup KernAY;
+            lookup KernO_LRT;
+            lookup KernShRTlowCo;
+            lookup Kern_LRT_lowCo_CombMark;
+} kern ;
+
+feature mark {  # Mark Positioning
+    script DFLT;  # Default
+        language dflt;  # Default
+            lookup base_L_base;
+            lookup base_UL_base;
+            lookup base_i_base;
+            lookup CollisionVowel;
+            lookup base_tme_base;
+            lookup base_tmt_base;
+            lookup CollisionTone;
+    script latn;  # Latin
+        language dflt;  # Default
+            lookup base_H_base;
+            lookup base_L_base;
+            lookup base_R_base;
+            lookup base_U_base;
+    script tavt;  # Tai Viet
+        language dflt;  # Default
+            lookup base_L_base;
+            lookup base_UL_base;
+            lookup base_i_base;
+            lookup CollisionVowel;
+            lookup base_tme_base;
+            lookup base_tmt_base;
+            lookup CollisionTone;
+} mark ;
+
+feature mkmk {  # Mark to Mark Positioning
+    script DFLT;  # Default
+        language dflt;  # Default
+            lookup base_tmt_mark;
+            lookup base_tme_mark;
+            lookup CollisionVT;
+    script latn;  # Latin
+        language dflt;  # Default
+            lookup base_U_mark;
+    script tavt;  # Tai Viet
+        language dflt;  # Default
+            lookup base_tmt_mark;
+            lookup base_tme_mark;
+            lookup CollisionVT;
+} mkmk ;
+
+feature rclt {  # 
+    script DFLT;  # Default
+        language dflt;  # Default
+            lookup dwarfHighNgo;
+            lookup dwarfCo;
+            lookup dwarfO;
+            lookup dwarfMaiEk;
+    script tavt;  # Tai Viet
+        language dflt;  # Default
+            lookup dwarfHighNgo;
+            lookup dwarfCo;
+            lookup dwarfO;
+            lookup dwarfMaiEk;
+} rclt ;

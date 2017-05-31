@@ -1,0 +1,1438 @@
+/****************************************************************************
+	File: TaiHeritage.gdh
+
+	Rules and feature definitions for Tai Heritage Pro
+
+	Author: Sharon Correll
+
+	This file is part of Tai Heritage Pro font family 
+	(http://scripts.sil.org/TaiHeritage) and is 
+	Copyright (c) 1995-2017 SIL International (http://www.sil.org/),
+	with Reserved Font Name "Heritage".
+
+	This Font Software is licensed under the SIL Open Font License,
+	Version 1.1.
+
+	You should have received a copy of the license along with this Font Software.
+	If this is not the case, go to (http://scripts.sil.org/OFL) for all the
+	details including an FAQ.
+
+****************************************************************************/
+
+#include "stddef.gdh"
+
+Bidi = false;
+
+// TODO: when creating the production version of the font, turn this off.
+// The feature is helpful for debugging but inefficient for real-life use.
+#define COLLISIONFEAT 0
+
+
+// For keeping track of how attachments have happened:
+#define attdir user1
+#define CONS1 1		// initial consonant
+#define VCONS1 2	// vowel that is attached to initial consonant
+#define INITIAL 2	// > INITIAL means vowel-over-final alternate position
+#define VOWEL 3		// base vowel
+#define CONS2 4		// final consonant
+#define VCONS2 5	// vowel that is attached to final consonant
+
+/****************************************************************************
+
+	Features
+	
+****************************************************************************/
+
+table(feature)
+
+vowelPos {
+	id = "vowp";
+	name.LG_USENG = string("Vowel position");
+	settings {
+        initial {
+            value = 0;
+            name.1033 = string("Initial consonant");
+        }
+        ap {
+            value = 1;
+            name.1033 = string("Final consonant for -ap only");
+        }
+        final {
+            value = 2;
+            name.1033 = string("Final consonant");
+        }
+    }
+	default = 0;
+}
+
+lowCoAlt {
+    id = "lcoa";
+    name.LG_USENG = string("Low CO, rotated");
+    default = false;
+}
+
+highToAlt {
+    id = "htoa";
+    name.LG_USENG = string("High TO with tail");
+    default = false;
+}
+
+highPhoAlt {
+    id = "hpho";
+    name.LG_USENG = string("High PHO with closed tail");
+    default = false;
+}
+
+aueAlt {
+    id = "auea";
+    name.LG_USENG = string("AUE, fancy");
+    default = false;
+}
+
+hoHoiAlt {
+    id = "hoia";
+    name.LG_USENG = string("HO HOI alternate");
+    default = false;
+}
+
+breakNoWs {
+	id = "brws";
+	name.LG_USENG = string("Non-white-space breaking");
+	default = true;
+};
+
+diacSel {
+	id = "dsel";
+	name.LG_USENG = string("Diacritic selection");
+	default = true;
+};
+
+#if COLLISIONFEAT
+collisionFix {
+	id = "cfix";
+	name.LG_USENG = string("Collision avoidance");
+	default = true;
+};
+// otherwise always include collision rules
+#endif // COLLISIONFEAT
+
+endtable; // feature
+
+// TODO: rename classes so this is no longer necessary:
+#include "TaiHeritageGlyphNameMap.gdh"
+
+/****************************************************************************
+
+	Glyphs and Classes
+	
+****************************************************************************/
+
+table(glyph)
+
+// Linguistic classes
+
+clsPunc = (g_colon, g_comma, g_period, g_question); // openquote, closequote
+
+//clsConsonant = (U+AA80..U+AAAF);
+clsConsonant = (U+AA80..U+AAAF, g_AA89_dwarf, g_AA8A_Rdwarf, g_AA8A_Rotated);
+
+clsVelarCons = 
+//	(g_lowKo, g_highKo, g_lowKho, g_highKho, g_lowKhho, g_highKhho, g_lowNgo, g_highNgo);
+	(g_AA80,  g_AA81,   g_AA82,   g_AA83,    g_AA84,    g_AA85,     g_AA88,   g_AA89);
+
+clsLeftSideVowel =
+//	(g_e,		g_o,	g_uea,	g_aue,	g_ay);
+	(g_AAB5,	g_AAB6,	g_AAB9, g_AABB,	g_AABC);
+
+clsUpperCombVowel =
+//  (g_maiKang,	g_i,	g_ue,	g_maiKhit,	g_ia,	g_am);
+	(g_AAB0,	g_AAB2,	g_AAB3,	g_AAB7,		g_AAB8,	g_AABE);
+
+clsLowerCombVowel = (g_AAB4);	// u
+
+clsCombVowel = (clsUpperCombVowel, clsLowerCombVowel);
+
+// Note: we don't treat vowel-an (AABD) as a right-side vowel, it behaves specially.
+clsRightSideVowel =
+//	(g_aa,		g_ua,	g_lowO);
+	(g_AAB1,	g_AABA,	g_AAAE);
+// ...but it does act like a right-side vowel for line-breaking:
+clsRightSideVowelLB = (clsRightSideVowel g_AABD);
+
+
+clsCombTone =
+//	(g_maiEk, g_AABF_dwarf, g_maiTho);
+	(g_AABF,  g_AABF_dwarf, g_AAC1);
+				
+clsUpperComb = (clsUpperCombVowel, clsCombTone)
+
+clsCombining = (clsCombVowel, clsCombTone);
+
+clsSymbol =
+//	(g_kon,		g_nueng,	g_sam,		g_hoHoi,	g_koiKoi);
+	(g_AADB,	g_AADC,		g_AADD,		g_AADE,		g_AADF);
+
+
+clsAny = ((U+AA80..U+AAC2), (U+AADB..U+AADF));	// (U+AA00..U+AADF);
+
+g_AA8A_Unrotated = g_AA8A;	// default form
+
+
+g_lowKo = g_AA80;	// AA80
+g_highNgo = g_AA89; // AA89
+g_highVo = g_AAAB;	// AAAB
+g_lowBo = g_AA9A;	// AA9A
+g_vowelAM = g_AABE;	// AABE
+g_vowelAN = g_AABD;	// AABD
+g_lowCo   = U+AA8A;	// AA8A
+cls_lowCo = (g_AA8A_Unrotated, g_AA8A_Rdwarf);
+g_highSo = g_AA8F;	// AA8F
+g_highFo = g_AAA1;	// AAA1
+
+g_maiNueng = g_AAC0; // tone	
+g_maiSong  = g_AAC2; // tone
+
+cls_longRtTail1 = (g_AA8A_Rotated, g_AA8A_Rdwarf, g_AA8C, g_AA8D, g_AA9E);
+cls_longRtTail2 = (g_AA8A_Unrotated, g_AA8F, g_AAA1);
+cls_longRtTail3 = (g_AA9C, g_AAA4);
+cls_longRtTail = (cls_longRtTail1, cls_longRtTail2, cls_longRtTail3);
+cls_longRtTail1_2 = (cls_longRtTail1, cls_longRtTail2);
+cls_longRtTail2_3 = (cls_longRtTail2, cls_longRtTail3);
+
+cls_slantedCons = (g_AA81, g_AA82, g_AA84, g_AA8B, g_AA8F, g_AA91, g_AA92, g_AA94, g_AA96);
+cls_slantedLeftSide = (g_AAB5, g_AAB9);
+		
+
+// Roman
+
+// parallel to cTakesRDia:
+cHorned = (g__ohorn, g__uhorn, g_ohorn, g_uhorn);
+
+
+// normalization - commented out because we generate this using makegdl.
+
+/********************
+clsRomanVowel = (g__a, g__e, g__i, g__o, g__u, g_a, g_e, g_i, g_o, g_u);
+
+clsRCombining = (g_gravecomb, g_acutecomb, g_tildecomb, g_hookabovecomb, g_dotbelowcomb);
+
+// Double diacritics:
+
+// uppercase:
+cls__a_0302_combAbove = (g1ea6, g1ea4, g1eaa, g1ea8, g1eac); // circumflex
+cls__a_0306_combAbove = (g1eb0, g1eae, g1eb4, g1eb2, g1eb6); // breve
+cls__e_0302_combAbove = (g1ec0, g1ebe, g1ec4, g1ec2, g1ec6);
+cls__o_031b_combAbove = (g1edc, g1eda, g1ee0, g1ede, g1ee2); // comb apos
+cls__o_0302_combAbove = (g1ed2, g1ed0, g1ed6, g1ed4, g1ed8); // circumflex
+cls__u_031b_combAbove = (g1eea, g1ee8, g1eee, g1eec, g1ef0); // comb apos
+// lowercase:
+cls_a_0302_combAbove = (g1ea7, g1ea5, g1eab, g1ea9, g1ead);	// circumflex
+cls_a_0306_combAbove = (g1eb1, g1eaf, g1eb5, g1eb3, g1eb7); // breve
+cls_e_0302_combAbove = (g1ec1, g1ebf, g1ec5, g1ec3, g1ec7); // circumflex
+cls_o_031b_combAbove = (g1edd, g1edb, g1ee1, g1edf, g1ee3); // comb apos
+cls_o_0302_combAbove = (g1ed2, g1ed1, g1ed7, g1ed5, g1ed9); // circumflex
+cls_u_031b_combAbove = (g1eeb, g1ee9, g1eef, g1eed, g1ef1); // comb apos
+
+// Single diacritics:	
+cls_base = (g__a, g__e, g__i, g__o, g__u, g_a, g_e, g_i, g_o, g_u);
+cls_baseVowel_grave = (g__agrave, g__egrave, g__igrave, g__ograve, g__ugrave,
+		g_agrave, g_egrave, g_igrave, g_ograve, g_ugrave);
+cls_baseVowel_acute = (g__aacute, g__eacute, g__iacute, g__oacute, g__uacute,
+		g_acute, g_eacute, g_iacute, g_oacute, g_uacute);
+cls_baseVowel_tilde = (g__atilde, g__etilde, g__itilde, g__otilde, g__utilde,
+		g_atilde, g1ebd, g_itilde, g_otilde, g_utilde);
+cls_baseVowel_circum = (g__acircumflex, g__ecircumflex, g__icircumflex, g__ocircumflex, g__ucircumflex,
+		g_acircumflex, g_ecircumflex, g_icircumflex, g_ocircumflex, g_ucircumflex);
+cls_baseVowel_breve = (g__abreve, g__ebreve, g__ibreve, g__obreve, g__ubreve,
+		g_abreve, g_ebreve, g_ibreve, g_obreve, g_ubreve);
+cls_baseVowel_hook     = (g1ea2, g1eba, g1ec8, g1ece, g1ee6,
+		g1ea3, g1ebb, g1ec9, g1ecf, g1ee7);
+cls_baseVowel_dotbelow = (g1ea0, g1eb8, g1eca, g1ecc, g1ee4,
+		g1ea1, g1eb9, g1ecb, g1ecd, g1ee5);
+cls_baseVowel_dier = (g__adieresis, g__edieresis, g__idieresis, g__odieresis, g__udieresis,
+		g_adieresis, g_edieresis, g_idieresis, g_odieresis, g_udieresis);
+cls_baseVowel_macron = (g__amacron, g__emacron, g__imacron, g__omacron, g__umacron,
+		g_amacron, g_emacron, g_imacron, g_omacron, g_umacron);
+
+cls_a_ring = (g__aring, g_aring);
+cls_c_cedilla = (g__ccedilla, g_ccedilla);
+cls_n_tilde = (g__ntilde, g_ntilde);
+cls_ou_horn = (g__ohorn, g_ohorn, g__uhorn, g_uhorn);
+cls_sz_caron = (g__scaron, g_scaron, g__zcaron, g_zcaron);
+cls_y_dier = (g__ydieresis, g_ydieresis);
+
+********************/
+
+endtable; // glyph
+
+
+/****************************************************************************
+
+	Rules
+	
+****************************************************************************/
+
+// Line-breaking rules
+
+table(lb)
+
+if (breakNoWs)
+
+	// Can break before or after symbols (which cluster with punctuation).
+	
+	clsAny {break = BREAK_WORD}  clsPunc? clsSymbol;
+	clsSymbol  clsPunc {break = BREAK_WORD};
+	clsSymbol {break = BREAK_WORD};
+	
+	// These characters are always word/syllable-final. (But if spaces follow, break after them.)
+	g_vowelAN  (g_maiNueng g_maiSong)  g_space {break = BREAK_WORD};
+	(g_maiNueng g_maiSong)  g_space {break = BREAK_WORD};
+	g_vowelAN  g_space {break = BREAK_WORD};
+	
+	g_vowelAN  (g_maiNueng g_maiSong) {break = BREAK_WORD};
+	(g_maiNueng g_maiSong) {break = BREAK_WORD};
+	g_vowelAN {break = BREAK_WORD};
+	
+	// Can break between syllables. The rules below recognize the initial consonants.
+	
+	// DON'T break before low-ko or high-ngo: they could belong with the previous syllable.
+	// (Note: we write out the rules this way to make sure they are long enough to have
+	// precedence over the ones below.)
+	(g_lowKo g_highNgo) {break = -BREAK_INTRA}  clsCombVowel ;
+	(g_lowKo g_highNgo) {break = -BREAK_INTRA}  clsCombTone?  clsRightSideVowelLB ;
+
+	// Labialized consonant sequences that serve as the initial consonant of the cluster:
+	clsLeftSideVowel {break = -BREAK_WORD}  clsVelarCons  g_highVo  clsCombVowel? ;
+	clsLeftSideVowel {break = -BREAK_WORD}  clsVelarCons  g_highVo  clsCombTone?  clsRightSideVowelLB? ;
+	clsVelarCons {break = -BREAK_WORD}  g_highVo  clsCombVowel ;
+	clsVelarCons {break = -BREAK_WORD}  g_highVo  clsCombTone?  clsRightSideVowelLB ;
+	
+	// Single consonants that serve as the initial consonant of the cluster:
+	clsLeftSideVowel {break = -BREAK_WORD}  clsConsonant  clsCombVowel? ;
+	clsLeftSideVowel {break = -BREAK_WORD}  clsConsonant  clsCombTone?  clsRightSideVowelLB? ;
+	clsConsonant {break = -BREAK_WORD}  clsCombVowel ;
+	clsConsonant {break = -BREAK_WORD}  clsCombTone?  clsRightSideVowelLB ;
+
+	// In general, you can break before any left-side vowel. Probably this is covered
+	// by the rules above, but just in case:
+	clsLeftSideVowel {break = -BREAK_WORD};
+
+endif;
+
+endtable; // lb
+
+
+
+table(substitution)
+
+pass(1)
+
+// Roman diacritics
+
+cTakesRDia  cRDia  >  cHorned:(1 2)  _;
+
+g_i  >  g_dotlessi  /  _  cUDia;
+
+
+// Tai Viet
+
+	// high-ngo
+	g_highNgo  >  g_AA89_dwarf  /  g_AABC  _  g_AAC1 ;
+if (vowelPos == final)
+	g_highNgo  >  g_AA89_dwarf
+		/  cls_longRtTail  (cULDia ciDia cLDia ctmeDia ctmtDia)  (ctmeDia ctmtDia)?  _;
+endif;
+
+/***  We're not using the dwarf high-ngo except in a few special circumstances,
+		otherwise:
+if (vowelPos == final)
+	// Make sure the high-ngo that will have the diacritic on it is the one that
+	// gets the dwarf version.
+	g_highNgo  >  g_AA89_dwarf  /  clsConsonant  clsUpperComb  clsUpperComb?  _ ;
+	g_highNgo  >  g_highNgo     /  _  clsUpperComb  clsUpperComb?  clsConsonant ;
+endif
+	g_highNgo  >  g_AA89_dwarf  /  _  clsUpperComb ;  // high-ngo
+***/
+
+	// low-co
+	
+if (lowCoAlt)
+	// Don't need the dwarf form when we are using vowel-over-final position:
+	g_AA8A_Unrotated  >  g_AA8A_Rotated
+		/  _ {vowelPos == final}  (cULDia ciDia)  (ctmeDia ctmtDia)  clsConsonant;
+	g_AA8A_Unrotated  >  g_AA8A_Rdwarf  /  _  (cULDia ciDia) (ctmeDia ctmtDia); 
+	g_AA8A_Unrotated  >  g_AA8A_Rotated;
+endif;
+
+	// vowel-o
+	g_AAB6  >  g_AAB6_dwarf  /  _  g_AA89  (ctmeDia ctmtDia) ;
+	
+	// mai-ek stacking on top of a combining vowel
+	g_AABF  >  g_AABF_dwarf  /  (cULDia ciDia)  _ ;
+
+if (highToAlt)
+	g_AA95  >  g_AA95_Tail;
+endif;
+
+if (highPhoAlt)
+	g_AA9F  >  g_AA9F_clsTail;
+endif;
+
+if (aueAlt)
+	g_AABB  >  g_AABB_Fancy;
+endif;
+
+if (hoHoiAlt)
+  g_AADE  >  g_AADE_Abbrev;
+endif;
+
+// Roman
+
+/********************
+
+// Composition - this is generated automatically by makegdl.
+
+// Make sure circumflex, breve, and apostrophe come first.
+clsRomanVowel  clsRCombining   g031b  >  @1  @3  @2  /  ^  _  _  _;
+clsRomanVowel  g_dotbelowcomb  g0302  >  @1  @3  @2  /  ^  _  _  _; // circumflex
+clsRomanVowel  g_dotbelowcomb  g0306  >  @1  @3  @2  /  ^  _  _  _; // breve
+
+// Double diacritics:
+g__a  g0302  clsRCombining  >  cls__a_0302_combAbove:(1 2 3)  _  _;
+g__a  g0306  clsRCombining  >  cls__a_0306_combAbove:(1 2 3)  _  _;
+g__e  g0302  clsRCombining  >  cls__e_0302_combAbove:(1 2 3)  _  _;
+g__o  g031b  clsRCombining  >  cls__o_031b_combAbove:(1 2 3)  _  _;
+g__o  g0302  clsRCombining  >  cls__o_0302_combAbove:(1 2 3)  _  _;
+g__u  g031b  clsRCombining  >  cls__u_031b_combAbove:(1 2 3)  _  _;
+g_a  g0302  clsRCombining   >  cls_a_0302_combAbove:(1 2 3)  _  _;
+g_a  g0306  clsRCombining   >  cls_a_0306_combAbove:(1 2 3)  _  _;
+g_e  g0302  clsRCombining   >  cls_e_0302_combAbove:(1 2 3)  _  _;
+g_o  g031b  clsRCombining   >  cls_o_031b_combAbove:(1 2 3)  _  _;
+g_o  g0302  clsRCombining   >  cls_o_0302_combAbove:(1 2 3)  _  _;
+g_u  g031b  clsRCombining   >  cls_u_031b_combAbove:(1 2 3)  _  _;
+
+// Single diacritics:
+(g__a, g_a)  g030a  >  cls_a_ring:(1 2)  _;
+(g__c, g_c)  g0327  >  cls_c_cedilla:(1 2)  _;
+(g__n, g_n)  g_tildecomb  >  cls_n_tilde:(1 2)  _;
+(g__o, g_o, g__u, g_u)  g031b  >  cls_o_horn:(1 2)  _;
+(g__s, g_s, g__z, g_z)  g030c  >  cls_s_caron:(1 2)  _;
+g_y  g_acutecomb  >  g_yacute:(1 2)  _;
+
+********************/
+
+endpass; // 1
+
+endtable; // substitution
+
+
+table(positioning)
+
+// Kludge: eventually the advance width of diacritics should be set to zero in the font.
+/***
+pass(1)
+
+	clsCombining {advance.x = 0m}; ///   / ^ _ {advance.x == 0};
+
+endpass;
+***/
+
+
+// Basic attachments
+
+pass (1)
+
+
+	// A left-side vowel keeps the second part of the vowel or tone attached to the first
+	// consonant in the cluster, regardless of the vowelPos feature.
+	
+	clsLeftSideVowel  cTakesULDia=B  cULDia {attach {to=@B; with=ULM; at=ULS}; insert=diacSel; attdir = CONS1}
+		/  _  clsVelarCons?  _ ^ _  clsCombTone? cTakesULDia;
+	clsLeftSideVowel  cTakesiDia=B  ciDia {attach {to=@B; with=iM; at=iS}; insert=diacSel; attdir = CONS1}
+		/  _  clsVelarCons?  _ ^ _  clsCombTone? cTakesiDia;
+
+	clsLeftSideVowel  cTakestmeDia=B  ctmeDia {attach {to=@B; with=tmeM; at=tmeS}; insert=diacSel; attdir = CONS1}
+		/  _  clsVelarCons?  _  _  cTakestmeDia;
+	clsLeftSideVowel  cTakestmtDia=B  ctmtDia {attach {to=@B; with=tmtM; at=tmtS}; insert=diacSel; attdir = CONS1}
+		/  _  clsVelarCons?  _  _  cTakestmtDia;
+
+if (vowelPos == final || vowelPos == ap)
+
+	// -ap combination has a special feature setting:
+	
+	cTakesULDia  g_vowelAM {attach {to=@P; with=ULM; at=ULS}; attdir = CONS2}  g_lowBo=P {insert=diacSel}
+		/  clsVelarCons?  _  ^ _  clsCombTone?  _;
+
+endif;
+
+/*** I don't think we need these; they are handled by the general rules below.
+if (vowelPos == initial || vowelPos == ap)
+
+	cTakesULDia=B  cULDia {attach {to=@B; with=ULM; at=ULS}; insert=diacSel}
+		/  clsVelarCons?  _  ^ _  clsCombTone?  cTakesULDia;
+	cTakesLDia=B  cLDia {attach {to=@B; with=LM; at=LS}; insert=diacSel}
+		/  clsVelarCons?  _  ^ _  clsCombTone?  cTakesLDia;
+	cTakesiDia=B  ciDia {attach {to=@B; with=iM; at=iS}; insert=diacSel}
+		/  clsVelarCons?  _  ^ _  clsCombTone?  cTakesiDia;
+
+endif;
+***/
+
+if (vowelPos == final)
+
+	// Combining vowel + tone: the vowel attaches forward to the following consonant
+	// and the tone attaches backwards to the vowel.
+	cTakesULDia
+		cULDia=V {attach {to=@B; with=ULM; at=ULS}; attdir = CONS2}
+		ctmeDia  {attach {to=@V; with=tmeM; at=tmeS}; insert=diacSel; attdir = VCONS2}
+		clsConsonant=B {insert=diacSel};
+	cTakesULDia
+		cULDia=V {attach {to=@B; with=ULM; at=ULS}; attdir = CONS2}
+		ctmtDia  {attach {to=@V; with=tmtM; at=tmtS}; insert=diacSel; attdir = VCONS2}
+		clsConsonant=B {insert=diacSel};
+	cTakesiDia
+		ciDia=V {attach {to=@B; with=iM; at=iS}; attdir = CONS2}
+		ctmeDia {attach {to=@V; with=tmeM; at=tmeS}; insert=diacSel; attdir = VCONS2}
+		clsConsonant=B {insert=diacSel};
+	cTakesiDia
+		ciDia=V {attach {to=@B; with=iM; at=iS}; attdir = CONS2}
+		ctmtDia {attach {to=@V; with=tmtM; at=tmtS}; insert=diacSel; attdir = VCONS2}
+		clsConsonant=B {insert=diacSel};
+	cTakesLDia
+		cLDia=V {attach {to=@B; with=LM; at=LS}; attdir = CONS2}
+		ctmeDia {attach {to=@B; with=tmeM; at=tmeS}; insert=diacSel; attdir = VCONS2}
+		clsConsonant=B {insert=diacSel};
+	cTakesLDia
+		cLDia=V {attach {to=@B; with=LM; at=LS}; attdir = CONS2}
+		ctmtDia {attach {to=@B; with=tmtM; at=tmtS}; insert=diacSel; attdir = VCONS2}
+		clsConsonant=B {insert=diacSel};
+
+	// Combining vowel with no tone attaches to following consonant.
+	cTakesULDia cULDia {attach {to=@B; with=ULM; at=ULS}; attdir = CONS2}  clsConsonant=B {insert=diacSel};
+	cTakesLDia  cLDia {attach {to=@B; with=LM; at=LS};    attdir = CONS2}  clsConsonant=B {insert=diacSel};
+	cTakesiDia  ciDia {attach {to=@B; with=iM; at=iS};    attdir = CONS2}  clsConsonant=B {insert=diacSel};
+	
+	// Combining tones attach to a central (right-side) vowel if any,
+	// rather than to the following consonant.
+	clsConsonant
+		ctmeDia {attach {to=@V; with=tmeM; at=tmeS}; attdir = VOWEL}
+		clsRightSideVowel=V {insert=diacSel}
+		cTakestmeDia;
+	clsConsonant
+		ctmtDia {attach {to=@V; with=tmtM; at=tmtS}; attdir = VOWEL}
+		clsRightSideVowel=V {insert=diacSel}
+		cTakestmtDia;
+		
+	// Combining tones attach to -an even if there is no final consonant
+	clsConsonant
+		ctmeDia {attach {to=@V; with=tmeM; at=tmeS}; attdir = VOWEL}
+		g_vowelAN=V {insert=diacSel};
+	clsConsonant
+		ctmtDia {attach {to=@V; with=tmtM; at=tmtS}; attdir = VOWEL}
+		g_vowelAN=V {insert=diacSel};
+		
+	// Always attach a combining tone to a combining upper vowel, wherever is is.
+	// Note that we don't need to worry about the lower combining vowel; only upper ones
+	// will be kept on the initial consonant due to the digraph behavior.
+	clsUpperCombVowel=V  ctmeDia {attach {to=@V; with=tmeM; at=tmeS}; insert=diacSel; attdir = VCONS2}  clsConsonant;
+	clsUpperCombVowel=V  ctmtDia {attach {to=@V; with=tmtM; at=tmtS}; insert=diacSel; attdir = VCONS2}  clsConsonant;
+	
+	// Finally, attach a tone mark to the following consonant:
+	cTakestmeDia  ctmeDia {attach {to=@B; with=tmeM; at=tmeS}; attdir = CONS2}  clsConsonant=B {insert=diacSel};
+	cTakestmtDia  ctmtDia {attach {to=@B; with=tmtM; at=tmtS}; attdir = CONS2}  clsConsonant=B {insert=diacSel};
+	
+endif; // (vowelPos == final)
+
+	// General attachment rules.
+
+	cTakesULDia   cULDia  {attach {to=@1; with=ULM; at=ULS}; insert=diacSel; attdir = CONS1}  /  _ ^ _;
+	cTakesiDia    ciDia   {attach {to=@1; with=iM;  at=iS};  insert=diacSel; attdir = CONS1}  /  _ ^ _;
+	
+	cTakesLDia    cLDia   {attach {to=@1; with=LM;  at=LS};  insert=diacSel; attdir = CONS1}
+		/ ^ _  _ {attach.to == 0}  clsCombTone;
+	cTakesLDia    cLDia   {attach {to=@1; with=LM;  at=LS};  insert=diacSel; attdir = CONS1};
+
+	cTakestmeDia  ctmeDia {attach {to=@1; with=tmeM; at=tmeS}; insert=diacSel; attdir = CONS1}  /  _  cLDia?  _;
+	cTakestmtDia  ctmtDia {attach {to=@1; with=tmtM; at=tmtS}; insert=diacSel; attdir = CONS1}  /  _  cLDia?  _;
+	
+	cTakesHDia  cHDia {attach {to=@1; with=HM; at=HS}; insert=diacSel; attdir = CONS1};	// cedilla
+	cTakesRDia  cRDia {attach {to=@1; with=RM; at=RS}; insert=diacSel; attdir = CONS1};	// comb apostrophe
+	cTakesUDia  cUDia {attach {to=@1; with=UM; at=US}; insert=diacSel; attdir = CONS1}  / _  ^  _;
+	
+endpass; // 1
+
+
+pass(2)		// collisions and kerning
+
+// Collisions and kerning
+// Refer to gdl_outline.odt file for the outline of collision situations.
+
+table(glyph)	// classes used for collision fixes
+
+cls_highNgo = (g_AA89, g_AA89_dwarf);
+g_lowCho  = U+AA8C;
+g_highCho = U+AA8D;
+cls_cho = (g_lowCho, g_highCho);
+cls_lowCoFull = (g_AA8A_Unrotated, g_AA8A_Rotated);
+
+g_maiEk = U+AABF;
+cls_maiEk = (g_maiEk, g_AABF_dwarf);
+g_maiTho = U+AAC1;
+
+cls_shortRtTail =
+	(g_AA82, g_AA84, g_AA98, g_AA99, g_AA9A, g_AA9B, g_AA9D, g_AA9F, g_AA9F_clsTail, g_AAA0,
+	 g_AAA2, g_AAA3, g_AAA5);
+
+// These groups collide with certain things:
+cls_shortRtTail1 = (g_AA9B, g_AA9D, g_AA9F, g_AA9F_clsTail, g_AAA5);
+cls_shortRtTail2 = (g_AAA3, g_AAA0);
+cls_sRtTailU = (g_AA99, g_AAA3, g_AABD);	// narrow, look like U
+cls_sRtTailV = (g_AA9A, g_AAA5);			// narrow, look like V
+cls_sRtTailW = (g_AA9B, g_AA9D, g_AA9F);	// look like W
+cls_narrowSRtTail = (cls_sRtTailV, cls_sRtTailU);
+
+cls_rightTail = (cls_longRtTail, cls_shortRtTail1, cls_shortRtTail2);
+
+cls_shortNarrowCons = (g_AA80, g_AA92, g_AAAB);	// AA92 -> AA94???
+cls_narrowCons = (cls_shortNarrowCons, g_AA89);
+
+cls_kernAfterAABB = (g_AA81, g_AA82, g_AA84, g_AA86, g_AA87, g_AA8B, g_AA8F, g_AA91, g_AA92,
+		g_AA94, g_AA96, g_AA9E, g_AAA0, g_AAAE, g_AAAF);
+cls_kernAfterAABC = (cls_kernAfterAABB, g_AA88, g_AA90, g_AA95, g_AA98, g_AA99, g_AA9A, g_AAA1,
+		g_AAA2, g_AAA3, g_AAA8, g_AAAA, g_AAAC, g_AAAD);
+cls_kernBeforeAA99 = (g_AA80, g_AA92, g_AA95, g_AAA9, g_AAAA, g_AAAC, g_AAAD);
+
+#if BOLD
+cls_kernBeforeUA = (cls_sRtTailV, cls_shortRtTail1, cls_longRtTail3, g_AAA2, g_AAA3);
+#endif
+
+cls_shortBeforeUA = (g_AA81, g_AA83, g_AA85, g_AA90, g_AA91, g_AA92,
+		g_AA93, g_AA94, g_AA95, g_AA96, g_AA97, g_AAA6, g_AAA7, g_AAA8,
+		g_AAA9, g_AAAA, g_AAAB, g_AAAC, g_AAAD, g_AAAE, g_AAAF, g_AAB1);
+
+cls_kernHiLo = (g_AA81, g_AA82, g_AA84, g_AA85, g_AA86, g_AA87, g_AA89, g_AA8A_Rdwarf,
+		g_AA8B, g_AA8F, g_AA91, g_AA92, g_AA94, g_AA96, g_AA9E, g_AAA0, g_AAAB,
+		g_AAAE, g_AAAF, g_AAB5, g_AAB9, g_AAC0);
+
+cls_velarShortTail = (g_AA82, g_AA84);
+
+cls_vowelO = (g_AAB6 g_AAB6_dwarf);
+g_maiKang = g_AAB0;
+g_vowelAA = g_AAB1;
+g_vowelI  = g_AAB2;
+g_vowelUE = g_AAB3;
+g_vowelU  = g_AAB4;
+g_maiKhit = g_AAB7;
+g_vowelIA = g_AAB8;
+g_vowelUA = g_AABA;
+g_vowelAy = g_AABC;
+g_vowelAm = g_AABE;
+
+clsLowVowel = clsLowerCombVowel;
+
+endtable; // glyph
+
+#if COLLISIONFEAT
+if (collisionFix)
+// otherwise always include these rules
+#endif
+
+	// The vowel-position feature is irrelevant for the rules that start with left-side vowels, since
+	// no change will happen.
+	
+	// 1. any vowel position
+	// 1.1. left-side vowel
+
+	cls_slantedLeftSide  cls_slantedCons {kern.x = -200m} / _ ^ _;
+	
+	// low-cho (AA8C / AA8C) and high-cho (AA8D / AA8D)
+	cls_vowelO  cls_cho  cls_maiEk{shift.x = 450m; shift.y = 150m};
+	cls_vowelO  cls_cho  g_maiTho {shift.x = 800m; shift.y = 400m};
+	g_vowelAy   cls_cho  g_maiTho {shift.x = 450m; shift.y = 200m};
+	
+	cls_vowelO  g_AA8A_Rotated  g_maiEk  {shift.x = 450m; shift.y = 270m};
+	cls_vowelO  g_AA8A_Rotated  g_maiTho {shift.x = 730m; shift.y = 300m};
+#if BOLD
+	g_vowelAy   g_AA8A_Rotated  g_maiTho {shift.x = 550m; shift.y = 250m};
+#else
+	g_vowelAy   g_AA8A_Rotated  g_maiTho {shift.x = 400m; shift.y = 200m};
+#endif
+
+	cls_vowelO  g_AA8A_Rdwarf    cls_maiEk  {shift.x = 300m; shift.y = 230m};
+//	cls_vowelO  g_AA8A_Rdwarf    g_maiTho {shift.x = -170m; shift.y = -320m}; // ugly
+	cls_vowelO  g_AA8A_Rdwarf    g_maiTho {shift.x = 700m; shift.y = 300m};  // better
+	g_vowelAy   g_AA8A_Rdwarf    g_maiTho {shift.x = 50m; shift.y = -80m};
+
+	// 1.2.1 V-consonants + Vowel-UA
+
+#if BOLD
+	cls_longRtTail3  g_vowelUA {kern.x = 120m} g_maiTho {shift.y = 350m};
+	cls_kernBeforeUA  g_maiTho {shift.y = 150m} g_vowelUA {kern.x = 120m}  /  _  _  _;
+	cls_kernBeforeUA  g_vowelUA {kern.x = 120m}  /  _  clsCombTone? _;
+#else
+	cls_longRtTail3  g_vowelUA  g_maiTho {shift.y = 350m};
+#endif
+
+#if BOLD
+	// 1.2.2 High NGO + vowelUE
+	g_AA89  g_AAB3 {shift{x = -60m; y = 25m}};
+#endif
+
+#if BOLD
+	// 1.2.3 Kern before Vowel O (ADB6)
+	cls_longRtTail3  g_AAB6 {kern.x = 150m}  / _ clsCombVowel? clsCombTone?  _;
+	cls_longRtTail   g_AAB6 / _ clsCombVowel? clsCombTone?  _; // do nothing; otherwise:
+	cls_sRtTailV     g_AAB6 / _ clsCombVowel? clsCombTone?  _; // do nothing
+	cls_sRtTailW     g_AAB6 {kern.x = 100m}  / _ clsCombVowel? clsCombTone?  _;
+    cls_sRtTailU     g_AAB6 {kern.x = 100m}  / _ clsCombVowel? clsCombTone?  _;
+	cls_shortRtTail  g_AAB6 / _ clsCombVowel? clsCombTone?  _; // do nothing
+	clsConsonant     g_AAB6 {kern.x = -150m}  / _ clsCombVowel? clsCombTone?  _;
+    
+	// 1.2.4 Kern before Vowel AUE (ADBB)
+	cls_longRtTail2  g_AABB {kern.x = 250m; shift.y = -50m} / _ clsCombVowel? clsCombTone?  _;
+	cls_longRtTail3  g_AABB {kern.x = 425m; shift.y = -100m} / _ clsCombVowel? clsCombTone?  _;
+	cls_sRtTailW     g_AABB {kern.x = 350m}  / _ clsCombVowel? clsCombTone?  _;
+	cls_shortRtTail  g_AABB {kern.x = 250m}  / _ clsCombVowel? clsCombTone?  _;
+	cls_shortBeforeUA g_AABB {kern.x = -200m}  /  _  clsLowerCombVowel?  _;
+
+	// 1.2.5 Kern before Vowel AY (ADBC)
+	cls_longRtTail3  g_AABC {kern.x = 250m} / _ clsCombVowel? clsCombTone?  _;
+	(g_AA98 g_AA99 g_AA9B g_AA9D) g_AABC {kern.x = 75m} / _ clsCombVowel? clsCombTone?  _;
+	(g_AA84 g_AA9A g_AAA2 g_AAA3 g_AAA5)  g_AABC {kern.x = 230m} / _ clsCombVowel? clsCombTone?  _; // these just need a little more space
+	cls_sRtTailW     g_AABC {kern.x = 200m} / _ clsCombVowel? clsCombTone?  _;
+	
+	// 1.2.7 Kern after short right tail
+	g_AA99  g_AA9F  /  _ clsCombVowel? clsCombTone?  _; // don't kern
+	cls_narrowSRtTail  (cls_sRtTailW g_AAA1) {kern.x = 200m} / _ clsCombVowel? clsCombTone?  _ ;
+#else
+	// 1.2.3 Kern before Vowel O (ADB6)
+	cls_longRtTail3  g_AAB6 {kern.x = 100m} / _ clsCombVowel? clsCombTone?  _;
+	cls_longRtTail   g_AAB6 / _ clsCombVowel? clsCombTone?  _; // do nothing
+	cls_sRtTailV     g_AAB6 / _ clsCombVowel? clsCombTone?  _; // do nothing
+   	cls_sRtTailW     g_AAB6 {kern.x = 50m} / _ clsCombVowel? clsCombTone?  _;
+    cls_sRtTailU     g_AAB6 {kern.x = 50m}  / _ clsCombVowel? clsCombTone?  _;
+	cls_shortRtTail  g_AAB6 / _ clsCombVowel? clsCombTone?  _; // do nothing
+	clsConsonant     g_AAB6 {kern.x = -150m} / _ clsCombVowel? clsCombTone?  _;
+    
+	// 1.2.4 Kern before/after Vowel AUE (AABB)
+	cls_longRtTail2   g_AABB  {kern.x = 175m} / _ clsCombVowel? clsCombTone?  _;
+	cls_longRtTail3   g_AABB  {kern.x = 350m; shift.y = -100m} / _ clsCombVowel? clsCombTone?  _;
+	cls_shortRtTail   g_AABB  {kern.x = 160m} / _ clsCombVowel? clsCombTone?  _;
+	cls_shortBeforeUA g_AABB  {kern.x = -250m}  /  _  clsLowerCombVowel?  _;
+	g_AABB  cls_kernAfterAABB {kern.x = -150m};
+
+	// 1.2.5 Kern before/after Vowel AY (AABC)
+	cls_longRtTail3    g_AABC {kern.x = 100m} / _ clsCombVowel? clsCombTone?  _;
+	cls_sRtTailW       g_AABC {kern.x = 125m} / _ clsCombVowel? clsCombTone?  _;
+	g_AABC  cls_kernAfterAABC {kern.x = -150m};
+
+	// 1.2.6 Consonant AAA9 - not needed in bold?
+	g_AAA9   cls_kernHiLo {kern.x = -150m}  /  _  clsCombVowel? clsCombTone?  _;
+    
+	// 1.2.7 AA99
+	cls_kernBeforeAA99  (g_AA99 g_AABD) {kern.x = -150m} / _ clsCombVowel? clsCombTone?  _;
+#endif
+
+	
+
+	// 1.3 Bold tweaks
+
+#if BOLD
+	g_AA88  g_AAAB  g_AAB2 {shift.x = 65m};
+
+	(g_AAA0)  g_vowelUE {shift.x = -50m};
+	(g_AA88)  g_vowelUE {shift {x = -100m; y = 25m}};
+	(g_AAA4)  g_vowelUE {shift {x = -50m;  y = 25m}};
+	(g_AAA5)  g_vowelUE {shift {x = -130m; y = 40m}};
+	
+	// The next rule is a complement to the first rule in section 2.1.1, which matches
+	// LowCo + upperVowel + tone. The two rules should have the same status, either enabled or disabled.
+//	(g_AA8A g_AA9C g_AAA4)  g_maiKang {shift {x = -100m; y = 50m}} clsCombTone {shift.x = 150m}  / _  _ {attdir <= INITIAL};
+	(g_AA8A g_AA9C g_AAA4)  g_maiKang {shift {x = -100m; y = 50m}}  / _  _ {attdir <= INITIAL};	
+
+	g_AA84  g_AAAB  clsLowVowel?  g_maiTho {shift.x = 100m};
+
+	g_vowelAy  (g_AA9E g_AA8C g_AA8D)  cls_maiEk {shift.x = 150m};			// OT is 100
+	g_vowelAy  g_AA8A_Rotated          cls_maiEk {shift {y = 35m; x = 150m}};	// OT is 100
+	g_vowelAy  cls_highNgo             cls_maiEk {shift.x = 100m};
+
+	g_AABC  g_AA9A  g_maiTho {shift.x = 200m};
+
+	cls_velarShortTail  g_AAAB  (g_AAB0 g_AAB3 g_AAB7 g_AAB8) {shift.x = 130m}
+		/  _  clsLowVowel?  _  _ {attdir <= INITIAL};
+	cls_velarShortTail  g_AAAB  (g_AAB2 g_AABE) {shift {x = 130m; y = -50m}}
+		/  _  clsLowVowel?  _  _ {attdir <= INITIAL};
+#else
+	cls_velarShortTail  g_AAAB  (g_AAB0 g_AAB3 g_AAB7 g_AAB8 g_AAB2 g_AABE) {shift.x = 130m};
+#endif
+
+	// 2. vowel-over-initial
+	// 2.1. AA8A-unrotated
+	// 2.1.1.  upper-vowel-mark
+	
+	// Not sure why we shifted the tone 150m right in the next rule. Best to disable it.
+	// Note that in the 3rd and 4th rule down, the clsUpperCombVowel has been split into ciDia and cULDia. If 
+	// the first rule in this group is re-enabled, it should likewise be split.
+//	g_AA8A_Unrotated  clsUpperCombVowel {shift.x = -100m}  clsCombTone {shift.x = 150m}  /  _  _ {attdir <= INITIAL}  _;
+	g_AA8A_Unrotated  g_AAB2 {shift.x = -50m; shift.y = 200m}  /  g_AA99  _  _ {attdir <= INITIAL}; // straight-line effect
+#if BOLD
+	g_AA8A_Unrotated  ciDia {shift.x = -75m}  /  _  _ {attdir <= INITIAL};
+#else
+	g_AA8A_Unrotated  ciDia {shift.x = -50m}  /  _  _ {attdir <= INITIAL};
+#endif
+	g_AA8A_Unrotated  cULDia {shift.x = -100m}  /  _  _ {attdir <= INITIAL};
+
+	// VOWEL-OVER-FINAL position
+	// long-right-tailed glyphs followed by stuff in vowel-over-final position
+	// Note that it is no adequate to test for the feature being turned on, because in some
+	// cases (ie, left-side vowels) the vowel mark is unchanged. Instead we use
+	// attdir > INITIAL to test for a forward attachment.
+	
+//-- if (vowelPos == final) --
+	
+	// 3. vowel-over-final
+	// 3.1. long-right-tail w/ upper-vowel
+	// 3.1.1. AA89-dwarf
+	
+	// 3.1.1.2.3, 3.1.1.2.1 low-co rotated + AA89 + diac
+#if BOLD
+	g_AA8A_Rotated  g_AAB3 {shift{x = -200m; y = -100m}}  g_AA89_dwarf {kern.x = 450m}
+		/  _ _ {attdir > INITIAL}  clsCombTone?  _;
+	g_AA8A_Rotated  clsUpperComb  g_AA89_dwarf {kern.x = 350m}  /  _ _ {attdir > INITIAL}  clsCombTone?  _;
+#endif
+
+	// 3.1.1.2.1. mai-kang
+#if BOLD
+	cls_longRtTail2  g_maiKang {shift.x = 330m}  g_AA89_dwarf
+		/  _  _ {attdir > INITIAL} ^ clsCombTone?  _;
+#else
+	cls_longRtTail2  g_maiKang {shift.x = 250m}  g_AA89_dwarf
+		/  _  _ {attdir > INITIAL} ^ clsCombTone?  _;
+#endif
+	cls_longRtTail3  g_maiKang {shift.x = 450m}  g_AA89_dwarf
+		/  _  _ {attdir > INITIAL} ^ clsCombTone?  _;
+	// 3.1.1.2.2. vowel-I
+	cls_longRtTail3  g_vowelI {shift.y = -150m}  g_AA89_dwarf {kern.x = 250m}
+		/  _  _ {attdir > INITIAL} ^ clsCombTone?  _;
+	cls_longRtTail   g_vowelI {shift.y = -150m}  g_AA89_dwarf
+		/  _  _ {attdir > INITIAL} ^ clsCombTone?  _;
+	// 3.1.1.2.3. vowel-UE
+	cls_longRtTail1  g_vowelUE {shift {x = -100m; y = -150m}}  g_AA89_dwarf
+		/  _  _ {attdir > INITIAL} ^ clsCombTone?  _;
+#if BOLD
+	cls_longRtTail2  g_vowelUE {shift {x = 550m; y = 50m}}  g_AA89_dwarf
+		/  _  _ {attdir > INITIAL} ^ clsCombTone?  _;
+#else
+	cls_longRtTail2  g_vowelUE {shift {x = 400m; y = 50m}}  g_AA89_dwarf
+		/  _  _ {attdir > INITIAL} ^ clsCombTone?  _;
+#endif
+	// 3.1.1.2.4. mai-khit
+	cls_longRtTail2  g_maiKhit {shift {x = 100m; y = -50m}}  g_AA89_dwarf
+		/  _  _ {attdir > INITIAL} ^ clsCombTone?  _;
+	cls_longRtTail3  g_maiKhit {shift {x = 150m; y = -70m}}  g_AA89_dwarf {kern.x = 50m}
+		/  _  _ {attdir > INITIAL} ^ clsCombTone?  _;
+	// 3.1.1.2.5. vowel-IA
+	cls_longRtTail   g_vowelIA {shift {x = 200m; y = -100m}}  g_AA89_dwarf
+		/  _  _ {attdir > INITIAL} ^ clsCombTone?  _;
+
+		
+	// Tone mark on top of vowel
+	
+	// 3.1.1.1.1. AA89-dwarf + mai-ek
+	cls_longRtTail1  g_maiEk {shift.x = 300m}  / _  clsLowVowel?  _ {attdir > INITIAL} ^ g_AA89_dwarf;
+	cls_longRtTail2  g_maiEk {shift.x = 350m}  / _  clsLowVowel?  _ {attdir > INITIAL} ^ g_AA89_dwarf;
+	cls_longRtTail3  g_maiEk {shift {x = 400m; y = -200m}}   / _  clsLowVowel?  _ {attdir > INITIAL} ^ g_AA89_dwarf;
+	// 3.1.1.1.2. AA89-dwarf + mai-tho
+#if BOLD
+	cls_longRtTail1  g_maiTho {shift {x = 730m; y = -200m}}  / _  clsLowVowel?  _ {attdir > INITIAL} ^ g_AA89_dwarf;
+	cls_longRtTail2  g_maiTho {shift {x = 730m; y = -150m}}  / _  clsLowVowel?  _ {attdir > INITIAL} ^ g_AA89_dwarf; 
+#else
+	cls_longRtTail1  g_maiTho {shift {x = 600m; y = -200m}}  / _  clsLowVowel?  _ {attdir > INITIAL} ^ g_AA89_dwarf;
+	cls_longRtTail2  g_maiTho {shift {x = 600m; y = -150m}}  / _  clsLowVowel?  _ {attdir > INITIAL} ^ g_AA89_dwarf; 
+#endif
+	cls_longRtTail3  g_maiTho {shift {x = 750m; y = -150m}}  / _  clsLowVowel?  _ {attdir > INITIAL} ^ g_AA89_dwarf;
+	
+	// 3.1.1.2.2.
+	
+	cls_longRtTail3  g_vowelI  g_AA89_dwarf {kern.x = 300m}  /  _  _  clsCombTone?  _ ;
+
+	// 3.1.1.2.9.  any vowel
+
+	// 3.1.1.2.9.1. mai-ek
+	cls_maiEk  {shift.x = 150m}
+		/  cls_longRtTail1  (g_maiKang g_vowelUE g_vowelIA g_vowelI) {attdir > INITIAL}  _ ^ g_AA89_dwarf;
+	cls_maiEk  {shift.x = 250m}
+		/  cls_longRtTail3  g_vowelI {attdir > INITIAL}  _ ^ g_AA89_dwarf;
+	// 3.1.1.2.9.2. mai-tho
+	g_maiTho {shift.y = 300m}
+		/  cls_longRtTail  (g_vowelUE g_vowelIA g_vowelI) {attdir > INITIAL}  _ ^ g_AA89_dwarf;
+	g_maiTho {shift.y = 350m}
+		/  cls_longRtTail  clsUpperCombVowel {attdir > INITIAL}  _ ^ g_AA89_dwarf;
+		
+	// end of 3.1.1. AA89-dwarf
+		
+	// 3.1.2. VOF + long-right-tail w/ upper-vowel + short-narrow
+	
+	cls_longRtTail3  g_maiKang {shift.x = 250m}  cls_shortNarrowCons
+		/  _  _ {attdir > INITIAL} ^ clsCombTone?  _;
+	g_maiTho {shift {y = 350m}}
+		/  cls_longRtTail3  clsUpperCombVowel {attdir > INITIAL}  _  cls_shortNarrowCons;
+#if BOLD
+	g_maiTho {shift {x = 450m; y = 100m}}
+		/  cls_longRtTail1  clsUpperCombVowel {attdir > INITIAL}  _  cls_shortNarrowCons;
+#endif
+	g_maiTho {shift {x = 850m; y = 100m}}
+		/  cls_longRtTail1_2  clsUpperCombVowel {attdir > INITIAL}  _  cls_shortNarrowCons;
+		
+	// 3.1.3 VOF + long-right-tail w/ upper-vowel + short-rt-tail
+
+#if BOLD
+	cls_longRtTail2_3  clsUpperCombVowel  cls_sRtTailV {kern.x = 600m}  /  _  _ {attdir > INITIAL} ^  clsCombTone?  _ ;
+	cls_longRtTail2_3  clsUpperCombVowel  cls_sRtTailV {kern.x = 350m}  /  _  _ {attdir > INITIAL} ^  clsCombTone?  _ ;
+#else
+	cls_longRtTail3  g_vowelAM {shift.x = 120m}  cls_sRtTailV
+		/  _  _ {attdir > INITIAL} ^ clsCombTone?  _;
+#endif
+	g_maiTho {shift {x = 550m; y = 200m}}
+		/  cls_longRtTail  clsUpperCombVowel {attdir > INITIAL}  _  cls_narrowSRtTail;
+
+	// 3.1.3.1.2. lowCo-rotated + narrow-right-tail
+#if BOLD
+	g_AA8A_Rotated  g_maiTho {shift.y = -130m}  cls_narrowSRtTail {kern.x = 300m};
+#endif
+	
+	// 3.1.2.2.4.1. / 3.1.2.2.5.1.
+	cls_maiEk {shift.x = 200m}
+		/ cls_longRtTail2  (g_maiKhit g_vowelIA) {attdir > INITIAL}  _  cls_shortNarrowCons;
+
+	// 3.1.2. / 3.1.3.
+	g_maiTho {shift.x = 400m}
+		/ cls_longRtTail3  clsLowVowel {attdir > INITIAL}  _  (cls_narrowSRtTail cls_narrowCons);
+
+	// 3.1.2.2.3 short-narrow-cons + vowelUE
+	// This rule doesn't make sense. I suspect it's intended to be applied when "vowel over final" 
+	// is on, but the attribute was omitted. Disable it for now.
+// #if BOLD
+//	cls_longRtTail2  g_vowelUE  g_AA92 {kern.x = 150m};
+// #endif
+	
+	// 3.1.6.1. vowel-UA
+	cls_longRtTail1  cls_maiEk {shift.x = 600m}  g_vowelUA  /  _  _ {attdir > INITIAL}  _;
+	cls_longRtTail2  cls_maiEk {shift.x = 800m}  g_vowelUA  /  _  _ {attdir > INITIAL}  _;
+	cls_longRtTail3  cls_maiEk {shift.x = 1200m}  g_vowelUA  /  _  _ {attdir > INITIAL}  _;
+	cls_longRtTail1  g_maiTho{shift {x = 1000m; y = 250m}}  g_vowelUA  /  _  _ {attdir > INITIAL}  _;
+	cls_longRtTail2  g_maiTho{shift.x = 1200m}  g_vowelUA  /  _  _ {attdir > INITIAL}  _;
+	cls_longRtTail3  g_maiTho{shift {x = 1250m; y = -120m}}  g_vowelUA  /  _  _ {attdir > INITIAL}  _;
+
+	// 3.1.6.2. vowel-low-O = g_AAAE
+	cls_longRtTail2  g_maiTho {shift.y = -150m}  g_AAAE  /  _  _ {attdir > INITIAL}  _;
+	cls_longRtTail3  g_maiTho {shift.x = 400m}   g_AAAE  /  _  _ {attdir > INITIAL}  _;
+
+	// 3.1.6.3. vowel-AN
+#if BOLD
+	cls_longRtTail2  g_maiTho {shift.x = 200m}  g_vowelAN                  /  _  _ {attdir > INITIAL}  _;
+	cls_longRtTail3  g_maiTho {shift.x = 300m}  g_vowelAN {kern.x = 200m}  /  _  _ {attdir > INITIAL}  _;
+#else
+	cls_longRtTail3  g_maiTho {shift.x = 300m}  g_vowelAN  /  _  _ {attdir > INITIAL}  _;
+#endif // BOLD
+
+
+	// 3.1.2. short-narrow-consonant
+	cls_longRtTail3  g_vowelI {shift.y = -150m}  cls_shortNarrowCons / _  _ {attdir > INITIAL} ^ clsCombTone?  _;
+	
+	cls_longRtTail1  g_maiTho {shift.y = -50m}  cls_shortNarrowCons  /  _ clsLowVowel? _ {attdir > INITIAL}  _;
+	cls_longRtTail2  g_maiTho {shift {x = 50m; y = -50m}}  cls_shortNarrowCons  /  _ clsLowVowel? _ {attdir > INITIAL}  _;
+	cls_longRtTail3  g_maiTho {shift {x = 350m; y = -50m}}  cls_shortNarrowCons  /  _ clsLowVowel? _ {attdir > INITIAL}  _;
+	
+	// 3.1.3.2.2. vowel-I (+ mai-tho)
+	cls_longRtTail3
+		g_vowelI {shift {x = -150m; y = -200m}}
+		cls_narrowSRtTail {kern.x = 300m}
+			/  _  _ {attdir > INITIAL}  cls_maiEk?  _;
+	cls_longRtTail3
+		g_vowelI {shift {x = -150m; y = -200m}}
+		g_maiTho {shift.y = 350m}
+		cls_narrowSRtTail {kern.x = 300m}
+		/  _  _ {attdir > INITIAL}  _  _;
+	cls_longRtTail2
+		g_vowelI {shift {x = -150m; y = -200m}}
+		cls_maiEk {shift.x = 50m}
+		cls_sRtTailV {kern.x = 150m}
+			/  _  _ {attdir > INITIAL}  _  _;
+#if BOLD
+	cls_longRtTail1_2
+		g_vowelI {shift {x = -175m; y = -230m}}
+		cls_narrowSRtTail {kern.x = 200m}
+			/  _  _ {attdir > INITIAL}  cls_maiEk?  _;
+#else
+	cls_longRtTail1_2
+		g_vowelI {shift {x = -150m; y = -200m}}
+		cls_narrowSRtTail
+			/  _  _ {attdir > INITIAL}  cls_maiEk?  _;
+#endif // BOLD
+
+	cls_longRtTail1_2
+		g_vowelI {shift {x = -150m; y = -200m}}
+		g_maiTho {shift {x = 100m; y = 300m}}
+		cls_narrowSRtTail
+		/  _  _ {attdir > INITIAL}  _  _;
+
+	// 3.1.3. narrow-short-right-tail
+	cls_longRtTail3  g_vowelI {shift {x = -150m; y = -200m}}  cls_sRtTailV {kern.x = 200m}
+		/  _  _ {attdir > INITIAL} ^ clsCombTone?  _;
+	cls_longRtTail3  g_vowelI {shift {x = -150m; y = -200m}}  cls_sRtTailU {kern.x = 100m}
+		/  _  _ {attdir > INITIAL} ^ clsCombTone?  _;
+
+	// 3.1.3. 
+	cls_longRtTail1  g_maiTho {shift {x = 150m; y = -50m}}  cls_narrowSRtTail  /  _ clsLowVowel? _ {attdir > INITIAL}  _;
+	cls_longRtTail2  g_maiTho {shift.x = 250m}  cls_narrowSRtTail  /  _ clsLowVowel? _ {attdir > INITIAL}  _;
+	cls_longRtTail3  g_maiTho {shift.x = 400m}  cls_narrowSRtTail  /  _ clsLowVowel? _ {attdir > INITIAL}  _;
+	// 3.1.1.1.
+	cls_longRtTail1  g_maiTho {shift {x = 450m; y = -150m}}  g_AA89_dwarf  /  _ clsLowVowel? _ {attdir > INITIAL}  _;
+	cls_longRtTail2  g_maiTho {shift {x = 500m; y = -150m}}  g_AA89_dwarf  /  _ clsLowVowel? _ {attdir > INITIAL}  _;
+	cls_longRtTail3  g_maiTho {shift {x = 620m; y = -120m}}  g_AA89_dwarf  /  _ clsLowVowel? _ {attdir > INITIAL}  _;
+
+	// 3.1.1.2.3. AA89-dwarf + vowel-UE
+	cls_longRtTail3  g_vowelUE {shift.x = 650m}  g_AA89_dwarf  /  _  _ {attdir > INITIAL} ^ clsCombTone?  _;
+	
+	// 3.1.2.2.3.1. mai-ek
+	cls_maiEk {shift.x = 200m}  /  cls_longRtTail2  g_vowelUE  _ {attdir > INITIAL}  (cls_narrowSRtTail cls_shortNarrowCons);
+
+	// 3.1.3.2.3. short-right-tail + vowel-UE
+	// 3.1.1.2.3. short-narrow-cons
+	cls_longRtTail3  g_vowelUE {shift.x = 200m}  cls_sRtTailU  /  _  _ {attdir > INITIAL} ^ clsCombTone?  _;
+#if BOLD
+	cls_longRtTail3  g_vowelUE {shift.x = 350m}  (cls_narrowSRtTail cls_shortNarrowCons) {kern.x = 150m}
+                                                               /  _  _ {attdir > INITIAL} ^ clsCombTone?  _;
+#else
+	cls_longRtTail3  g_vowelUE {shift.x = 200m}  (cls_narrowSRtTail cls_shortNarrowCons)
+                                                               /  _  _ {attdir > INITIAL} ^ clsCombTone?  _;
+#endif
+
+	// 3.1.4. AAAB (high-vo) is slightly narrow
+	cls_longRtTail   g_vowelI  g_maiTho {shift.y = 300m}  / _  _ {attdir > INITIAL}  _ ^ g_AAAB;
+	cls_longRtTail2  g_vowelI  cls_maiEk{shift.x = 100m}  / _  _ {attdir > INITIAL}  _ ^ g_AAAB;
+	
+	// 3.1.6.4. vowel-AA -- very narrow
+	cls_longRtTail   cls_maiEk{shift {x = 100m; y = -150m}}  / _  _ {attdir > INITIAL} ^ g_vowelAA;
+	cls_longRtTail1  g_maiTho {shift {x = 300m; y = -150m}}  / _  _ {attdir > INITIAL} ^ g_vowelAA;
+	cls_longRtTail2  g_maiTho {shift {x = 450m; y = -150m}}  / _  _ {attdir > INITIAL} ^ g_vowelAA;
+#if BOLD
+	cls_longRtTail3  g_maiTho {shift {x = 630m; y = -150m}}  g_vowelAA {kern.x = 200m} / _  _ {attdir > INITIAL} ^ _;
+#else
+	cls_longRtTail3  g_maiTho {shift {x = 630m; y = -150m}}  / _  _ {attdir > INITIAL} ^ g_vowelAA;
+#endif
+	
+	// 3.1.1.2.7
+	cls_maiEk {shift.x = 200m}
+		/ cls_longRtTail2  (g_maiKhit g_vowelIA) {attdir > INITIAL}   _ (cls_sRtTailV g_AA89_dwarf);
+		
+	// 3.1.2.2.9.1. short-narrow-cons, mai-ek
+	cls_maiEk {shift.x = 400m}
+		/ cls_longRtTail3  (g_maiKhit g_vowelIA) {attdir > INITIAL}  _  cls_shortNarrowCons;
+	// 3.1.2.1.9.2 short-narrow-cons, mai-tho
+#if BOLD
+	g_maiTho {shift.x = 200m}
+		/ cls_longRtTail2_3  _ {attdir > INITIAL}  g_AA92;
+#endif
+	// 3.1.1.2.7
+	cls_maiEk {shift.x = 450m}
+		/ cls_longRtTail3  (g_maiKhit g_vowelIA) {attdir > INITIAL}  _  (cls_sRtTailV g_AA89_dwarf);
+	// 3.1.3.2.9.1
+	cls_maiEk {shift.x = 100m}
+		/ cls_longRtTail3  clsCombVowel {attdir > INITIAL}  _  cls_sRtTailV;
+	// 3.1.2.2.9.1, 3.1.3.2.9.1
+	cls_maiEk {shift.x = 230m}
+		/ cls_longRtTail3  clsCombVowel {attdir > INITIAL}  _  (cls_narrowSRtTail cls_narrowCons);
+	
+	// 3.1.9.1.1.2.
+	g_maiTho {shift.y = -100m}
+		/ cls_longRtTail1   clsLowVowel?  _ {attdir > INITIAL}  clsConsonant;
+	g_maiTho {shift {x = -100m; y = 300m}}
+		/ cls_longRtTail2_3 clsLowVowel?  _ {attdir > INITIAL}  clsConsonant;
+
+	// 3.1.9.2.1.2.
+	g_maiTho {shift.y = 300m}
+		/ cls_longRtTail1   clsUpperCombVowel {attdir > INITIAL}  _  clsConsonant;
+	g_maiTho {shift {x = -100m; y = 300m}}
+		/ cls_longRtTail2_3 clsUpperCombVowel {attdir > INITIAL}  _  clsConsonant;
+
+	// --- end of 3.1 VOF + long-right-tail w/ upper-vowel
+
+	// low-pho (AA9E / AA9E)
+	cls_vowelO  g_AA9E  cls_maiEk  {shift.x = 400m; shift.y = 80m};
+	cls_vowelO  g_AA9E  g_maiTho {shift.x = 750m; shift.y = 300m};
+	
+	// high-ngo (AA89)
+	// These 3 will never fire, since we only have the dwarf version of AAB6:
+//	g_AAB6  cls_highNgo  cls_maiEk {shift.x = 350m}; // this works, but solution below is compatible with mai-tho treatment
+	g_AAB6  cls_highNgo  cls_maiEk {shift.y = 800m};
+	g_AAB6  cls_highNgo  g_maiTho  {shift.x = 900m; shift.y = 400m};
+
+	// 2.2.1 VOI + AAB6-dwarf
+	g_AAB6_dwarf  cls_highNgo  cls_maiEk {shift.y = 450m};
+	g_AAB6_dwarf  cls_highNgo  g_maiTho  {shift.y = 500m};
+	// 2.3.1. 
+//	g_vowelAy     cls_highNgo  g_maiTho  {shift.x = 100m; shift.y = -100m};
+#if BOLD
+	g_vowelAy     cls_highNgo  g_maiTho  {shift.y = -200m};
+#else
+	g_vowelAy     cls_highNgo  g_maiTho  {shift.y = -100m};
+#endif
+		
+	// 2.4  AA9E
+#if BOLD
+	g_vowelAy  g_AA9E  g_maiTho {shift {x = 600m; y = 300m}};
+#else
+	g_vowelAy  g_AA9E  {kern.x = -150m}  g_maiTho {shift {x = 500m; y = 250m}};
+#endif
+
+	// 2.5 - various
+#if BOLD
+	cls_vowelO
+		(g_AA9A) {kern.x = 100m}
+		g_maiTho {shift.y = -175m};
+	cls_vowelO
+		(g_AA8A g_AAA4 g_AAA5) {kern.x = 100m}
+		g_maiTho {shift.y = -120m};
+	cls_vowelO
+		(g_AA85 g_AA86 g_AA87 g_AA8A_Unrotated g_AA9C g_AAAB g_AAAE g_AAAF
+			g_AA80 g_AA81 g_AA8B g_AA8E g_AA91 g_AA92 g_AA94 g_AA95 g_AA95_Tail g_AA96 g_AA97 g_AA99 g_AA9D g_AA9F
+			g_AA9F_clsTail g_AAA0 g_AAA3 g_AAA6 g_AAA7 g_AAA8 g_AAAC g_AAAD g_AAA9)
+		g_maiTho {shift.y = -120m};
+#else
+	// low-co (AA8A / AA8A)
+	// We either need the AA8A-dwarf rules or the full-size rules, probably not both.
+	// The way the dwarf rule is written above, we only need the full-size rules here.
+	// But the others don't hurt.
+	cls_vowelO  g_AA8A_Unrotated g_maiTho {shift.x = -80m; shift.y = -130m};
+
+	cls_vowelO
+		(g_AA85 g_AA86 g_AA87 g_AA9A g_AA9C g_AAA4 g_AAA5 g_AAAB g_AAAE g_AAAF)
+		g_maiTho {shift.y = -120m};
+#endif
+		
+	// short-right-tail + diacritic attached on following glyph
+//if (vowelPos == final)
+	// 3.2.1.1.
+	cls_shortRtTail  g_AAB7 {shift.x = 100m; shift.y = 100m}  g_AA89  /  _  _ {attdir > INITIAL}  _;
+#if BOLD
+	// 3.1.3.1.2
+	cls_shortRtTail  clsUpperCombVowel {shift.x = 250m}  cls_narrowCons
+		/  _  _ {attdir > INITIAL}  clsCombTone?  _;
+	// 3.2.1.2.
+	cls_shortRtTail  clsUpperCombVowel {shift {x=100m; y=50m}} cls_narrowSRtTail {kern.x = 300m}
+		/  _  _ {attdir > INITIAL}  clsCombTone?  _;
+#else
+	cls_shortRtTail  g_AABE {shift.x = 250m; shift.y = 100m}  g_AA9A  /  _  _ {attdir > INITIAL}  _;
+	// 3.2.1.2.
+	cls_shortRtTail  g_vowelI {shift.x = 250m} g_AA9A  /  _  _  {attdir > INITIAL}  _;	
+#endif
+	
+	// 3.2.2.1.
+#if BOLD
+	cls_shortRtTail  g_maiTho {shift.x = 200m}  cls_narrowSRtTail {kern.x = 50m}
+		/  _   clsLowVowel?  _ {attdir > INITIAL}  _;
+	cls_shortRtTail  g_maiTho {shift.x = 550m}  g_vowelAA
+		/  _  _ {attdir > INITIAL}  _;
+#else
+	cls_shortRtTail  g_maiTho {shift.x = 400m}  g_vowelAA
+		/  _  _ {attdir > INITIAL}  _;
+#endif
+
+	// 3.2.2.2.
+	cls_shortRtTail  g_maiTho {shift {x = 350m; y = 50m}} g_vowelUA
+		/  _  _ {attdir > INITIAL}  _;
+	
+	// 3.2.1.9.
+	cls_shortRtTail1  g_vowelI {shift {y = 200m; x = 100m}}  (g_AA89 cls_narrowSRtTail)
+		/  _  _ {attdir > INITIAL}  clsCombTone?  _;
+	cls_shortRtTail1  g_vowelI {shift {y = -200m; x = 50m}}  cls_shortNarrowCons
+		/  _  _ {attdir > INITIAL}  clsCombTone?  _;
+	
+	// 3.2.1.9.
+	cls_shortRtTail1
+		(g_vowelUE g_maiKhit g_vowelIA) {shift {x = 150m; y = 100m}}
+		(g_AA80 g_AA92 g_AA9A g_AAAB g_AAA5)
+			/  _  _ {attdir > INITIAL}  clsCombTone?  _;
+	
+	// 3.2.1.3.1.	
+	cls_shortRtTail1  g_vowelU  g_maiTho {shift.x = 200m}  cls_sRtTailV
+		/  _  _ {attdir > INITIAL}  _  _;
+	// 3.2.1.3.2.
+	cls_shortRtTail2  g_vowelUE {shift {x = 150m; y = 100m}} cls_sRtTailV
+		/  _  _ {attdir > INITIAL}  clsCombTone?  _;
+
+		
+//-- endif; (vowelPos == final) --
+		
+//-- if (vowelPos != final) --
+
+	// low-co + low-co, normal position
+	// 2.6.
+	g_AA8A_Rotated  g_AA8A_Rotated  cls_maiEk {shift.x = 200m; shift.y = 50m}   /  _  _  clsLowVowel?  _ {attdir <= INITIAL};
+	g_AA8A_Rotated  g_AA8A_Rotated  g_maiTho  {shift.x = 480m; shift.y = 200m}  /  _  _  clsLowVowel?  _ {attdir <= INITIAL};
+	g_AA8A_Rotated  g_AA8A_Rotated  cULDia    {shift.x = 580m; shift.y = 320m}  /  _  _  _ {attdir <= INITIAL};
+	g_AA8A_Rotated  g_AA8A_Rotated  g_AAB2    {shift.x = 250m; shift.y = 200m}  /  _  _  _ {attdir <= INITIAL};
+	g_AA8A_Rotated  g_space  g_AA8A_Rotated  g_AAB2 {shift.x = 330m; shift.y = 130m}  /  _  _  _ {attdir <= INITIAL};
+	// 2.6.1.
+	g_AA8A_Rotated  g_AA8A_Rdwarf  g_vowelI {shift.x = 600m; shift.y = 60m}  /  _  _  _ {attdir <= INITIAL};
+	g_AA8A_Rotated  g_AA8A_Rdwarf  g_vowelUE {shift.x = -70m; shift.y = -100m}  /  _  _  _ {attdir <= INITIAL};
+	g_AA8A_Rotated  g_AA8A_Rdwarf  g_maiKang {shift.y = -70m}  /  _  _  _ {attdir <= INITIAL};
+	
+	// 2.6.2. alternate forms
+	g_AA8A_Unrotated  g_AA8A_Unrotated  g_maiTho {shift.y = -150m}          / _ ^ _  _ {attdir <= INITIAL};
+	// 2.6.2.1. with tone marks
+	g_AA8A_Unrotated  g_AA8A_Unrotated  cULDia  cls_maiEk {shift.x = 150m}  / _ ^ _  _ {attdir <= INITIAL}  _;
+	g_AA8A_Unrotated  g_AA8A_Unrotated  cULDia  g_maiTho  {shift.x = 800m; shift.y = 100m}  / _ ^ _  _ {attdir <= INITIAL}  _;
+	g_AA8A_Unrotated  g_AA8A_Unrotated  g_AAB2 {shift.x = -150m; shift.y = -300m}  / _ ^ _  _;
+	g_AA8A_Unrotated  g_AA8A_Unrotated  g_AAB2 {shift.x = -150m; shift.y = -300m}
+							cls_maiEk {shift.x = 100m}  / _ ^ _  _ {attdir <= INITIAL}  _;
+	g_AA8A_Unrotated  g_AA8A_Unrotated  g_AAB2 {shift.x = -150m; shift.y = -300m}
+							g_maiTho {shift.x = 950m}  / _ ^ _  _ {attdir <= INITIAL}  _;
+							
+//-- endif; (vowelPos != final) --
+
+//-- if (vowelPos == final)
+
+	// 3.1.7. low-co + low-co, vowel-over final
+
+	// 3.1.7.1
+	g_AA8A_Rotated  cls_maiEk {shift.x = 200m; shift.y = 50m}   /  _  clsLowVowel?  _ {attdir > INITIAL} ^ g_AA8A_Rotated;
+	g_AA8A_Rotated  g_maiTho  {shift.x = 480m; shift.y = 200m}  /  _  clsLowVowel?  _ {attdir > INITIAL} ^ g_AA8A_Rotated;
+	g_AA8A_Rotated  cULDia    {shift.x = 580m; shift.y = 320m}  /  _  _ {attdir > INITIAL}  clsCombTone? ^ g_AA8A_Rotated;
+	g_AA8A_Rotated  g_AAB2    {shift.x = 250m; shift.y = 200m}  /  _  _ {attdir > INITIAL}  clsCombTone? ^ g_AA8A_Rotated;
+	// 3.1.7.2. alternate forms
+	g_AA8A_Unrotated  g_maiTho {shift.y = -150m}  g_AA8A_Unrotated {kern.x = 150m}
+		/  _  clsLowVowel?  _ {attdir > INITIAL}  clsCombTone? ^ _;
+	g_AA8A_Unrotated  cULDia  cls_maiEk {shift.x = 150m}  /  _  _ {attdir > INITIAL}  _ ^ g_AA8A_Unrotated;
+	g_AA8A_Unrotated  cULDia  g_maiTho  {shift.x = 800m; shift.y = 100m}
+			/  _  _ {attdir > INITIAL}  _ ^ g_AA8A_Unrotated;
+	g_AA8A_Unrotated  g_AAB2 {shift.x = -150m; shift.y = -300m}
+			/  _ ^ _ {attdir > INITIAL} g_AA8A_Unrotated;
+	g_AA8A_Unrotated  g_AAB2 {shift.x = -150m; shift.y = -300m}  cls_maiEk {shift.x = 100m}
+			/  _ ^ _ {attdir > INITIAL}  _  g_AA8A_Unrotated;
+	g_AA8A_Unrotated  g_AAB2 {shift.x = -150m; shift.y = -300m}  g_maiTho {shift.x = 950m}
+			/  _ ^ _ {attdir > INITIAL}  _  g_AA8A_Unrotated;
+			
+//-- endif;(vowelPos == final)
+
+table(glyph)
+	// Based on OpenType code:
+	clsUpCombVowelCurved = (g_AAB0, g_AAB3);
+	clsUpCombVowelStraight = (g_AAB7, g_AAB8, g_AABE);
+	clsNarrowCons_Tall = (g_AA8A_Rotated, g_AA8A_Rdwarf, g_AA8C, g_AA8D, g_AA9E);
+	clsNarrowCons_1 = (g_AA80, g_AA85, g_AA86, g_AA87, g_AA89, g_AA89_dwarf, g_AA8A, g_AA8A_Rotated,
+			g_AA97, g_AA9A, g_AA9C, g_AAA4, g_AAA5, g_AAA6, g_AAA7, g_AAA9, g_AAAB, g_AAAE, g_AAAF);
+	clsNarrowCons_2 = (g_AA81, g_AA8B, g_AA8E, g_AA91, g_AA92, g_AA94, g_AA95, g_AA95_Tail,
+			g_AA96, g_AA99, g_AA9D, g_AA9F, g_AA9F_clsTail, g_AAA0, g_AAA1, g_AAA3, g_AAAC,
+			g_AAAD);
+	clsNarrowCons_2a = (g_AA81, g_AA8E, g_AA92);
+	clsNarrowCons_3 = (g_AA82, g_AA84, g_AA8F, g_AAA8);
+	clsHighNgo = (g_AA89, g_AA89_dwarf);
+
+	cls_NarrowCons_iBase = (g_AA89, g_AAA5, g_AA9C, g_AA9A, g_AA8A, g_AAA4);
+
+	cls_NarrowSquareCons = (g_AA92 g_AAA9 g_AA99);
+endtable;
+
+// 4. Multi-syllable collisions
+
+#if BOLD
+
+cls_longRtTail3  g_AA99 {kern.x = 380m}  g_vowelI  /  _ clsCombVowel? _ _;
+cls_longRtTail3  (g_AA92 g_AA80) {kern.x = 325m}  g_vowelI {shift.x = 75m}  /  _ clsCombVowel? _ _;
+cls_longRtTail3  (g_AAA9 g_AA8F g_AA85) {kern.x = 230m}  g_vowelI  /  _ clsCombVowel? _ _;
+cls_longRtTail3  g_AAA1 {kern.x = 270m}  g_vowelI  /  _ clsCombVowel? _ _;
+
+cls_longRtTail3  cls_NarrowSquareCons {kern.x = 200m}  clsUpCombVowelStraight {shift.x=60m}  /  _ clsCombVowel? _ _;
+
+g_AA85  clsUpCombVowelStraight {shift.x = -250m}  g_AABC;
+
+#else
+
+cls_longRtTail3  (g_AAA9 g_AA80) {kern.x = 220m}  g_vowelI  /  _ clsCombVowel? _ _;
+
+cls_longRtTail3  cls_NarrowSquareCons {kern.x = 200m}  clsUpCombVowelStraight  /  _ clsCombVowel? _ _;
+
+#endif // BOLD
+
+
+#if BOLD
+
+// Straight-line near-collisions
+// These are not intended to be exhaustive fixes, but just to handle existing Tai Dam words.
+
+(g_AA9A g_AAA3 g_AABD)  (g_AA92 g_AAA9 g_AA97) {kern.x = 200m}  g_AAB8 {shift.x=70m}  /  _ clsCombVowel? _ _;
+
+g_AA99  g_AA8E {kern.x = 200m}  g_AAB3  /  _ clsCombVowel? _ _;
+
+g_AA9A  g_AA94 {kern.x = 200m}  g_AAB2  /  _ clsCombVowel? _ _;
+(g_AA9A g_AAA5)  g_AAA9 {kern.x = 275m}  g_AAB2  /  _ clsCombVowel? _ _;
+g_AA99  g_AA8E {kern.x = 280m}  g_AAB2  /  _ clsCombVowel? _ _;
+g_AAA3  g_AAAE {kern.x = 280m}  g_AAB2  /  _ clsCombVowel? _ _;
+g_AA99  g_AAA9 {kern.x = 280m}  g_AAB2  /  _ clsCombVowel? _ _;
+g_AA9A  g_AA99 {kern.x = 330m}  g_AAB2 {shift {x=70m; y=20m}}  /  _ clsCombVowel? _ _ clsCombTone;
+g_AA9A  g_AA99 {kern.x = 320m}  g_AAB2 {shift {x=50m; y=60m}}  /  _ clsCombVowel? _ _;
+(g_AA9A g_AAA3 g_AA99 g_AAA5)  (g_AA99 g_AA97 g_AAA9 g_AA85 g_AA92 g_AA8E) {kern.x = 350m}  g_AAB2
+		/  _ clsCombVowel? _ _;
+g_AA99  g_AA80 {kern.x = 400m}  g_AAB2  /  _ clsCombVowel? _ _;
+
+#else // not BOLD
+
+g_AAA3  (g_AA97 g_AA92) {kern.x = 200m}  g_AAB8  /  _ clsCombVowel? _ _;
+g_AA9A  g_AAA9 {kern.x = 200m}  clsUpCombVowelStraight  /  _ clsCombVowel? _ _;
+
+g_AAA3  g_AAAE {kern.x = 200m}  g_AAB2 {shift.x = 50m}  /  _ clsCombVowel? _ _;
+cls_sRtTailV  g_AA99 {kern.x = 150m}  g_AAB2 {shift.x = 50m}  /  _ clsCombVowel? _ _;
+
+g_AA99  g_AA8A {kern.x = 150m}  g_AAB2 {shift.y = 100m}  /  _ clsCombVowel? _ _;
+g_AA99  g_AA80 {kern.x = 200m}  g_AAB2 {shift.y = 100m}  /  _ clsCombVowel? _ _;
+
+g_AAA3  (g_AA85 g_AA97) {kern.x = 200m}  g_AAB2 {shift.x = 100m}  /  _ clsCombVowel? _ _;
+
+
+#endif // BOLD
+
+
+// Overlapping vowels
+
+#if BOLD
+
+g_AAAE  clsUpCombVowelStraight {shift {x = -100m; y = 100m}}  g_AA97  g_vowelI;
+g_AAAE  clsUpCombVowelStraight {shift {x = -150m; y = 100m}}  g_AAA3  g_vowelI;
+g_AAAE  clsUpCombVowelStraight {shift {x = -150m; y = 50m}}  (cls_longRtTail3 g_AA99)  clsUpCombVowelStraight;
+
+g_AAA9  g_vowelI {shift.x = -100m}  (g_AA92 g_AA9A)  clsUpCombVowelStraight {shift.x = 100m};
+
+#endif // BOLD
+
+g_AAAE  clsUpCombVowelStraight {shift {x = -225m; y = 150m}}  (cls_longRtTail3 g_AA99)  g_vowelI;
+
+
+// 5. Inter-word collisions. 
+
+
+	// These apply to marks in normal (initial-consonant) position.
+
+	g_space { kern.x = 480m }
+		/  cls_longRtTail1  clsCombVowel?  clsCombTone?  _  clsNarrowCons_Tall  ciDia {attdir <= INITIAL};
+	g_space { kern.x = 310m }
+		/  cls_longRtTail1  clsCombVowel?  clsCombTone?  _  clsNarrowCons_1  ciDia {attdir <= INITIAL}  ctmtDia;
+	g_space { kern.x = 150m }
+		/  cls_longRtTail1  clsCombVowel?  clsCombTone?  _  clsNarrowCons_2  ciDia {attdir <= INITIAL}  ctmtDia;
+	g_space { kern.x = 310m }
+		/  cls_longRtTail1  clsCombVowel?  clsCombTone?  _  clsNarrowCons_Tall  clsUpCombVowelCurved {attdir <= INITIAL};
+#if BOLD
+	g_space { kern.x = 3m } // 310
+		/  g_AA8A_Rdwarf  clsCombVowel?  clsCombTone?  
+			_  clsNarrowCons_Tall  clsUpCombVowelCurved {attdir <= INITIAL};
+	g_space { kern.x = 310m }
+		/  (cls_longRtTail1 g_AA8A_Rdwarf)  clsCombVowel?  clsCombTone? 
+			_  clsNarrowCons_Tall  clsUpCombVowelStraight {attdir <= INITIAL};
+#endif
+
+#if BOLD
+	g_space { kern.x = 300m }
+		/  cls_longRtTail1  clsCombVowel?  clsCombTone?  _  clsHighNgo  clsUpCombVowelCurved {attdir <= INITIAL};
+#else
+	g_space { kern.x = 385m } // OT is 300
+		/  cls_longRtTail1  clsCombVowel?  clsCombTone?  _  clsHighNgo  clsUpCombVowelCurved {attdir <= INITIAL};
+#endif
+	g_space { kern.x = 175m }
+		/  cls_longRtTail1  clsCombVowel?  clsCombTone?  _  clsNarrowCons_Tall  clsUpCombVowelStraight {attdir <= INITIAL};
+	g_space { kern.x = 250m }
+		/  cls_longRtTail1  clsCombVowel?  clsCombTone?  _  clsNarrowCons_1  clsUpCombVowelStraight {attdir <= INITIAL} ctmtDia;
+	g_space { kern.x = 150m }
+		/  cls_longRtTail1  clsCombVowel?  clsCombTone?  _  clsNarrowCons_Tall  clsLowVowel?
+																				ctmtDia {attdir <= INITIAL}  clsLowVowel?;
+	g_space { kern.x = 100m }
+		/  cls_longRtTail1  clsCombVowel?  clsCombTone?  _  clsNarrowCons_2a  clsUpCombVowelStraight {attdir <= INITIAL}  ctmtDia;
+	g_space { kern.x = 300m }
+		/  cls_longRtTail1  clsCombVowel?  clsCombTone?  _  clsHighNgo  clsLowVowel?  ctmtDia {attdir <= INITIAL};
+	g_space { kern.x = 780m }
+		/  cls_longRtTail2_3  clsCombVowel?  clsCombTone?  _  clsNarrowCons_Tall  ciDia {attdir <= INITIAL};
+	g_space { kern.x = 610m }
+		/  cls_longRtTail2_3  clsCombVowel?  clsCombTone?  _  clsNarrowCons_1  ciDia {attdir <= INITIAL}  ctmtDia;
+	g_space { kern.x = 450m }
+		/  cls_longRtTail2_3  clsCombVowel?  clsCombTone?  _  clsNarrowCons_2  ciDia {attdir <= INITIAL}  ctmtDia;
+	g_space { kern.x = 280m }
+		/  cls_longRtTail2_3  clsCombVowel?  clsCombTone?  _  clsNarrowCons_3  ciDia {attdir <= INITIAL}  ctmtDia;
+#if BOLD
+	g_space { kern.x = 730m }
+		/	cls_longRtTail3  clsCombVowel?  clsCombTone?  _  g_AA8A_Rotated  clsUpCombVowelCurved {attdir <= INITIAL};
+	g_space { kern.x = 680m }
+		/  cls_longRtTail2_3  clsCombVowel?  clsCombTone?  _  clsNarrowCons_Tall  clsUpCombVowelCurved {attdir <= INITIAL};
+	g_space { kern.x = 650m } clsUpCombVowelStraight { shift.x = 100m}
+		/  cls_longRtTail2_3  clsCombVowel?  clsCombTone?  _  clsNarrowCons_Tall  _=VM {attdir <= INITIAL};
+	g_space { kern.x = 600m }
+		/  cls_longRtTail2_3  clsCombVowel?  clsCombTone?  _ ^ g_AA89  clsUpCombVowelCurved  ctmtDia?;
+#else
+	g_space { kern.x = 535m }
+		/  cls_longRtTail2_3  clsCombVowel?  clsCombTone?  _  clsNarrowCons_Tall  clsUpCombVowelCurved {attdir <= INITIAL};
+	g_space { kern.x = 550m }
+		/  cls_longRtTail2_3  clsCombVowel?  clsCombTone?  _  clsNarrowCons_Tall  clsUpCombVowelStraight {attdir <= INITIAL};
+	g_space { kern.x = 300m }
+		/  cls_longRtTail2_3  clsCombVowel?  clsCombTone?  _ ^ g_AA89  clsUpCombVowelCurved  ctmtDia?;
+#endif
+	g_space { kern.x = 350m }
+		/  cls_longRtTail2_3  clsCombVowel?  clsCombTone?  _  clsNarrowCons_1  clsUpCombVowelCurved {attdir <= INITIAL} ctmtDia;
+	g_space { kern.x = 250m }
+		/  cls_longRtTail2_3  clsCombVowel?  clsCombTone?  _  clsNarrowCons_2  clsUpCombVowelCurved {attdir <= INITIAL} ctmtDia;
+	g_space { kern.x = 550m }
+		/  cls_longRtTail2_3  clsCombVowel?  clsCombTone?  _  clsNarrowCons_1  clsUpCombVowelStraight {attdir <= INITIAL}  ctmtDia;
+	g_space { kern.x = 320m }
+		/  cls_longRtTail2_3  clsCombVowel?  clsCombTone?  _  clsNarrowCons_2  clsUpCombVowelStraight {attdir <= INITIAL}  ctmtDia;
+	g_space { kern.x = 125m }
+		/  cls_longRtTail2_3  clsCombVowel?  clsCombTone?  _  clsNarrowCons_3  clsUpCombVowelStraight {attdir <= INITIAL}  ctmtDia;
+	g_space { kern.x = 535m }
+		/  cls_longRtTail2_3  clsCombVowel?  clsCombTone?  _  clsNarrowCons_Tall  clsLowVowel?  ctmtDia {attdir <= INITIAL};
+
+#if BOLD
+	g_space { kern.x = 575m }
+		/  cls_longRtTail2_3  clsCombVowel?  clsCombTone?  _ ^ clsHighNgo  clsLowVowel?
+																			ctmtDia {attdir <= INITIAL};
+	g_space { kern.x = 370m }
+		/  cls_longRtTail3  clsCombVowel?  clsCombTone?  _ ^ (g_AA8A_Unrotated g_AA99) g_AAB2;
+	g_space { kern.x = 350m }
+		/  cls_longRtTail3  clsCombVowel?  clsCombTone?  _ ^ cls_NarrowCons_iBase  g_AAB2  {attdir <= INITIAL}  ciDia?;
+	g_space { kern.x = 250m }
+		/  cls_longRtTail3  clsCombVowel?  clsCombTone?  _ ^ cls_NarrowCons_iBase  ciDia {attdir <= INITIAL} ctmtDia?;
+#else
+	g_space { kern.x = 450m }
+		/  cls_longRtTail2_3  clsCombVowel?  clsCombTone?  _ ^ clsHighNgo  clsLowVowel?  ctmtDia {attdir <= INITIAL};
+	g_space { kern.x = 150m }
+		/  cls_longRtTail3  clsCombVowel?  clsCombTone?  _ ^ cls_NarrowCons_iBase  ciDia {attdir <= INITIAL} ctmtDia?;
+#endif
+
+#if BOLD
+	g_space { kern.x = 220m }
+		/  cls_longRtTail3   clsCombVowel?  clsCombTone?  _ ^ (cls_longRtTail3 g_AA8A)  g_AAB0;
+	g_space { kern.x = 200m }
+		/  cls_longRtTail3   clsCombVowel?  clsCombTone?  _ ^ (cls_longRtTail3 g_AA8A)  clsLowVowel?  g_maiTho;
+	g_space { kern.x = 200m }
+		/  cls_longRtTail3  clsCombVowel?  clsCombTone?  _ ^ (cls_longRtTail3 cls_shortRtTail1)  g_AAB3;
+	g_space { kern.x = 200m }
+		/  cls_longRtTail3  clsCombVowel?  clsCombTone?  _ ^ (g_AA89 g_AA8A)  g_AAB8;
+	g_space { kern.x = 200m }
+		/  cls_longRtTail2_3  clsCombVowel?  clsCombTone?  _  g_AA89  clsUpCombVowelStraight {attdir <= INITIAL};
+
+	g_maiTho {shift{x = 150m; y = -100m}}
+		/  cls_longRtTail3   clsCombVowel?  clsCombTone?  g_space  g_AA9A  clsLowVowel?  _;
+	g_maiTho {shift{x = 80m; y = -60m}}
+		/  cls_longRtTail3   clsCombVowel?  clsCombTone?  g_space  (g_AA94 g_AA99 g_AAA5)  clsLowVowel?  _;
+
+	g_space { kern.x = 150m }
+		/  cls_longRtTail3   clsCombVowel?  clsCombTone?  _ ^ g_AABB;
+	g_space { kern.x = 200m }
+		/  cls_longRtTail3   clsCombVowel?  clsCombTone?  _ ^ g_AA8A  g_AAB3;
+#endif // BOLD
+
+
+#if COLLISIONFEAT
+endif;	// collisionFix
+#endif
+
+endpass; // 2
+	
+endtable; // positioning

@@ -1,4 +1,8 @@
 #!/usr/bin/python
+# encoding: utf-8
+# this is a smith configuration file
+
+# THIS FILE NEEDS TO BE UPDATED FOR THE GITHUB REPO STRUCTURE.
 
 APPNAME='TaiHeritagePro'
 VERSION="2.519"

@@ -1,0 +1,71 @@
+Inventory of characters
+***
+(I skipped ASCII punctuation and numbers--there are easier ways to test them than to work around the weird Tex escape sequences and delimitors.)
+***
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
+“ ” ‘ ’ ÀÁÃÂĂẢẠÄÅĀẦẤẪẨẰẮẴẲẬẶ
+ÆÇÐĐÈÉẼÊĔẺẸËĒỀẾỄỂỆÌÍĨÎĬỈỊÏĪÑ
+ÒÓÕÔŎỎỌÖŌƠỜỚỠỞỢỘỐỒỖỔØ
+ŒÞŠÙÚŨÛŬỦỤÜŪƯỪỨỮỬỰÝŸŽ
+àáãâăảạäåāầấẫẩằắẵẳậặ
+æçðđèéẽêĕẻẹëēềếễểệƒﬁﬂìíĩîĭỉịïī
+ıñòóõôŏỏọöōơờớỡởợộồốỗổøœþšßùúũ
+ûŭủụüūưừứữửựýÿž ː ꞌ ◌ ˋ ˊ ´ ˜ ˆ ˘ ˙ ¨ ˇ ˚ ¯ ˉ
+ˈ ˛ ¸ · ‹ › « » ‚ „ ¡ ¿ ¦ § © ® ª º ¬ ­ ¶ … ‐ ‑ ‒–—―† ‡
+™ ¢ £ ¤ ¥ ฿ ₣ ₫ € ₭ ° µ π • ‧ ∙ Ω ∂ ∆ ∏ ∑ ‰ ¹ ² ³ ⁄ ¼ ½ ¾ ± 
+× ÷ √ ∞ ∫ ≈ ≠ ≤ ≥ ◊ ￼ �
+***
+Base character + combining mark
+Çç◌̀◌́◌̂◌̃◌̄◌̆◌̈◌̉◌̊◌̌ÀÁÂÃĀĂÄẢÅǍÈÉÊẼĒĔËẺ
+E̊ĚÌÍÎĨĪĬÏỈI̊ǏǸŃN̂ÑN̄N̆N̈N̉N̊ŇÒÓÔÕŌŎÖỎ
+O̊ǑS̀ŚŜS̃S̄S̆S̈S̉S̊ŠÙÚÛŨŪŬÜỦŮǓỲÝŶỸȲY̆ŸỶ
+Y̊Y̌Z̀ŹẐZ̃Z̄Z̆Z̈Z̉Z̊ŽẦẤÂ̂ẪÂ̄Â̆Â̈ẨÂ̊Â̌ẰẮĂ̂ẴĂ̄Ă̆Ă̈Ẳ
+Ă̊Ă̌ỀẾÊ̂ỄÊ̄Ê̆Ê̈ỂÊ̊Ê̌ỒỐÔ̂ỖÔ̄Ô̆Ô̈ỔÔ̊Ô̌ỜỚƠ̂ỠƠ̄Ơ̆Ơ̈Ở
+Ơ̊Ơ̌ỪỨƯ̂ỮƯ̄Ư̆Ư̈ỬƯ̊Ư̌àáâãāăäảåǎèéêẽēĕëẻ
+e̊ěìíîĩīĭïỉi̊ǐǹńn̂ñn̄n̆n̈n̉n̊ňòóôõōŏöỏ
+o̊ǒs̀śŝs̃s̄s̆s̈s̉s̊šùúûũūŭüủůǔỳýŷỹȳy̆ÿỷ
+ẙy̌z̀źẑz̃z̄z̆z̈z̉z̊žầấâ̂ẫâ̄â̆â̈ẩâ̊â̌ằắă̂ẵă̄ă̆ă̈ẳ
+ă̊ă̌ềếê̂ễê̄ê̆ê̈ểê̊ê̌ồốô̂ỗô̄ô̆ô̈ổô̊ô̌ờớơ̂ỡơ̄ơ̆ơ̈ở
+ơ̊ơ̌ừứư̂ữư̄ư̆ư̈ửư̊ư̌
+***
+Vietnamese combining marks, base+vowelmark+tonemark
+◌̀◌́◌̃◌̉◌̣◌̄◌̂◌̂̀◌̂́◌̂̃◌̂̉◌̣̂◌̂̄◌̆◌̆̀◌̆́◌̆̃◌̆̉◌̣̆◌̆̄
+ÀÁÃẢẠĀÂẦẤẪẨẬÂ̄ĂẰẮẴẲẶĂ̄
+ÈÉẼẺẸĒÊỀẾỄỂỆÊ̄
+ÌÍĨỈỊĪ
+ÒÓÕỎỌŌÔỒỐỖỔỘÔ̄
+ÙÚŨỦỤŪ
+ẦẤẪẨẬÂ̄
+ẰẮẴẲẶĂ̄
+ỀẾỄỂỆÊ̄
+ỒỐỖỔỘÔ̄
+ỜỚỠỞỢƠ̄
+ỪỨỮỬỰƯ̄
+àáãảạāâầấẫẩậâ̄ăằắẵẳặă̄
+èéẽẻẹēêềếễểệê̄
+ìíĩỉịī
+òóõỏọōôồốỗổộô̄
+ùúũủụū
+ầấẫẩậâ̄
+ằắẵẳặă̄
+ềếễểệê̄
+ồốỗổộô̄
+ờớỡởợơ̄
+ừứữửựư̄
+ƠỜỚỠỞỢƠ̄
+ƯỪỨỮỬỰƯ̄
+ơờớỡởợơ̄
+ưừứữửựư̄
+ia ía ỉa ĩa ìa ịa īa iê iế iể iễ iề iệ iê̄
+ưa ứa ửa ữa ừa ựa ư̄a ươ ướ ưở ưỡ ườ ượ ươ̄
+ua úa ủa ũa ùa ụa uô uố uổ uỗ uồ uộ uô̄
+***
+Vietnamese combining marks, base+tonemark+vowelmark
+◌̣̂◌̣̆ ẬẶ Ệ Ộ ậặ ệ ộ 
+ờớỡởợơ̄
+ừứữửựư̄
+ỜỚỠỞỢƠ̄
+ỪỨỮỬỰƯ̄
+
+

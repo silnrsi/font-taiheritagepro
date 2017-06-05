@@ -19,27 +19,31 @@ RESERVEDOFL="Heritage"
 STANDARDS="tests/reference/"
 
 finfo = {
-	"THP-TaiViet.txt" : "script=DFLT",
-	"THP-Roman.txt" : "script=latn"
-	}
+    "THP-TaiViet.txt" : "script=DFLT",
+    "THP-Roman.txt" : "script=latn"
+    }
 
 #t=fonttest(targets = {
-#	"pdfs" : tex(files=finfo),
-#	"test" : tests(files=finfo) } )
+#   "pdfs" : tex(files=finfo),
+#   "test" : tests(files=finfo) } )
 
 #Current Repo Folder Structure#################
 for f in ("R", "B"):
-	FLsource = "source/"
-	font(target="TaiHeritagePro-" + f + ".ttf",
-	   	source=FLsource + "TaiHeritagePro" + f + ".ttf",
-#	    opentype = volt("TaiHeritagePro-" + f + ".vtp", master=FLsource + "TaiHeritagePro" + f + ".vtp"),
+    FLsource = "source/"
+    font(target="TaiHeritagePro-" + f + ".ttf",
+        source=FLsource + "TaiHeritagePro" + f + ".ttf",
+#       opentype = volt("TaiHeritagePro-" + f + ".vtp", master=FLsource + "TaiHeritagePro" + f + ".vtp"),
         opentype = fea(FLsource + "TaiHeritagePro" + f + ".fea", no_make=1),
-		graphite = gdl("TaiHeritagePro-" + f + ".gdl", master=FLsource + "TaiHeritageRules.gdh", params="-w3521 -w2509 -d", make_params="-n 1 -D BOLD=" + ("1" if f=="B" else "0")),
-		ap =FLsource + "TaiHeritagePro" + f + ".xml",
-		copyright = COPYRIGHT,
-		license = ofl("Heritage",
+        graphite = gdl("TaiHeritagePro-" + f + ".gdl", master=FLsource + "TaiHeritageRules.gdh", params="-w3521 -w2509 -d", make_params="-n 1 -D BOLD=" + ("1" if f=="B" else "0")),
+        ap =FLsource + "TaiHeritagePro" + f + ".xml",
+        copyright = COPYRIGHT,
+        license = ofl("Heritage",
             version = 1.1,
             file = "OFL.txt"),
-		version = VERSION,
-#		tests = t
-		script = [ "DFLT", "latn", "tavt" ] ) 
+        version = VERSION,
+#       tests = t
+        script = [ "DFLT", "latn", "tavt" ],
+#example of woff syntax from...
+# Harmatan:
+#       woff = woff('web/' + APPNAME    + style + '.woff', params = '-v ' + VERSION + ' -m ../source/' + APPNAME + '-WOFF-metadata.xml')
+        woff = woff('web/' + TaiHeritagePro + f + '.woff', params = '-v ' + VERSION + ' -m ../source/TaiHeritagePro-WOFF-metadata.xml')   ) 

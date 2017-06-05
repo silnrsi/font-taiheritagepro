@@ -43,7 +43,4 @@ for f in ("R", "B"):
         version = VERSION,
 #       tests = t
         script = [ "DFLT", "latn", "tavt" ],
-#example of woff syntax from...
-# Harmatan:
-#       woff = woff('web/' + APPNAME    + style + '.woff', params = '-v ' + VERSION + ' -m ../source/' + APPNAME + '-WOFF-metadata.xml')
-        woff = woff('web/' + TaiHeritagePro + f + '.woff', params = '-v ' + VERSION + ' -m ../source/TaiHeritagePro-WOFF-metadata.xml')   ) 
+        woff = woff('web/' + 'TaiHeritagePro' + f + '.woff', params = '-v ' + VERSION + ' -m ../source/TaiHeritagePro-WOFF-metadata.xml')   ) 

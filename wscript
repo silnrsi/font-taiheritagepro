@@ -17,6 +17,7 @@ OUTDIR="wininstallers"
 ZIPDIR="zippackage"
 RESERVEDOFL="Heritage"
 STANDARDS="tests/reference/"
+ftmlTest('tests/xsl/FTMLcreateList.xsl')
 
 finfo = {
     "THP-TaiViet.txt" : "script=DFLT",

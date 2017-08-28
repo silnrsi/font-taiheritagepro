@@ -1,9 +1,9 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type='text/xsl' href='xsl/FTMLcreateList.xsl'?>
 <ftml version="1.0">
   <head>
     <fontscale>100</fontscale>
-    <fontsrc>url(../results/web/TaiHeritageProR.woff)</fontsrc>
+    <fontsrc>url(../results/TaiHeritagePro-B.ttf)</fontsrc>
     <title>Sample collisions</title>
   </head>
   <testgroup label="main">

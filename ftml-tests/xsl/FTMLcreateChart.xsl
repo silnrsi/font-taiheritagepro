@@ -6,6 +6,8 @@
 <!-- Copyright (c) 2015 SIL International (http://www.sil.org) -->
 <!-- Released under the MIT License (http://opensource.org/licenses/MIT) -->
 
+<!-- Use with nested <testgroup> elements to create tables with multiple <test> elements per row -->
+
 <!-- set variables from head element -->
 <xsl:variable name="width-comment" select="/ftml/head/widths/@comment"/>
 <xsl:variable name="width-label" select="/ftml/head/widths/@label"/>
@@ -81,7 +83,7 @@
 	</head>
 	<body onload='init()'>
 		<h1><xsl:value-of select="/ftml/head/title"/></h1>
-		<p><xsl:value-of select="/ftml/head/comment"/></p>
+		<p><xsl:value-of select="/ftml/head/comment"/></p>		
 		<xsl:apply-templates select="/ftml/testgroup"/>
 	</body>
 </html>
@@ -97,18 +99,18 @@
 		-moz-font-feature-settings: <xsl:value-of select="@feats"/>;
 		-ms-font-feature-settings: <xsl:value-of select="@feats"/>;
 		-webkit-font-feature-settings: <xsl:value-of select="@feats"/>;
-		font-feature-settings: <xsl:value-of select="@feats"/>;
+		font-feature-settings: <xsl:value-of select="@feats"/>; 
 <xsl:if test="$width-string != ''">
 		width: <xsl:value-of select="$width-string"/>;
 </xsl:if>
 	}
-</xsl:if>
+</xsl:if>			
 </xsl:template>
 
 <!-- 
-	Process a testgroup, emitting a table containing all test records from the group
+	Process a top level testgroup, emitting a table (containing a row for each testgroup subelement)
 -->
-<xsl:template match="testgroup">
+<xsl:template match="/ftml/testgroup">
 	<h2><xsl:value-of select="@label"/></h2>
 	<p><xsl:value-of select="comment"/></p>
 	<table>
@@ -116,6 +118,35 @@
 			<xsl:apply-templates/>
 		</tbody>
 	</table>
+</xsl:template>
+
+<!-- 
+	Process a second level testgroup record, emitting a table row (containing a cell for each test subelement)
+	Pick up comment and class from first test subelement
+-->
+<xsl:template match="/ftml/testgroup/testgroup">
+<tr>
+    <xsl:if test="@background">
+		<xsl:attribute name="style">background-color: <xsl:value-of select="@background"/>;</xsl:attribute>
+	</xsl:if>
+	<!-- emit label column -->
+	<td class="label">
+		<xsl:value-of select="@label"/>
+	</td>
+    <xsl:apply-templates/>
+	<xsl:if test="/ftml/testgroup/testgroup/test/comment">
+		<td class="comment">
+			<!-- emit comment -->
+			<xsl:value-of select="test/comment"/>
+		</td>
+	</xsl:if>
+	<xsl:if test="/ftml/testgroup/testgroup/test/@stylename">
+		<td class="stylename">
+			<!-- emit style name -->
+			<xsl:value-of select="test/@stylename"/>
+		</td>
+	</xsl:if>
+</tr>
 </xsl:template>
 
 <!-- 
@@ -144,17 +175,9 @@
 </xsl:template>
 
 <!-- 
-	Process a single test record, emitting a table row
+	Process a single test record, emitting a table cell
 -->
 <xsl:template match="test">
-<tr>
-	<xsl:if test="@background">
-		<xsl:attribute name="style">background-color: <xsl:value-of select="@background"/>;</xsl:attribute>
-	</xsl:if>
-	<!-- emit label column -->
-	<td class="label">
-		<xsl:value-of select="@label"/>
-	</td>
 	<!-- emit test data column -->
 	<td class="string">   <!-- assume default string class -->
 		<xsl:if test="@stylename">
@@ -163,8 +186,11 @@
 			<xsl:apply-templates select="/ftml/head/styles/style[@name=$styleName]" mode="getLang"/>
 		</xsl:if>
 		<xsl:if test="@rtl='True' ">
-              <xsl:attribute name="dir">RTL</xsl:attribute>
+               <xsl:attribute name="dir">RTL</xsl:attribute>
 		</xsl:if>
+        <xsl:if test="@background">
+            <xsl:attribute name="style">background-color: <xsl:value-of select="@background"/>;</xsl:attribute>
+        </xsl:if>
 		<!-- and finally the test data -->
 		<xsl:choose>
 			<!-- if the test has an <em> marker, the use a special template -->
@@ -176,19 +202,6 @@
 			</xsl:otherwise>
 		</xsl:choose>
 	</td>
-	<xsl:if test="/ftml/testgroup/test/comment">
-		<td class="comment">
-			<!-- emit comment -->
-			<xsl:value-of select="comment"/>
-		</td>
-	</xsl:if>
-	<xsl:if test="/ftml/testgroup/test/@stylename">
-		<td class="stylename">
-			<!-- emit style name -->
-			<xsl:value-of select="@stylename"/>
-		</td>
-	</xsl:if>
-</tr>
 </xsl:template>
 
 <!--  

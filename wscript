@@ -30,12 +30,16 @@ finfo = {
 
 #Current Repo Folder Structure#################
 for f in ("R", "B"):
+    if f=="B":
+        face = "Bold"
+    else:
+        face = "Regular"
     FLsource = "source/"
     font(target="TaiHeritagePro-" + f + ".ttf",
         source=FLsource + "TaiHeritagePro" + f + ".ttf",
 #       opentype = volt("TaiHeritagePro-" + f + ".vtp", master=FLsource + "TaiHeritagePro" + f + ".vtp"),
         opentype = fea(FLsource + "TaiHeritagePro" + f + ".fea", no_make=1),
-        graphite = gdl("TaiHeritagePro-" + f + ".gdl", master=FLsource + "TaiHeritageRules.gdh", params="-w3521 -w2509 -d", make_params="-n 1 -D BOLD=" + ("1" if f=="B" else "0")),
+        graphite = gdl("TaiHeritagePro-" + face + ".gdl", master=FLsource + "TaiHeritageRules.gdh", params="-w3521 -w2509 -d", make_params="-n 1 -D BOLD=" + ("1" if f=="B" else "0")),
         ap =FLsource + "TaiHeritagePro" + f + ".xml",
         copyright = COPYRIGHT,
         license = ofl("Heritage",
@@ -44,4 +48,4 @@ for f in ("R", "B"):
         version = VERSION,
 #       tests = t
         script = [ "DFLT", "latn", "tavt" ],
-        woff = woff('web/' + 'TaiHeritagePro' + f + '.woff', params = '-v ' + VERSION + ' -m ../source/TaiHeritagePro-WOFF-metadata.xml')   ) 
+        woff = woff('web/' + 'TaiHeritagePro-' + face + '.woff', params = '-v ' + VERSION + ' -m ../source/TaiHeritagePro-WOFF-metadata.xml')   ) 

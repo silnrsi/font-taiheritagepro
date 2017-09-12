@@ -12,3 +12,5 @@ History of what fonts are being used as the reference for the smith regression t
 October 2016: Version 2.510 was installed to test the reorganization of the OT tables.
 
 March 2017: Version 2.510 build from svn506. The version number should be 2.518, but it didn't seem to update. This is the last VOLT version, installed to test the conversion of the OT code to FEA.
+
+Sept 11, 2017: Version 2.6 built on 2017/08/16. Last version built with old version of raw Bold ttf. Used to compare font built with new bold ttf.

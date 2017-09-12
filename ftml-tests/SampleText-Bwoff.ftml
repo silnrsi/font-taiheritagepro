@@ -3,7 +3,7 @@
 <ftml version="1.0">
   <head>
     <fontscale>100</fontscale>
-    <fontsrc>url(../results/web/TaiHeritageProB.woff)</fontsrc>
+    <fontsrc>url(../results/web/TaiHeritagePro-Bold.woff)</fontsrc>
     <title>Sample collisions</title>
   </head>
   <testgroup label="main">

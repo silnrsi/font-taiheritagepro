@@ -58,11 +58,13 @@
 			(This should list both major and minor changes, most recent first.)
 			
 			2017 (SIL NRSI team) Tai Heritage Pro 2.600
-			- Corrected spelling of "tavt" script tag in OT code.	
-			- Changed ccmp feature to rclt.
-			- Moved some OpenType lookups from mkmk feature to mark feature.
-			- Corrected minor discepencies between OT and Graphite in the positioning 
-			  of combining marks in the regular face.
+			- Three bug fixes related to makeing version 2.600 work in OT apps on Windows 10:
+			    -- Corrected spelling of "tavt" script tag in OT code.	
+			    -- Changed ccmp feature to rclt.
+			    -- Moved some OpenType lookups from mkmk feature to mark feature.
+			    -- Corrected minor discrepancies between OT and Graphite in the positioning 
+			       of combining marks in the regular face.
+			- Added WOFF versions of the fonts to the distribution.
 			  
 			2013 (SIL NRSI team) Tai Heritage Pro 2.510. (Limited release)
 			- Tweaked positioning to avoid collisions in some multisyllable words.

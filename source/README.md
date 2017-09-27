@@ -34,10 +34,9 @@ TaiHeritagePro-Bold.xml
 TaiHeritagePro-Regular.xml
 
     These are the attachment point databases
-    
-## Sea also
-TaiHeritagePro-workflow.txt in this packages documentation/developer folder.
 
 TaiHeritagePro-WOFF-metadata.xml
 
     This is the database for building the WOFF files.
+
+**Sea also** TaiHeritagePro-workflow.txt in this packages documentation/developer folder.

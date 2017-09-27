@@ -1,4 +1,4 @@
-Copyright (c) 1995-2012, SIL International (www.sil.org)
+Copyright (c) 1995-2017, SIL International (www.sil.org)
 with Reserved Font Name "Heritage".
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.

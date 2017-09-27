@@ -25,7 +25,7 @@ finfo = {
 for f in ("Regular", "Bold"):
     FLsource = "source/"
     font(target="TaiHeritagePro-" + f + ".ttf",
-        source=FLsource + "TaiHeritagePro-" + f + ".ttf",
+        source=FLsource + "TaiHeritagePro-NoSmartCode-" + f + ".ttf",
         opentype = fea(FLsource + "TaiHeritagePro-" + f + ".fea", no_make=1),
         graphite = gdl("TaiHeritagePro-" + f + ".gdl", master=FLsource + "TaiHeritageRules.gdh", params="-w3521 -w2509 -d", make_params="-n 1 -D BOLD=" + ("1" if f=="Bold" else "0")),
         ap =FLsource + "TaiHeritagePro-" + f + ".xml",

@@ -9,12 +9,12 @@ Basic Font Information
 ----------------------
 The original Tai Heritage was designed to reflect the traditional hand-written style of the Tai Viet script that is treasured by the Tai people of Vietnam. This gives it its angular style and flowing lines, as opposed to the more rounded style used by Lao and some modern versions of Tai Viet.
 
-The current Tai Heritage Pro release is Unicode encoded, based on the Unicode 5.2 standard. It uses either the SIL Graphite technology or OpenType for correct placement of combining marks (vowels and tones). See the REQUIREMENTS section in README.txt or http://scripts.sil.org/TaiHeritage for more information.
+The current Tai Heritage Pro release is Unicode encoded, based on the Unicode 5.2 standard. It uses either the SIL Graphite technology or OpenType for correct placement of combining marks (vowels and tones). See the REQUIREMENTS section in README.txt or http://software.sil.org/taiheritage/ for more information.
 
 
 User-Selectable Font Features and Alternate Letter Forms
 -----------------------------
-For a description of the user-selectable font features and alternate letter forms in Graphite-enabled applications, see TaiHeritageProFontFeaturesVer2_500.pdf
+For a description of the user-selectable font features and alternate letter forms in Graphite-enabled applications, see TaiHeritagePro-features.pdf
 
 
 Supported Unicode Character Ranges
@@ -127,5 +127,5 @@ E: fonts@sil.org
 W: http://scripts.sil.org/
 D: SIL designers, font engineers, and script consultant
 
-For more information please visit the Tai Heritage page on SIL International's Computers and Writing systems website: http://scripts.sil.org/TaiHeritage
+For more information please visit the Tai Heritage Pro website: https://software.sil.org/taiheritage/
 Or send an e-mail to <fonts@sil.org>

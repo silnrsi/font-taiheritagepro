@@ -5,7 +5,7 @@
 - Tai Heritage Pro Release 2.600 -- October 2017
 =========================================================
 
-Thank you for your interest in Tai Heritage Pro. The 2009 release of Version 2.000 represented a major upgrade to the original Tai Heritage font, incorporating Unicode encoding and Graphite technology for correctly positioning the vowel and tone marks of the Tai Viet script. Version 2.500 added a bold face font, and gives the choice of either Graphite or Open Type rendering technology. Version 2.600 enables use of the font in OpenType applications on Windows 10 by correcting several errors in the OpenType code. In addition, several small discrepancies between OpenType and Graphite with respect to the positioning of combining vowels and tones in the Regular weight have been eliminated. See FONTLOG.txt and TaiHeritageProFontFeatures.pdf for more information.
+Thank you for your interest in Tai Heritage Pro. The 2009 release of Version 2.000 represented a major upgrade to the original Tai Heritage font, incorporating Unicode encoding and Graphite technology for correctly positioning the vowel and tone marks of the Tai Viet script. Version 2.500 added a bold face font, and gives the choice of either Graphite or OpenType rendering technology. Version 2.600 enables use of the font in OpenType applications on Windows 10 by correcting several errors in the OpenType code. In addition, several small discrepancies between OpenType and Graphite with respect to the positioning of combining vowels and tones in the Regular weight have been eliminated. See FONTLOG.txt and TaiHeritageProFontFeatures.pdf for more information.
 
 
 REQUIREMENTS
@@ -14,12 +14,12 @@ In order to obtain the correct placement of combining marks (i.e. diacritic vowe
 
 	- OpenType. The Universal Shaping Engine on Windows 10 now supports the 
 	  Tai Viet script, as do applications that use non-Microsoft rendering such 
-	  as Harfbuz.
+	  as Harfbuzz.
 
 	- Graphite. See http://scripts.sil.org/GraphiteFAQ "Applications that support
 	  Graphite?"
 
-When used in an application without either of these rendering technologies, the font will still be mostly readable, but the placement of combining marks  will not be optimal, and there will occasionally be collisions between adjacent characters.
+When used in an application without either of these rendering technologies, the font will still be mostly readable, but the placement of combining marks will not be optimal, and there will occasionally be collisions between adjacent characters.
 
 Tai Heritage Pro 2.600 has been tested in the following applications:
     - on Windows 10: 
@@ -30,7 +30,7 @@ Tai Heritage Pro 2.600 has been tested in the following applications:
         - Vowels and tones do not position correctly in PowerPoint 2016.
     - on Windows 8.1:
         - Vowels and tones position correctly in Firefox, Chrome, 
-          LibreOffice (Writer, Calc, Impress, and Draw), Paratext, and Xetex. 
+          LibreOffice (Writer, Calc, Impress, and Draw), Paratext, and XeTeX. 
         - Vowels and tones do not position correctly in Notepad, Internet 
           Explorer, MS Office (any application), and Paint.
     - on Ubuntu 16:
@@ -51,4 +51,4 @@ The Tai Heritage Pro font is copyright 1995-2017 by SIL International. It is dis
 =========
 - CONTACT
 =========
-For more information please visit https://software.sil.org/taiheritage/, or send an email to <fonts@sil.org>
+For more information please visit http://software.sil.org/taiheritage/, or send an email to <fonts@sil.org>

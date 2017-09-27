@@ -39,4 +39,4 @@ TaiHeritagePro-WOFF-metadata.xml
 
     This is the database for building the WOFF files.
 
-**Sea also** TaiHeritagePro-workflow.txt in this packages documentation/developer folder.
+**Sea also** TaiHeritagePro-workflow.txt in this package's documentation/developer folder.

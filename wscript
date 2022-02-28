@@ -5,8 +5,6 @@
 APPNAME='TaiHeritagePro'
 VERSION="2.600"
 TTF_VERSION="2.600"
-LICENSE='OFL.txt'
-COPYRIGHT="Copyright (c) 1995-2017, SIL International (www.sil.org)"
 out="results"
 DESC_NAME="TaiHeritagePro"
 DESC_SHORT="The Tai Heritage typeface is designed to reflect the traditional hand-written style of the Tai Viet script."
@@ -27,7 +25,6 @@ the Tai-Kadai language family and are closely related to Lao.
 DOCDIR="documentation"
 OUTDIR="wininstallers"
 ZIPDIR="zippackage"
-RESERVEDOFL="Heritage"
 STANDARDS="tests/reference/"
 ftmlTest('tests/xsl/FTMLcreateList.xsl')
 
@@ -45,10 +42,6 @@ for style in ("-Regular", "-Bold"):
                        params="-w3521 -w2509 -d -e gdlerr" + style + ".txt",
                        make_params="-n 1 -D BOLD=" + ("1" if style=="Bold" else "0")),
         ap =FLsource + "TaiHeritagePro" + style + ".xml",
-        copyright = COPYRIGHT,
-        license = ofl("Heritage",
-            version = 1.1,
-            file = "OFL.txt"),
         version = VERSION,
         script = [ "DFLT", "latn", "tavt" ],
         woff = woff('web/' + 'TaiHeritagePro' + style + '.woff', params = '-v ' + VERSION + ' -m ../source/TaiHeritagePro-WOFF-metadata.xml')   ) 
